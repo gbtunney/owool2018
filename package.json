@@ -3,5 +3,13 @@
   "version": "0.0.1",
   "devDependencies": {
     "@shopify/slate-tools": "0.14.0"
+  },
+  "scripts": {
+    "watch": "slate watch",
+    "start:dev": "slate start --env development",
+    "start:prod": "slate start --env production",
+    "deploy:dev": "slate deploy --env development",
+    "deploy:prod": "slate deploy --env production",
+    "build": "slate build"
   }
 }
