@@ -1,0 +1,79 @@
+<div id="col-main" class="full">
+
+  <div id="product" class="clearfix content">
+	
+	<div id="product-gallery"{% if settings.main_image_display == 'Zoom-in' %} class="zoom-in"{% endif %}>
+
+     {% include 'product-image' %}
+	
+     
+      
+    <div id="product-information">
+
+      {% include 'prod-title-desc' %}   
+      
+      <img src="{{ 'yarn_border.png' | asset_url }}" alt="divider" />
+      
+      <div id="product-order" class="yarn">
+        <ul id="thumbs">
+          {% for image in product.images %}
+          <li>
+            <a{% if settings.main_image_display == 'Lightbox' %} rel="fancybox"{% endif %} class="gallery" href="{{ image | product_img_url: 'original' }}" title="{{ image.alt | escape }}">
+              <img src="{{ image | product_img_url: 'large' }}" alt="{{ image.alt | escape }}" />
+              
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div><!-- /#product-order -->
+	  	
+      {% if product.available %}
+        <form action="/cart/add" method="post" class="variants" id="product-actions" enctype="multipart/form-data">
+          <div class="options clearfix">  
+
+            <div class="variants-wrapper clearfix {% if product.variants.size == 1 %}visuallyhidden{% endif %}"> 
+              <select id="product-select" name="id">
+                {% for variant in product.variants %}
+                <option value="{{ variant.id }}">{{ variant.title | escape }} - {{ variant.price | money }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div id="product-header-title" class="p_center">
+              <p class="price"></p>
+            </div>
+            <div id="qty-box">
+				<label for="quantity">Qty: </label>
+				<select id="quantity" name="quantity">
+                    {% for i in (1..20) %}
+				    <option value="{{ i }}">{{ i }}</option>
+				    {% endfor %}
+				</select>
+                
+			</div>
+            <div id="qty-box" >
+			<p id="number-available"></p>
+            </div>
+            <div id="purchase" class="yarn">
+              <p id="add-to-cart-msg"></p>
+              
+              <input class="btn" type="submit" name="add" id="add-to-cart" value="Add to Cart" />
+            </div>
+
+          </div><!-- /.options -->
+        </form>
+
+      {% else %}
+        <div id="product-actions" class="sold-out">
+          <div id="purchase">
+            <p class="price">Sold out.</p>      
+          </div>
+        </div>      
+      {% endif %}
+
+    </div><!-- /#product-information -->
+
+  </div><!-- /#product -->
+
+</div><!-- /#product-gallery -->	 
+
+</div><!-- /#col-main -->

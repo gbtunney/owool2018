@@ -1,1 +1,65 @@
-{% section 'product' %}
+<!-- spurit_po-added -->
+{% include 'spurit_po-product-snippet' %}
+<!-- /spurit_po-added -->
+<div id="col-main" class="full">
+
+  <div id="product" class="clearfix content">
+	<div id="product-gallery"{% if settings.main_image_display == 'Zoom-in' %} class="zoom-in"{% endif %}>
+
+     {% include 'product-image' %}
+	
+    <div id="product-information">
+
+      {% include 'prod-title-desc' %}  
+      
+      <div id="product-order" class="default">
+			<ul id="thumbs" {% if product.images.size == 1 %}class="visuallyhidden"{% endif %}>
+	        	{% for image in product.images %}
+	        	{% unless forloop.first and settings.main_image_display == 'Lightbox' %}
+	        	<li>
+	          		<a{% if settings.main_image_display == 'Lightbox' %} rel="fancybox"{% endif %} class="gallery" href="{{ image | product_img_url: 'original' }}" title="{{ image.alt | escape }}">
+	            	<img src="{{ image | product_img_url: 'large' }}" alt="{{ image.alt | escape }}" />
+	          		</a>
+	        	</li>
+	        	{% endunless %}
+	        	{% endfor %}
+			</ul>	  	
+		</div>
+        
+       <p id="add-to-cart-msg"></p>
+            {% if product.available %}
+	          <form action="/cart/add" method="post" class="variants" id="product-actions" enctype="multipart/form-data">
+	            <div class="options clearfix">  
+
+	              <div class="variants-wrapper clearfix {% if product.variants.size == 1 %}visuallyhidden{% endif %}"> 
+	                <select id="product-select" name="id">
+	                  {% for variant in product.variants %}
+	                  <option value="{{ variant.id }}">{{ variant.title | escape }} - {{ variant.price | money }}</option>
+	                  {% endfor %}
+	                </select>
+	              </div>            
+                  <div id="product-header-title">
+                    <p class="price"></p>
+                  </div>
+	              <div id="purchase">                         
+	                <input class="btn" type="submit" name="add" id="add-to-cart" value="Add to Cart" />
+	              </div>
+
+	            </div><!-- /.options -->
+	          </form>
+        {% else %}
+	          <div id="product-actions" class="sold-out">
+	            <div id="purchase">
+	              <p class="price">Sold out.</p>      
+	            </div>
+	          </div>      
+	        {% endif %}
+    </div><!-- /#product-information -->
+    
+
+  </div><!-- /#product -->
+
+</div><!-- /#product-gallery -->	 
+
+</div><!-- /#col-main -->
+

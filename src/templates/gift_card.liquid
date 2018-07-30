@@ -1,66 +1,134 @@
-{% comment %}
-  QR code is rendered in `#QrCode`
+{% layout none %}
 
-  `gift_card.pass_url` is true if apple wallet is enabled for the shop
-{% endcomment %}
+{% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
 
-{% layout 'gift_card' %}
+{% capture subject %}Here's a {{ formatted_initial_value }} gift card from {{ shop.name }}!{% endcapture %}
 
-<header role="banner">
-  <div itemscope itemtype="http://schema.org/Organization">
-    <a href="{{ shop.url }}" itemprop="url" class="site-logo">
-      {{ shop.name }}
-    </a>
-  </div>
-  <div>{{ shop.url | escape }}</div>
-</header>
+{% capture body %}Hi,
 
-<main class="giftcard {% if gift_card.expired or gift_card.enabled != true %} giftcard--disabled{% endif %}">
+Here's a {{ shop.name }} gift card of {{ formatted_initial_value }} for you!
+{% if gift_card.initial_value != gift_card.balance %}You have {{ gift_card.balance | money_without_trailing_zeros: gift_card.currency }} left on this gift card.{% endif %}
 
-  <h1>{{ 'gift_cards.issued.subtext' | t }}</h1>
-  {% unless gift_card.enabled %}
-    <span class="giftcard-tag">{{ 'gift_cards.issued.disabled' | t }}</span>
-  {% endunless %}
+To view or print your gift card online, visit the link below:
+<{{ gift_card.url }}>
 
-  {%- assign gift_card_expiry_date = gift_card.expires_on | date: "%d/%m/%y" -%}
+Thank you for shopping at {{ shop.name }}!
+<{{ shop.url }}>
+{% endcapture %}
 
-  {% if gift_card.expired and gift_card.enabled %}
-    <span class="giftcard-tag">{{ 'gift_cards.issued.expired' | t: expiry: gift_card_expiry_date }}</span>
-  {% endif %}
+<!DOCTYPE html>
+<html>
 
-  {% if gift_card.expired != true and gift_card.expires_on and gift_card.enabled %}
-    <span class="giftcard-tag giftcard-tag--active">{{ 'gift_cards.issued.active' | t: expiry: gift_card_expiry_date }}</span>
-  {% endif %}
+<head>
 
-  <img src="{{ 'gift-card/card.jpg' | shopify_asset_url }}" alt="Gift card illustration">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
 
-  {% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
+  <title>Here's your {{ formatted_initial_value | strip_html }} gift card for {{ shop.name }}!</title>
+  <meta name="description" content="Here's your gift card!">
 
-  <h2>{{ 'gift_cards.issued.initial_value' | t: value: formatted_initial_value }}</h2>
+  {{ 'styles.gift-card.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'modernizr.gift-card.js' | asset_url | script_tag }}
+  <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
-  {% assign formatted_current_balance = gift_card.balance | money %}  
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-  {% if gift_card.balance != gift_card.initial_value %}
-    <p>{{ 'gift_cards.issued.remaining_html' | t: balance: formatted_current_balance }}</p>
-  {% endif %}
+  <script type='text/javascript'>
+    function selectText(element) {
 
-  {%- assign code_size = gift_card.code | format_code | size -%}
-  <span id="GiftCardDigits" class="giftcard__code">{{ gift_card.code | format_code }}</span>
+        var doc = document;
+        var text = doc.getElementById(element);
 
-  <p>{{ 'gift_cards.issued.redeem' | t }}</p>
+        if (doc.body.createTextRange) { // ms
+            var range = doc.body.createTextRange();
+            range.moveToElementText(text);
+            range.select();
+        } else if (window.getSelection) { // moz, opera, webkit
+            var selection = window.getSelection();
+            var range = doc.createRange();
+            range.selectNodeContents(text);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
 
-  <a href="{{ shop.url }}" class="btn" target="_blank">{{ 'gift_cards.issued.shop_link' | t }}</a>
+    }
+  </script>
 
-  <div id="QrCode" class="giftcard-qr" data-identifier="{{ gift_card.qr_identifier }}"></div>
+</head>
 
-  {% if gift_card.pass_url %}
-    <a href="{{ gift_card.pass_url }}" class="apple-wallet">
-      <img class="apple-wallet-image" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}">
-    </a>
-  {% endif %}
+<body>
 
-  <a href="#" id="PrintGiftCard" class="print-giftcard">
-    {{ 'gift_cards.issued.print' | t }}
-  </a>
+  <div class="wrap">
 
-</main>
+    <header role="banner" id="header">
+      <a href="{{ shop.url }}" class="logo">{{ shop.name }}</a>
+      <a href="{{ shop.url }}" class="shop-url">{{ shop.url | remove: 'http://' }}</a>
+    </header>
+
+      <main role="main">
+
+          <div id="gift-card-outer-container" {% if gift_card.expired or gift_card.enabled != true %}class="disabled"{% endif %}>
+            <div id="gift-card-inner-container">
+
+              <header id="gift-card-header">
+                <h2>Here's your gift card!</h2>
+                {% unless gift_card.enabled %}
+                  <span class="tag">Disabled</span>
+                {% endunless %}
+                {% if gift_card.expired and gift_card.enabled %}
+                   <span class="tag">Expired on {{ gift_card.expires_at | date: "%d/%m/%y" }}</span>
+                {% endif %}
+                {% if gift_card.expired != true and gift_card.expires_at and gift_card.enabled %}
+                  <span class="tag light">Expires on {{ gift_card.expires_at | date: "%d/%m/%y" }}</span>
+                {% endif %}
+              </header>
+
+              <div id="gift-card-holder">
+                <div class="corner top-left"></div>
+                <div class="corner bottom-right"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div id="gift-card">
+                  <img src="{{ 'card.gift-card.jpg' | asset_url }}" alt="Gift card illustration">
+                  {% assign initial_value_size = formatted_initial_value | size %}
+                  <div id="gift-card-amount" class="{% if initial_value_size > 6 %}medium{% endif %}">
+                    {% if gift_card.balance != gift_card.initial_value %}
+                      <span class="tooltip-container"><span class="tooltip-label">{{ gift_card.balance | money }} <small>left</small></span><span class="tooltip-triangle"></span></span>
+                    {% endif %}
+                    <strong>{{ formatted_initial_value }}</strong>
+                  </div>
+                  {% assign code_size = gift_card.code | format_code | size %}
+                  <div id="gift-card-code-outer" class="{% if code_size <= 25 %}large{% elsif code_size > 25 and code_size <= 30 %}medium{% else %}small{% endif %}" onclick="selectText('gift-card-code-digits');">
+                    <div id="gift-card-code-inner">
+                      <strong id="gift-card-code-digits">{{ gift_card.code | format_code }}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="gift-card-instructions">
+                <p>Use this code at checkout to redeem your gift card</p>
+              </div>
+
+              <div id="gift-card-actions">
+                <a href="{{ shop.url }}" class="btn center" target="_blank">Start Shopping</a>
+                <a href="#" class="action-link left" onclick="window.print();"><i class="ico-16 print"></i>Print</a>
+                <a href="mailto:?subject={{ subject | url_param_escape }}&body={{ body | url_param_escape }}" class="action-link email right"><i class="ico-16 email"></i>Email</a>
+              </div>
+
+            </div>
+          </div>
+      </main> <!-- / Main -->
+
+      <footer role="contentinfo">
+          <img src="{{ 'icon-bug.gift-card.png' | asset_url }}" class="gift-card-icon">
+      </footer>
+
+    </div>
+
+</body>
+</html>

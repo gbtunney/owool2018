@@ -1,0 +1,24 @@
+<ul id="MobileNav" class="mobile-nav" style="display:none;">
+  
+
+          {% for link in linklists.main-menu.links %}
+          <li class="{% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
+            {% assign child_list_handle = link.title | handleize %}
+            {% if linklists[child_list_handle].links != blank %}
+            <div class="has-dropdown">
+              <a href="{{ link.url }}" class="clearfix {% if link.active %}class="active"{% endif %}">
+                <span class="nav-label">{{ link.title | escape }}</span> 
+              </a>
+              <ul>
+                {% for childlink in linklists[child_list_handle].links %}
+                <li><a href="{{ childlink.url }}" {% if link.active %}class="active"{% endif %}>{{ childlink.title | escape }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% else %}
+              <a href="{{ link.url }}" {% if link.active %}class="active"{% endif %}>{{ link.title | escape }}</a>
+            {% endif %}
+          </li>
+          {% endfor %}
+    
+</ul>

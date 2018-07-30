@@ -1,92 +1,49 @@
-{% paginate blog.articles by 5 %}
-
-  {%- assign blog_title = blog.title -%}
-
-  {% if current_tags %}
-    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
-  {% endif %}
-
-  <h1>{{ blog_title }}</h1>
-
-  {% if blog.all_tags.size > 0 %}
-    <h2>{{ 'blogs.general.categories' | t }}</h2>
-
-    <ul>
-      {% for tag in blog.all_tags %}
-
-        {% if current_tags contains tag %}
-          <li>{{ tag }}</li>
-        {% else %}
-          <li>{{ tag | link_to_tag: tag }}</li>
-        {% endif %}
-
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-
-  {% comment %}
-
-  Article Previews
-  ====================
-  {% endcomment %}
+<div id="col-main">
+  {% paginate blog.articles by 6 %}
 
   {% for article in blog.articles %}
-    <h3>
-      <a href="{{ article.url }}">{{ article.title }}</a>
-    </h3>
 
-    {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+  <article class="post clearfix">
+    <h2 class="title"><a href="{{ article.url }}"><img src="{{ 'blog-leaf.png' | asset_url }}" alt="leaft" />{{ article.title | escape }}</a></h2>
+	<p class="author">Posted by <span class="author-name">{{ article.author | escape }}</span> on {{ article.published_at | date: "%B %d, %Y" }}</p>
+    <div class="post-content">
+	{{ article.excerpt_or_content }}
+	</div>
 
-    <p>
-      {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
-    </p>
 
-    {% if article.image %}
-      <a href="{{ article.url }}">
-        {{ article | img_url: '1024x1024' | img_tag: article.title }}
-      </a>
-    {% endif %}
-
-    <div class="rte">
-      {% if article.excerpt.size > 0 %}
-        {{ article.excerpt }}
-      {% else %}
-        <p>
-          {{ article.content | strip_html | truncatewords: 100 }}
-        </p>
-      {% endif %}
-    </div>
-
-    {% if blog.comments_enabled? or article.tags.size > 0 %}
-      <ul>
-        {% if blog.comments_enabled? %}
-          <li>
-            <a href="{{ article.url }}#comments">
-              {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
-            </a>
-          </li>
+    <footer class="article-extras clearfix">
+      
+      <p class="comments-link">
+        {% if article.comments_enabled? %}
+          {% if article.comments_count > 0 %}
+           <a href="{{article.url}}#comments" title="Add your thoughts"><span class="comment-number">{{ article.comments_count }}</span>&nbsp;{{ article.comments_count | pluralize: 'Comment', 'Comments' }}</a>
+          {% else %}
+            <a href="{{article.url}}#comments" title="Add your thoughts">Add a comment</a>
+          {% endif %}
+        {% else %}
+          <span class="disabled">Comments disabled</span>
         {% endif %}
-
-        {% if article.tags.size > 0 %}
-          {% for tag in article.tags %}
-            <li>
-              <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
-              {% unless forloop.last %}, {% endunless %}
-            </li>
-          {% endfor %}
-        {% endif %}
-      </ul>
-    {% endif %}
-
-    <p>
-      <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a>
-    </p>
+      </p>
+    </footer><!-- /.article-extras -->
+  </article>
 
   {% endfor %}
 
   {% if paginate.pages > 1 %}
-    {% include 'pagination' %}
-  {% endif %}
+	<div class="pagination">
 
-{% endpaginate %}
+	    {% if paginate.previous %}
+	      <span class="prev">{{ paginate.previous.title | link_to: paginate.previous.url }}</span>
+	    {% else %}
+	    {% endif %}  
+
+	    {% if paginate.next %}
+	      <span class="next">{{ paginate.next.title | link_to: paginate.next.url }}</span>
+	    {% else %}
+	    {% endif %}    
+	</div>
+	{% endif %}
+
+  {% endpaginate %}
+
+</div> <!-- /#col-main -->

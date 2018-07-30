@@ -1,0 +1,27 @@
+<div id="col-main" class="full {{ collection.handle }}">
+
+  <section class="diagonal-divider clearfix">
+    <header class="section-details clearfix">
+     {% include 'breadcrumbs' %}
+    </header>
+
+    {% paginate collection.products by 21 %}
+      {% if collection.products.size > 0 %}
+    
+        <ul class="product-grid clearfix">
+        {% for product in collection.products %}
+          <li{% cycle '', '', ' class="last-in-row"' %}>
+            {% include 'product-grid-item' %}
+          </li>
+        {% endfor %}
+        </ul>
+
+        {% include 'pagination' %}
+      
+      {% else %}    
+        <strong>No products found in this collection.</strong>
+      {% endif %}
+    {% endpaginate %}
+  </section>
+  
+</div> <!-- /#col-main -->

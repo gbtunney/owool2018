@@ -1,0 +1,26 @@
+<div id="breadcrumb">
+  {% if template contains "product" %}
+	{% if template contains "product" and collection.handle contains "patterns-" %}
+		<a href="/collections/patterns">All Patterns</a> >
+    {% elsif template contains "product" and collection.handle contains "byyarn" %}
+		<a href="/collections/patterns-by-yarn">Patterns by Yarn</a> >
+	 {% endif %}
+    {% if collection %} 
+      {% if collection.handle %}
+         {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+		{{ collection.title | link_to: url | remove: '*'  }} >
+      {% elsif collection.all_products_count > 0 and collection.products.first.type == collection.title %}         
+		{{ collection.title | link_to_type | remove: '*'  }} > 
+      {% elsif collection.all_products_count > 0 and collection.products.first.vendor == collection.title %}
+		{{ collection.title | link_to_vendor | remove: '*' }} > 
+      {% endif %}
+      {% else %}
+      {{ product.type | link_to_type }} > 
+    {% endif %}
+  {% endif %}
+   	{% unless template contains "product" %}{% if collection.handle contains "patterns-" %}
+		<a href="http://o-wool.myshopify.com/collections/patterns">All Patterns</a> >{% elsif collection.handle contains "byyarn" %}
+			<a href="/collections/patterns-by-yarn">Patterns by Yarn</a> >
+	 {% endif %}{% endunless %}
+  <span class="page-title">{{ page_title | remove: '*' }}</span>
+</div>

@@ -1,0 +1,105 @@
+<div id="col-widgets">
+
+  {% if settings.textwidget_visible %}
+  <!-- Widget: display some text -->
+  <section class="widget widget-text">
+    <div class="widget-header">
+      <h3>{{ settings.textwidget_title }}</h3>
+    </div>
+    <div class="widget-content">
+      {{ settings.textwidget_content }}
+    </div>
+  </section>
+  {% endif %}
+
+	<div class="widget widget-linklist" id="widget-recentposts">
+    <div class="widget-header">
+      <h3>Search</h3>
+    </div>
+    <div class="widget-content">
+			<form action="/search" method="get" id="widget-search">
+				<input type="text" name="q" class="search-field" />
+				<input type="submit" value="search" class="search-submit" />
+			</form>
+	</div>    
+</div><!-- /.widget -->
+	
+	{% if settings.recentposts_visible %}
+	<div class="widget widget-linklist" id="widget-recentposts">
+    <div class="widget-header">
+      <h3>Recent Posts</h3>
+    </div>
+    <div class="widget-content">
+      <ul>
+      {% for article in blog.articles limit: 3 %}
+        <li>
+          <a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title | escape }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>    
+  </div><!-- /.widget -->
+  {% endif %}
+	
+  {% if settings.show_allcollections_widget %}
+  <!-- Widget: list all collections -->
+  <div class="widget widget-linklist" id="widget-allcollections">
+    <div class="widget-header">
+      <h3><a href="/collections">{{ settings.allcollections_title }}</a></h3>
+    </div>
+    <div class="widget-content">
+      <ul>
+      {% for collection in collections %}
+        <li>
+          <a href="{{ collection.url }}" title="{{ collection.title | escape }}">{{ collection.title | escape | remove: '*' }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>    
+  </div><!-- /.widget -->
+  {% endif %}
+
+  {% if settings.show_vendors_widget %}
+  <!-- Widget: list all vendors -->
+  <div class="widget widget-linklist" id="widget-allvendors">
+    <div class="widget-header">
+      <h3>{{ settings.vendors_widget_title }}</h3>
+    </div>
+    <div class="widget-content">
+      <ul>
+      {% for vendor in shop.vendors %}
+        <li>
+          {{ vendor | link_to_vendor }}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>    
+  </div><!-- /.widget -->
+  {% endif %}
+
+  {% if settings.show_widget_linklist1 %}
+    <!-- Link List Widget #1 -->
+    {% include 'widget-linklist' with settings.widget_linklist1 %}
+  {% endif %}
+
+  {% if settings.show_widget_linklist2 %}
+    <!-- Link List Widget #2 -->
+    {% include 'widget-linklist' with settings.widget_linklist2 %}
+  {% endif %}
+
+  {% if settings.show_widget_linklist3 %}
+    <!-- Link List Widget #3 -->
+    {% include 'widget-linklist' with settings.widget_linklist3 %}
+  {% endif %}
+
+  {% if settings.twitterwidget_visible %}
+  <!-- Tweets -->
+  <div class="widget widget-twitter" id="widget-twitter">
+    <div class="widget-header">
+      <h3>{{ settings.twitterwidget_title }}</h3>
+    </div>
+    <div class="tweets-wrapper"></div>
+  </div>
+  {% endif %}
+
+</div><!-- /#col-widgets -->

@@ -1,0 +1,31 @@
+<div class="ProductThumb">
+<div class="product-grid-item " id="product-{{ product.variants.first.id }}">
+
+  <a href="{{ product.url | within: collection }}" class="product-link" title="{{ product.featured_image.alt | escape }}">
+    <span class="product-price 123">
+    {% if product.price_varies %} 
+      <small>from</small> {{ product.price_min | money }}
+    {% else %}
+      {{ product.price_min | money | remove: '.00' }}
+    {% endif %}
+    </span>
+    <img src="{{ product.featured_image | product_img_url: 'large' }}" class="product-photo" alt="{{ product.featured_image.alt | escape }}" />
+      {% for tag in product.tags %}
+		{% if tag contains 'GLOBAL ORGANIC' %}
+<span class="global_Collection_ic"><img src="//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/global_organic2.png" alt="" /></span>
+     	{% endif %}
+  {% if tag contains 'GOTS logo' %}
+<span class="global_Collection_ic"><img src="//cdn.shopify.com/s/files/1/0155/0473/files/GOTS-logo.png" alt="" /></span>  
+     	{% endif %}
+  {% if tag contains 'GOTSCERES-029' %}
+<span class="global_Collection_ic"><img src="//cdn.shopify.com/s/files/1/0155/0473/files/RGW-GOTS-logo-vert.png" alt="" /></span>
+     	{% endif %}
+     {% endfor %} 
+  </a>
+  
+  <div class="product-information">
+    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>                    
+  </div>    
+        
+</div>    
+</div>

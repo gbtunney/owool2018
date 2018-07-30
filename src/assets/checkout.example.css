@@ -1,0 +1,379 @@
+/** 
+ * Radiance
+ * Checkout CSS
+ * 
+ * Custom checkout CSS is disabled by default.
+ * To enable it, rename this file to "checkout.css.liquid".
+ */
+ 
+
+
+
+
+/** 
+ * Background 
+ */
+
+  html{ 
+  
+  }
+
+
+html{ background-color:  }
+
+body, #main, #container, #header, #footer { background: transparent !important; }
+
+
+/** 
+ * Generic
+ */
+
+body { 
+  font:13px/1.231 ; 
+  *font-size:small; 
+  color: ; 
+  } 
+
+input, textarea { 
+  color: #333;
+  font-size: 13px;
+  font-family: ;
+  }
+
+label{ 
+  font-weight: normal; 
+  font-size: 12px;
+  }
+
+h1, h2, h3, h4, h5, h6 { 
+  color: ; 
+  line-height: 1.2;
+  font-weight: bold; 
+  margin: 0 0 .5em 0;
+  text-shadow: none !important;
+  }
+
+a { color: ; }
+a:hover { color:  }
+
+
+
+/** 
+ * Layout
+ */
+#container{
+  width: 980px;
+  margin: 0 auto;
+  }
+#main,
+#container.slim #main,
+#content,
+#footer{
+  padding: 0;
+  width: auto;
+  }
+
+#container{ font-size: 100%; } 
+
+#container.slim{ width: 740px; }
+#container.slim #main{ width: auto;}  
+
+#addresses{
+  background: ;
+  }
+
+#email,
+.group{
+  width: 700px;
+  margin: 0 0 20px 0;  
+  padding: 20px;    
+  background: ;
+  line-height: 1.5em;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+  }
+.group{
+  float: left;
+  }
+
+.group h3,
+.pgroup h3,
+#email label{
+  font-weight: bold !important;
+  color: ;
+  margin: 0 0 12px 0;
+  padding: 0 0 8px 0;
+  border-bottom: dotted 1px ;  
+  }
+  
+  
+/** 
+ * Umbrella 
+ */ 
+#info-bar{
+  display: none;
+  }
+  
+
+/** 
+ * Header
+ */
+#header,
+#header h1{
+  padding: 0;
+  }
+#tagline{
+  
+    font: bold 36px/1.0 ;
+  
+  color: ;
+  margin: 25px 0;
+  }
+#tagline .subtitle{
+  display: none;
+  }
+
+
+
+/** 
+ * Overview
+ */
+
+ #overview{ /* styles from widgets in right column */
+  width: 195px;
+  padding: 150px 10px 10px 10px; /* make some room for the "wallet" */  
+  float: right;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+  margin: 0 0 20px 0;
+  position: relative;
+  background: ;
+  overflow: hidden; height: 1%;
+  }
+
+#overview h2{
+  display: none; /* hide: you know you're purchasing these things. */
+  color: ;
+  text-align: center;
+  }
+
+#overview #products{
+  width: auto;
+  float: none;
+  border: none;
+  }
+#overview #wallet{
+  margin: 0; padding: 10px;
+  width: 175px;
+  height: 120px;
+  position: absolute; top: 10px;
+  text-align: center;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  }
+#overview #cost{
+  color: ;
+  
+    font: bold 36px/1.0 ;
+  
+  text-shadow: none;
+  border-bottom: dotted 1px ;
+  }
+#overview .hint{
+  color: ;
+  margin: 0 0 3px 0;
+  display: block;
+  }
+#overview #steps{
+  margin: 0; padding: 0 0 8px 0;
+  display: block;
+  font: normal 13px ;
+  border-bottom: dotted 1px ;  
+  }
+#overview br{ display: none; }
+
+#overview #thumbs{
+  margin: 0;
+  border-collapse: collapse;
+  }
+#overview #thumbs td{
+  overflow: hidden; height: 1%;
+  font-size: 100%;
+  text-align: center;
+  vertical-align: top;
+  padding: 4px;
+  border: dotted 1px 
+  }
+#overview #thumbs div{
+  float: none;
+  width: 100%; height: auto;
+  border: none;
+  margin: 0 0 10px 0; padding: 0;
+  }
+#overview #thumbs img{ 
+  display: block; 
+  margin: 0 auto;
+  padding: 1px;
+  border: solid 1px ;  
+  }
+
+#overview #thumbs h3{ color: ; }
+#overview #thumbs span{ color: ; }
+
+.slim #overview{ display: none; }
+
+/** 
+ * Checkout Form 
+ */
+
+.form{ width: 100%; }
+.form label{ font-weight: normal; }
+
+.form td{ padding: 5px 0; }
+.form td.lbl{ width: 165px; text-align: right; padding-right: 8px; }
+.form td input{ font-size: 13px; width: 200px; }
+
+.form .inline li{ 
+  float: none;
+  width: 100% !important; 
+  margin: 0 !important; 
+  overflow: hidden;
+  height: 1%;
+  padding: 0 0 8px 0;
+  }
+.form .inline label{
+  float: left;
+  width: 95px; text-align: right; padding-right: 8px;
+  }
+.form .inline select{
+  float: left;
+  }
+#billing_address_province_li,
+#shipping_address_province_li{ padding: 0; }
+
+/* Form Errors */
+.field-with-errors{
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;    
+  }
+
+/* Billing/Shipping Addresses */
+#addresses{
+  overflow: hidden;
+  height: 1%;
+  }
+
+#addresses .gleft,
+#addresses .gright{
+  width: 330px;
+  padding: 0;
+  margin: 0;
+  }
+#addresses .gleft{ 
+  float: left; 
+  border-right: solid 1px ;
+  padding-right: 20px;
+  }
+#addresses .gright{ float: right; }
+
+#billing_address_phone{
+  margin: 0 0 10px 0;
+  }
+#billing-is-shipping td{
+  border: solid 1px ;
+  padding: 5px;
+  }
+
+#addresses #shipping-same.address-notification{
+  padding: 10px;
+  text-align: left;
+  background:  !important;
+  color: ;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;  
+  border: none;
+  }
+
+/* paying for your order */ 
+#payment p.sst{
+  margin-bottom: 0;
+  }
+
+.sst .gleft{
+  width: 30%;
+  }
+#credit-card-info.gright{
+  margin: 0 0 0 10px;
+  float: left;
+  }
+
+#payment-methods li{
+  border-bottom: dotted 1px ;  
+  }
+
+
+
+/* Next/Prev Step */
+#buttons{
+  clear: both;
+  background: ;
+  color: ;
+  border: none;
+  }
+#buttons a{ color: ;}
+#buttons a:hover{ color: ;}
+
+#buttons small{ font-size: 12px; }
+
+#buttons input{ font-size: 13px; }
+#buttons #commit-button,
+#buttons #complete-purchase{
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 5px 10px 4px 10px;
+  text-decoration: none;  
+  font-weight: bold;
+  font-family: ;
+  text-align: center;
+  cursor: pointer;
+  border: solid 1px ;
+  background:  url(//cdn.shopify.com/s/files/1/0155/0473/t/15/assets/btn-small-depth.png?3889305405161248660) 0 100% repeat-x;;
+  color: ;
+
+  }
+#buttons #commit-button:hover,
+#buttons #complete-purchase:hover{
+  background:  url(//cdn.shopify.com/s/files/1/0155/0473/t/15/assets/btn-small-depth.png?3889305405161248660) 0 100% repeat-x;
+  border: solid 1px ;
+  color: ;
+  }
+
+
+/** 
+ * Footer 
+ */
+ #footer{
+  clear: both;
+  padding: 15px 0 0 0;
+  color: ;
+  }
+#footer a{ color: ;}
+#footer a:hover{ color: ;}
+
+
+/** 
+ * General Weirdness 
+ */
+#gateway-logos{ 
+  /* this ONLY ever showed up in IE8 during my testing. VERY weird. */
+  display: none;
+  }

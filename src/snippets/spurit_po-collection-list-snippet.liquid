@@ -1,0 +1,20 @@
+<script>
+    var SPOParams = SPOParams || {};//spo-product-{{product.id}} class should be added to each product item in the grid
+    SPOParams.collection = SPOParams.collection || {type:'collection',quantity:false,tooltip:false,variants:false};
+    $(function(){
+        var spoi = 0;
+        var spoInit = setInterval(function(){
+            if(typeof spoProduct !== 'undefined'){
+                clearInterval(spoInit);
+                {% for product in pageProducts %}
+                var spoProductData = {"id":{{product.id}},"handle":"{{product.handle}}","title" : "{{product.title}}","variants":[]};
+                {% for variant in product.variants %}spoProductData.variants.push({"id":{{variant.id }},"title":"{{variant.title}}","inventory_quantity":{{variant.inventory_quantity}},"inventory_policy":"{{variant.inventory_policy}}","inventory_management":"{{variant.inventory_management}}"});{% endfor %}
+                spoProduct.run(spoProductData,SPOParams.collection);
+                {% endfor %}
+            }
+            if(++spoi > 10){
+                clearInterval(spoInit);
+            }
+        },300);
+    });
+</script>

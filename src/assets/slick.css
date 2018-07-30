@@ -1,0 +1,164 @@
+/* Slider */
+
+.slick-slider {
+    position: relative;
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y; clear:both;
+    -webkit-tap-highlight-color: transparent; margin:0px; padding:0px;
+}
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0 0px;
+    padding: 0;
+}
+.slick-list:focus {
+    outline: none;
+}
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+}
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after {
+    display: table;
+    content: '';
+}
+.slick-track:after {
+    clear: both;
+}
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+.slick-slide {
+    display: none;
+    float: left;  
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+.slick-slide.slick-loading img {
+    display: none;
+}
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+.slick-initialized .slick-slide {
+    display: block; padding-top:0px; padding-bottom:0px;
+}
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.relatedBlock_main.ProductList
+{	margin:0px; padding:0px; list-style:none;
+}
+.relatedBlock_main.ProductList li
+{	margin:0px; padding:0px !important; list-style:none; border:0px !important;
+}
+.relatedBlock_main.ProductList li > div
+{	width:100%; padding:15px; float:left;
+}
+.relatedBlock_main.ProductList li > div > div
+{	border:1px solid #edecec !important; float:left; width:100%; padding:10px;
+}
+.slick-dots
+{	display:none !important;
+}
+
+
+
+button.slick-next,
+button.slick-prev
+{	width:26px; height:27px; position:absolute; text-indent:-9999px; border:0px; cursor:pointer; top:67px;    outline: none;
+}
+button.slick-next {
+	background:url(https://cdn.shopify.com/s/files/1/1817/4621/t/2/assets/arrow-right.png) no-repeat; right:15px;top:46%; width:31px; height:57px;
+}
+button.slick-prev {		
+  	background:url(https://cdn.shopify.com/s/files/1/1817/4621/t/2/assets/arrow-left.png) no-repeat; left:0;top:46%; width:31px; height:57px;
+}
+#home h2.header-specials
+{	width:100%; float:left; line-height:70px; border-bottom:3px solid #b9da8f;
+	font-size:25px; color:#000000; font-weight:600; text-transform:uppercase;
+}
+#home h2.header-specials a
+{	width:auto; float:right; font-size:21px; color:#616161; font-weight:600; text-decoration:none;
+}
+.home_brand li div
+{	margin-top:0px; text-align:center;
+}
+.home_brand li
+{	position:relative;
+}
+.home_brand li a
+{	width:100%; height:100%; text-indent:-99999px; font-size:0px; position:absolute; left:0px; top:0px;
+}
+.home_brand button.slick-next, 
+.home_brand button.slick-prev 
+{	top:26%;
+}
+.bottom_event_slider
+{	width:100%; float:left; position:relative; border:7px solid #232323;
+}
+.bottom_event_slider > a
+{	   background: #232323 none repeat scroll 0 0;
+    bottom: -7px;
+    color: #ffffff;
+    float: right;
+    font-size: 18px;
+    height: 37px;
+    line-height: 35px;
+    position: absolute;
+    right: -7px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 130px;
+}
+@media (max-width: 991px) {
+button.slick-next {
+	right:0px;
+}
+}
+
+@media (max-width: 767px) {
+button.slick-prev, button.slick-next {
+	top:43%; width:25px; height:45px; background-size:100% 100%; 
+}
+}
+
+@media (max-width: 479px) {
+button.slick-prev, button.slick-next {
+	top:40%; width:20px; height:35px; background-size:100% 100%;
+}
+
+}

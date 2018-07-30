@@ -1,77 +1,394 @@
-<!doctype html>
-<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="{{ settings.color_primary }}">
-  <link rel="canonical" href="{{ canonical_url }}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
-  {% if settings.favicon != blank %}
-    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  <link rel="canonical" href="{{ canonical_url }}" /> 
+
+  {% assign maxmeta = 155 %}
+  {% if template contains 'product' %}
+  <meta name="description" content="{{ product.description | strip_html | strip_newlines | truncate: maxmeta | escape }}" />
+  {% elsif template contains 'page' %}
+  <meta name="description" content="{{ page.content | strip_html | strip_newlines | truncate: maxmeta | escape  }}" />
+  {% elsif template == 'index' and shop.description != '' %}
+  <meta name="description" content="{{ shop.description }}" />
   {% endif %}
 
-  {% capture seo_title %}
-    {{ page_title }}
-    {% if current_tags %}
-      {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+  {% comment %} 
+    Open Graph tags for Facebook Like buttons 
+  {% endcomment %} 
+  <meta property="og:site_name" content="{{ shop.name | escape }}" />
+  {% if template contains 'product' %}
+    <meta property="og:image" content="{{ product.featured_image | product_img_url: 'compact' }}" />
+  {% else %}
+    {% if settings.logo_image == "logo.png" %}
+      <meta property="og:image" content="{{ 'logo.png' | asset_url }}" />
     {% endif %}
-    {% if current_page != 1 %}
-      &ndash; {{ 'general.meta.page' | t: page: current_page }}
-    {% endif %}
-    {% unless page_title contains shop.name %}
-      &ndash; {{ shop.name }}
-    {% endunless %}
-  {% endcapture %}
-  <title>{{ seo_title }}</title>
+  {% endif %}  
 
-  {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
+  {% if template == 'index' %}
+   <title>{{ shop.name }}</title>
+  {% elsif template == '404' %}
+    <title>Page Not Found | {{ shop.name }}</title>
+  {% else %}
+   <title>{{ page_title | remove: '*'  }} | {{ shop.name }}</title>
   {% endif %}
-
-  {% include 'social-meta-tags' %}
-
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-
-  <script>
-    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-
-    window.theme = {
-      strings: {
-        addToCart: {{ 'products.product.add_to_cart' | t | json }},
-        soldOut: {{ 'products.product.sold_out' | t | json }},
-        unavailable: {{ 'products.product.unavailable' | t | json }}
-      },
-      moneyFormat: {{ shop.money_format | json }}
-    };
-  </script>
-
-  {% if template.directory == 'customers' %}
-    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
-    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
-  {% endif %}
-
-  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
-  <!--[if lt IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
-
-  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
-  <!--[if lt IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+	<link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}" />
 
   {{ content_for_header }}
+  
+  {{ 'style.css' | asset_url | stylesheet_tag }}{% if template contains 'product' and settings.main_image_display == 'Lightbox' %}
+  {{ 'jquery.fancybox-1.3.4.css' | asset_url | stylesheet_tag }}{% endif %}
+  {{ 'modernizr.js' | asset_url | script_tag }}
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  {{ 'slick.css' | asset_url | stylesheet_tag }}
+
+
+  {% if template contains 'customers' %}
+    {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+    {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' | script_tag }}
+  {{ 'jquery.selectbox-0.2.min.js' | asset_url | script_tag }}
+  
 </head>
 
-<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+<body class="{% if customer %}customer-logged-in {% endif %}template{{ template | split: '.' | first | camelize }} {{page.title}} {{ product.title }}">
+  
+    
+  <div class="wrapper">
+    
+    <!-- Header -->
+    <header id="top" class="clearfix">
+	<button type="button" class="mobile-nav-trigger navbar-toggle" id="MobileNavTrigger" data-menu-state="close" style="display:none;">
+        <span class="icon icon-hamburger sr-only" aria-hidden="true"></span>
+      	<span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      	<!--{{ 'layout.navigation.menu' | t }}--->
+      </button>
+      <h1 id="site-title">
+        <a href="/" title="Home">
+            <img src="{{ 'o-wool-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" /> 
+        </a>
+      </h1>
+      {% include 'mobile-nav' with linklists[section.settings.nav_menu] %}
+      <nav id="top-menu" class="clearfix">
+        <ul>
+          {% for link in linklists.main-menu.links %}
+          <li class="{% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
+            {% assign child_list_handle = link.title | handleize %}
+            {% if linklists[child_list_handle].links != blank %}
+            <div class="has-dropdown">
+              <a href="{{ link.url }}" class="clearfix {% if link.active %}class="active"{% endif %}">
+                <span class="nav-label">{{ link.title | escape }}</span> 
+              </a>
+              <ul>
+                {% for childlink in linklists[child_list_handle].links %}
+                <li><a href="{{ childlink.url }}" {% if link.active %}class="active"{% endif %}>{{ childlink.title | escape }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% else %}
+              <a href="{{ link.url }}" {% if link.active %}class="active"{% endif %}>{{ link.title | escape }}</a>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
 
-  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+        {% if settings.show_header_search %}
+        <form id="header-search" action="/search" method="get">
+          <label for="top-search-input" class="visuallyhidden">Search</label>
+          <input type="text" id="top-search-input" name="q" class="search-input" value="" accesskey="4"  autocomplete="off" placeholder="Search" />
+          <input type="submit" id="top-search-submit" class="search-submit ir" value="Search" />
+        </form>
+        {% endif %}
+        
+      </nav>
+            
+      <div id="umbrella">
+        <ul>  
+		 	{%if settings.sm_facebook %}<li id="sm-facebook"><a href="{{settings.sm_facebook_link}}" class="social-icons" target="_blank">Facebook</a></li>{% endif %}
+			{%if settings.sm_twitter %}<li id="sm-twitter"><a href="{{settings.sm_twitter_link}}" class="social-icons" target="_blank">Twitter</a></li>{% endif %}
+			{%if settings.sm_ravelry %}<li id="sm-ravelry"><a href="{{settings.sm_ravelry_link}}" class="social-icons" target="_blank">Ravelry</a></li>{% endif %}
+            {%if settings.sm_pinterest %}<li id="sm-pinterest"><a href="{{settings.sm_pinterest_link}}" class="social-icons" target="_blank">Pinterest</a></li>{% endif %}
+          	{%if settings.sm_instagram %}<li id="sm-instagram"><a href="{{settings.sm_instagram_link}}" class="social-icons" target="_blank">Instagram</a></li>{% endif %}
+          {% if shop.customer_accounts_enabled %}
+          <li class="customer-account-links">
+            {% if customer %}
+              <p>{{ 'Log Out' | customer_logout_link }}</p>
+            {% else %}
+              <p>{{ 'Log In' | customer_login_link }}</p>
+            {% endif %}
+          </li>
+          {% endif %}     
+          
+          {% if customer %}
+          <li>
+            <a href="/account">My Account</a>
+          </li>
+          {% endif %}               
 
-  {% section 'header' %}
+          <li class="cart-link">
+            <a href="/cart" class="num-items-in-cart">
+              <span class="icon">
+               {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}
+              </span>
+            </a>             
+          </li>
+        </ul>
+      </div><!-- /#umbrella -->
+	<img src="{{ 'hr.png' | asset_url }}" alt="divider">
+    </header>
+    
+    <!-- Content -->
+    <div class="content-wrapper clearfix">    
 
-  <main role="main" id="MainContent">
-    {{ content_for_layout }}
-  </main>
+      {% if template == 'list-collections' %}
+        {% include 'collection-listing' %}
+      {% else %}
+        {{ content_for_layout }}
+      {% endif %}
 
-  {% section 'footer' %}
+      {% if template contains "blog" %}
+        {% include 'col-widgets' %}
+      {% elsif template contains "article" %}
+				{% include 'col-widgets' %}
+			{% endif %}
 
+    </div><!-- /.content -->
+    
+    <!-- Footer -->
+    <footer id="bottom">
+	<img src="{{ 'hr.png' | asset_url }}" alt="divider">
+		<div id="footer-1">
+			<!-- BEGIN: Constant Contact Basic Opt-in Email List Form -->
+			
+			<form name="ccoptin" action="https://visitor.r20.constantcontact.com/d.jsp" target="_blank" method="post" style="margin-bottom:2;">
+			<input type="hidden" name="llr" value="a4m5dxdab">
+			<input type="hidden" name="m" value="1103508747232">
+			<input type="hidden" name="p" value="oi">
+			<label for="mce-EMAIL">Subscribe to our newsletter</label><br/>
+		    <input type="text" name="ea" size="20" value="" class="email" id="mce-EMAIL" placeholder="email address">
+			<input type="submit" name="go" value="Go" class="submit" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; font-size:10pt;">
+			</form>
+			<!-- END: Constant Contact Basic Opt-in Email List Form -->
+		
+		</div><!-- /#footer-1 -->
+
+		<div id="footer-2">
+			<ul class="footer-nav" class="clearfix">
+	        {% for link in linklists.footer.links %}
+	          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+	        {% endfor %}
+	        </ul>
+
+		</div><!-- /#footer-2 -->
+       
+		<div id="footer-3">
+			<ul class="footer-nav" class="clearfix">
+	        {% for link in linklists.footer-right.links %}
+	          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+	        {% endfor %}
+	        </ul>
+		</div><!-- /#footer-3 -->
+		
+		<div id="footer-4">
+	        <img src="{{ 'star.png' | asset_url }}" width="15" height="17" alt="*" style="vertical-align:middle" /> <a href="http://www.aeolidia.com/" onclick="window.open(this.href,'_blank');return false;">site by Aeolidia</a> <img src="{{ 'star2.png' | asset_url }}" width="9" height="9" alt="*" style="vertical-align:top" /><br/>
+			&copy; <a href="/">{{ shop.name }}</a> {{ 'now' | date: '%Y' }}
+
+		</div><!-- /#footer-4 -->
+  
+    </footer> 
+
+  </div><!-- /.wrapper -->
+
+  <!--[if lt IE 8]>
+  <script>
+    // IE 6+7 do not calculate the width of the #umbrella properly
+    $('#umbrella').width( $('#umbrella ul').width() );
+  </script>
+  <![endif]-->
+    
+  {% if settings.twitterwidget_visible and settings.show_right_column %}
+    {{ 'jquery.tweet.js' | asset_url | script_tag }}    
+    <script>
+      $(".tweets-wrapper").tweet(
+        {
+          count: {{ settings.twitterwidget_numtweets }},
+          username: "{{ settings.twitterwidget_username }}",
+          loading_text: "loading tweets...",
+          template: function(i){ return i["text"]
+        }    
+      });
+    </script>
+  {% endif %}
+
+  {% if product.available %}
+  <script>
+	$("#qty-box select").selectbox();
+  	{% assign look_for_image_match = false %}
+		{% assign option_index = 0 %}
+		{% for option in product.options %}
+  		{% assign downcased_option = option | downcase %}
+  		{% if downcased_option contains 'color' %}
+    		{% assign look_for_image_match = true %}
+    		{% assign option_index = forloop.index0 %}
+  		{% endif %}
+	{% endfor %}
+	Shopify.doNotTriggerClickOnThumb = false;
+    var selectCallback = function(variant, selector) {
+
+      if ( variant && variant.available) {
+        // selected a valid variant
+        $('#add-to-cart').removeClass('disabled');
+        $('#add-to-cart-msg').hide();// remove unavailable class from add-to-cart button, and re-enable button
+        if(variant.compare_at_price == null){
+          $('#product-header-title .price').html(Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}"));
+        } else {
+          $('#product-header-title .price').html('<span class="compare_at_price">' + Shopify.formatMoney(variant.compare_at_price, "{{shop.money_with_currency_format}}") + '</span>'+Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}"));
+        }
+      } else {
+        // variant doesn't exist
+        $('#add-to-cart-msg').hide();                                                                                                 
+        $('#add-to-cart').addClass('disabled'); // set add-to-cart button to unavailable class and disable button
+        var message = variant ? "Sold Out" : "Unavailable";    
+        $('#product-header-title .price').text(message); // update price-field message
+      }
+      
+      if ( variant.available && variant.inventory_management == 'shopify' && variant.inventory_quantity <= '20' ) {
+        $('#add-to-cart-msg').hide(); 
+        $('#number-available').text(variant.inventory_quantity + ' available').fadeIn();
+      } else if ( variant.inventory_management == 'shopify' && variant.inventory_quantity == 0 ) {
+        $('#add-to-cart-msg').hide();  
+        $('#number-available').text('sold out').fadeIn();
+      } else {
+        $('#add-to-cart-msg').hide(); 
+        $('#number-available').hide();
+      }
+
+      {% if look_for_image_match %}
+		 	if (variant && !Shopify.doNotTriggerClickOnThumb) {
+	  			$('#thumbs a[title="' + variant.options[{{ option_index }}] + '"]').trigger('click');
+			}
+	  {% endif %}
+		Shopify.doNotTriggerClickOnThumb = false;
+    };
+    // initialize multi selector for product
+    $(function() {
+	
+      new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback });
+      {% if product.options.size >= 1 and product.options.first != 'Title' %}
+	$('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+	{% endif %}
+	
+      {% assign found_one_in_stock = false %}
+      {% for variant in product.variants %}
+        {% if variant.available and found_one_in_stock == false %}
+          {% assign found_one_in_stock = true %}
+          {% for option in product.options %}
+          $('.single-option-selector:eq(' + {{ forloop.index0 }} + ')').val({{ variant.options[forloop.index0] | json }}).trigger('change').selectbox("attach");
+          {% endfor %}
+        {% endif %}
+      {% endfor %}  
+      
+
+	 {% if look_for_image_match %}
+	 $('#thumbs li a').bind('click', function() {
+	   var color = jQuery(this).attr('title');
+	   if (color && color !== '') {
+	     var options = $('.single-option-selector:eq({{ option_index }}) option[value="' + color + '"]');
+	     if (options.size() !== 0) {
+	       Shopify.doNotTriggerClickOnThumb = true;
+	       $('.single-option-selector:eq({{ option_index }})').val(color).trigger('change').selectbox("detach").selectbox("attach");
+	     }
+	   }
+	 });
+	 {% endif %}
+	
+	
+    });
+  </script>
+  {% endif %}
+  {% if template == 'index' and settings.show_carousel %}
+    {{ 'jquery.tools.min.js' | asset_url | script_tag }}
+  {% endif %}
+  
+  {% if template contains 'product' and settings.main_image_display == 'Lightbox' %}
+  {{ 'jquery.easing-1.3.pack.js' | asset_url | script_tag }}  
+  {{ 'jquery.mousewheel-3.0.4.pack.js' | asset_url | script_tag }} 
+  {{ 'jquery.fancybox-1.3.4.pack.js' | asset_url | script_tag }}
+  <script>
+  $("a[rel='fancybox']").fancybox({
+    'hideOnContentClick': true
+  });
+  </script>
+  {% endif %}
+
+   
+  
+  {{ 'enhance.jquery.js' | asset_url | script_tag }}
+  {{ 'hoverintent.jquery.js' | asset_url | script_tag }}
+  {{ 'radiance.js' | asset_url | script_tag }}
+
+  <script type="text/javascript" charset="utf-8">
+  //<![CDATA[
+
+  // Including api.jquery.js conditionnally.
+  if (typeof Shopify.onCartShippingRatesUpdate === 'undefined') {
+    document.write({{ "api.jquery.js" | shopify_asset_url | script_tag | json }});
+  }
+
+  //]]>
+  </script>
+    
+  
+  	<script>
+	jQuery(document).ready(function(){
+    	jQuery('#MobileNavTrigger').on('click', function(event) {        
+             jQuery('body').toggleClass('MobileNavActive');
+        });
+  	});
+	</script>
+     
+  
+   <!-- ==============     Freeshipping progress bar     ============== -->
+<script>
+$(document).ready(function(){      
+	var Orders_Over = 150; //$X amount shipping limit	
+	get_freeshipping_progress_bar();
+});
+</script>
+<!-- ==============     Freeshipping progress bar     ============== -->
+  
+  <script>
+$(window).scroll(function () {
+	var threshold = $("#top").height() + 70;
+	var dech = $('.description').height();
+	var swatchh = $('#product-order').height();
+	
+	var totalh = (dech + swatchh - 50);
+	if ($(window).scrollTop() >= threshold){
+		$('.left_stiky').addClass('fixed');
+       $('.left_stiky').removeClass('bottom');
+	}
+	else{
+		$('.left_stiky').removeClass('fixed');
+      $('.left_stiky').removeClass('bottom');
+	}
+  if( $(window).scrollTop() >= totalh){
+		$('.left_stiky').removeClass('fixed');
+    $('.left_stiky').addClass('bottom');
+	}  
+});
+</script>
+  
 </body>
 </html>

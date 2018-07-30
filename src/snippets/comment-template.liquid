@@ -1,0 +1,8 @@
+        <div class="comment clearfix">
+      	  On {{ comment.created_at | date: "%m/%d/%y" }} <span class="comment-author">{{ comment.author }}</span> said:
+          <div class="comment-content">	
+            {{ comment.content }}
+            <p class="comment-posted"></p>            
+          </div>
+          
+        </div> <!-- end .comment -->
