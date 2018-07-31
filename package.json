@@ -2,7 +2,21 @@
   "name": "owool",
   "version": "0.0.1",
   "devDependencies": {
-    "@shopify/slate-tools": "0.14.0"
+    "@shopify/slate-tools": "0.14.0",
+    "breakpoint-sass": "^2.7.1",
+    "breakpoint-slicer": "^2.0.0",
+    "chroma-sass": "^1.2.6",
+    "compass-mixins": "^0.12.10",
+    "modularscale-sass": "^3.0.5",
+    "npm-watch": "^0.3.0",
+    "sass-bem-constructor": "^1.1.0",
+    "sass-dry": "^1.0.0",
+    "sass-toolkit": "^2.10.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.0",
+    "node-sass": "^4.9.2",
+    "node-sass-json-importer": "^3.3.1"
   },
   "scripts": {
     "watch": "slate watch",
