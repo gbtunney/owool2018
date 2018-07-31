@@ -1,0 +1,91 @@
+/**
+ * Pagination
+ * Modified from http://twitter.github.com/bootstrap/
+ */
+
+.pagination {
+    height: 30px;
+    margin: 18px 0;
+}
+.pagination ul {
+    float: left;
+    margin: 0;
+    background: #FFFFFF;
+}
+.pagination li {
+    display: inline;
+}
+.pagination a {
+    float: left;
+    padding: 0 14px;
+    line-height: 28px;
+    text-decoration: none;
+    color: #555555;
+}
+.pagination a:hover, .pagination .active a {
+}
+.pagination .active a{
+    border-right-color: #FFFFFF;
+}
+.pagination .disabled a, .pagination .disabled a:hover {
+    background: transparent;
+    color:  #adadad;
+    cursor: default;
+}
+.pagination .next a {
+    border: 0;
+}
+
+.pagination-num-showing{
+    float: right;
+    line-height: 28px;
+    font-size: 11px;
+    color: #555555;
+}
+
+//SASS
+
+.pagination {
+    height: 30px;
+    margin: 18px 0;
+    ul {
+        float: left;
+        margin: 0;
+        background: $white;
+    }
+    li {
+        display: inline;
+    }
+    a {
+        float: left;
+        padding: 0 14px;
+        line-height: 28px;
+        text-decoration: none;
+        color: $color_fuscous_gray_approx;
+        &:hover {
+        }
+    }
+    .active a {
+        border-right-color: $white;
+    }
+    .disabled a {
+        background: transparent;
+        color: $color_silver_chalice_approx;
+        cursor: default;
+        &:hover {
+            background: transparent;
+            color: $color_silver_chalice_approx;
+            cursor: default;
+        }
+    }
+    .next a {
+        border: 0;
+    }
+}
+
+.pagination-num-showing {
+    float: right;
+    line-height: 28px;
+    font-size: 11px;
+    color: $color_fuscous_gray_approx;
+}

@@ -1,0 +1,420 @@
+[
+	{
+		"name": "Homepage Carousel",
+		"settings": [
+			{
+				"type": "paragraph",
+				"content": "Recommended dimensions of all carousel images: 900px wide x 514px tall"
+			},
+			{
+				"type": "paragraph",
+				"content": "Leave the \"Link to\" field empty for no link."
+			},
+			{
+				"type": "checkbox",
+				"id": "show_carousel",
+				"label": "Show carousel?"
+			},
+			{
+				"type": "text",
+				"id": "carousel_height",
+				"label": "Carousel Height",
+				"default": "514"
+			},
+			{
+				"type": "paragraph",
+				"content": "Slide #1"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_carousel_item_1",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "image",
+				"id": "carousel-item-1.jpg",
+				"label": "Image",
+				"max-width": 900
+			},
+			{
+				"type": "text",
+				"id": "carousel_item_1_link",
+				"label": "Link to"
+			},
+			{
+				"type": "paragraph",
+				"content": "Slide #2"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_carousel_item_2",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "image",
+				"id": "carousel-item-2.jpg",
+				"label": "Image",
+				"max-width": 900
+			},
+			{
+				"type": "text",
+				"id": "carousel_item_2_link",
+				"label": "Link to"
+			},
+			{
+				"type": "paragraph",
+				"content": "Slide #3"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_carousel_item_3",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "image",
+				"id": "carousel-item-3.jpg",
+				"label": "Image",
+				"max-width": 900
+			},
+			{
+				"type": "text",
+				"id": "carousel_item_3_link",
+				"label": "Link to"
+			},
+			{
+				"type": "paragraph",
+				"content": "Slide #4"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_carousel_item_4",
+				"label": "Show?"
+			},
+			{
+				"type": "image",
+				"id": "carousel-item-4.jpg",
+				"label": "Image",
+				"max-width": 900
+			},
+			{
+				"type": "text",
+				"id": "carousel_item_4_link",
+				"label": "Link to"
+			},
+			{
+				"type": "paragraph",
+				"content": "Slide #5"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_carousel_item_5",
+				"label": "Show?"
+			},
+			{
+				"type": "image",
+				"id": "carousel-item-5.jpg",
+				"label": "Image",
+				"max-width": 900
+			},
+			{
+				"type": "text",
+				"id": "carousel_item_5_link",
+				"label": "Link to"
+			},
+			{
+				"type": "paragraph",
+				"content": "Slide #6"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_carousel_item_6",
+				"label": "Show?"
+			},
+			{
+				"type": "image",
+				"id": "carousel-item-6.jpg",
+				"label": "Image",
+				"max-width": 900
+			},
+			{
+				"type": "text",
+				"id": "carousel_item_6_link",
+				"label": "Link to"
+			}
+		]
+	},
+	{
+		"name": "Social Media Icons",
+		"settings": [
+			{
+				"type": "paragraph",
+				"content": "Facebook"
+			},
+			{
+				"type": "checkbox",
+				"id": "sm_facebook",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "sm_facebook_link",
+				"label": "Link to",
+				"default": "http:\/\/www.facebook.com"
+			},
+			{
+				"type": "paragraph",
+				"content": "Twitter"
+			},
+			{
+				"type": "checkbox",
+				"id": "sm_twitter",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "sm_twitter_link",
+				"label": "Link to",
+				"default": "http:\/\/www.twitter.com"
+			},
+			{
+				"type": "paragraph",
+				"content": "Ravelry"
+			},
+			{
+				"type": "checkbox",
+				"id": "sm_ravelry",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "sm_ravelry_link",
+				"label": "Link to",
+				"default": "http:\/\/www.ravelry.com"
+			},
+			{
+				"type": "paragraph",
+				"content": "Instagram"
+			},
+			{
+				"type": "checkbox",
+				"id": "sm_instagram",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "sm_instagram_link",
+				"label": "Link to",
+				"default": "http:\/\/www.instagram.com"
+			},
+			{
+				"type": "paragraph",
+				"content": "Pinterest"
+			},
+			{
+				"type": "checkbox",
+				"id": "sm_pinterest",
+				"label": "Show?",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "sm_pinterest_link",
+				"label": "Link to",
+				"default": "http:\/\/www.pinterest.com"
+			}
+		]
+	},
+	{
+		"name": "Product Page",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Misc"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_vendor",
+				"label": "Show vendor beneath product title?"
+			},
+			{
+				"type": "select",
+				"id": "main_image_display",
+				"label": "Behavior for main product image",
+				"options": [
+					{
+						"value": "Zoom-in",
+						"label": "Zoom-in"
+					},
+					{
+						"value": "Lightbox",
+						"label": "Lightbox"
+					},
+					{
+						"value": "None",
+						"label": "None"
+					}
+				],
+				"default": "Zoom-in"
+			},
+			{
+				"type": "header",
+				"content": "Sharing Buttons"
+			},
+			{
+				"type": "checkbox",
+				"id": "share_prod_on_twitter",
+				"label": "Tweet button",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "share_prod_on_facebook",
+				"label": "Facebook Like button",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "share_prod_on_googleplus",
+				"label": "Google +1 button"
+			}
+		]
+	},
+	{
+		"name": "Cart Page",
+		"settings": [
+			{
+				"type": "checkbox",
+				"id": "allow_note",
+				"label": "Allow customers to add a note to their order?"
+			}
+		]
+	},
+	{
+		"name": "Sidebar",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Welcome Widget"
+			},
+			{
+				"type": "checkbox",
+				"id": "textwidget_visible",
+				"label": "Show this widget",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "textwidget_title",
+				"label": "Title",
+				"default": "Welcome"
+			},
+			{
+				"type": "textarea",
+				"id": "textwidget_content",
+				"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra, ligula non mollis pretium, lectus libero sodales augue, interdum auctor mauris dui non risus. Nulla facilisi. Nunc rutrum diam in elit sagittis eget viverra erat viverra. Morbi imperdiet aliquet libero vel rhoncus. Integer."
+			},
+			{
+				"type": "header",
+				"content": "Recent Posts"
+			},
+			{
+				"type": "checkbox",
+				"id": "recentposts_visible",
+				"label": "Show this widget",
+				"default": true
+			},
+			{
+				"type": "header",
+				"content": "Twitter Widget"
+			},
+			{
+				"type": "checkbox",
+				"id": "twitterwidget_visible",
+				"label": "Show this widget",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "twitterwidget_title",
+				"label": "Title",
+				"default": "Latest Tweets"
+			},
+			{
+				"type": "text",
+				"id": "twitterwidget_username",
+				"label": "Twitter Username",
+				"default": "shopify"
+			},
+			{
+				"type": "text",
+				"id": "twitterwidget_numtweets",
+				"label": "Number of tweets to display",
+				"default": "4"
+			},
+			{
+				"type": "header",
+				"content": "Link Lists"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_allcollections_widget",
+				"label": "Show all collections?",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "allcollections_title",
+				"label": "Title",
+				"default": "Categories"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_vendors_widget",
+				"label": "Show all vendors?"
+			},
+			{
+				"type": "text",
+				"id": "vendors_widget_title",
+				"label": "Title",
+				"default": "Vendors"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_widget_linklist1",
+				"label": "Show link list #1?"
+			},
+			{
+				"type": "link_list",
+				"id": "widget_linklist1",
+				"label": "Use list:"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_widget_linklist2",
+				"label": "Show link list #2?"
+			},
+			{
+				"type": "link_list",
+				"id": "widget_linklist2",
+				"label": "Use list:"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_widget_linklist3",
+				"label": "Show link list #3?"
+			},
+			{
+				"type": "link_list",
+				"id": "widget_linklist3",
+				"label": "Use list:"
+			}
+		]
+	}
+]

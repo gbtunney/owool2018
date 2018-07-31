@@ -1,0 +1,66 @@
+/**
+ * Sections
+ */
+
+.section-details{
+    margin: 0 0 10px 0;
+}
+.section-details a{
+    color: #555555;
+    text-decoration: none;
+}
+.section-details .view-more{
+    float: right;
+    line-height: 32px;
+}
+
+.section-title{
+    font:  /1 ;
+    color: #555555;
+    float: left;
+    margin: 0;
+}
+
+.diagonal-divider{
+
+    margin: 0 0 20px 0;
+}
+
+#page-title{
+    font-size: 22px;
+    padding: 0 0 15px 0;
+    margin: 20px 0 20px 0;
+    text-align:center;
+    color:#555 !important;
+}
+
+//SASS
+//colors
+
+.section-details {
+    margin: 0 0 10px 0;
+    a {
+        color: $color_fuscous_gray_approx;
+        text-decoration: none;
+    }
+    .view-more {
+        float: right;
+        line-height: 32px;
+    }
+}
+.section-title {
+    font: /1;
+    color: $color_fuscous_gray_approx;
+    float: left;
+    margin: 0;
+}
+.diagonal-divider {
+    margin: 0 0 20px 0;
+}
+#page-title {
+    font-size: 22px;
+    padding: 0 0 15px 0;
+    margin: 20px 0;
+    text-align: center;
+    color: $color_fuscous_gray_approx !important;
+}

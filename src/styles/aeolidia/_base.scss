@@ -1,0 +1,138 @@
+/**
+ * Base Content Styles
+ */
+body {
+    color: #555555;
+    font-family: Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #555555;
+    line-height: 1.2;
+    font-weight: bold;
+    margin: 0 0 .5em 0;
+}
+h1{ font-size: 22px; }
+
+a { color: #555555; }
+a:hover { color: #adadad; }
+
+blockquote{
+    font: italic 13px/1.5 georgia, sans-serif;
+    margin: 0 0 1.5em 1.25em;
+}
+
+ul, ol{ margin: 0 0 1.5em 1.3em; }
+li{ margin: 0 0 0.25em 0; }
+
+input, textarea{
+    border: solid 1px #adadad;
+    padding: 4px;
+    color: #333;
+}
+input[type="image"]{ border: none; }
+
+button {  width: auto; overflow: visible; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+table{
+    width: 100%;
+    margin: 0 0 1.5em 0;
+    border-collapse: collapse;
+}
+table th{
+    padding: 10px 8px;
+    font-weight: bold;
+    color: #555555;
+}
+table tr {
+    padding: 4px 8px;
+}
+#customer_orders table td,
+#order_details td {
+    padding:5px 8px;
+}
+.bottom-summary {
+    border-bottom:none;
+}
+tfoot th{ background: transparent; }
+
+
+//colors
+
+
+body {
+    color: $color_fuscous_gray_approx;
+    font-family: 'Garamond', 'Apple Garamond', 'ITC Garamond Narrow', 'New Century Schoolbook', 'Century Schoolbook', 'Century Schoolbook L', 'Georgia', 'serif';
+}
+h1, h2, h3, h4, h5, h6  {
+    color: $color_fuscous_gray_approx;
+    line-height: 1.2;
+    font-weight: bold;
+    margin: 0 0 .5em 0;
+    font-size: 22px;
+}
+
+a {
+    color: $color_fuscous_gray_approx;
+    &:hover {
+        color: $color_silver_chalice_approx;
+    }
+}
+blockquote {
+    font: italic 13px/1.5 georgia, sans-serif;
+    margin: 0 0 1.5em 1.25em;
+}
+ul {
+    margin: 0 0 1.5em 1.3em;
+}
+ol {
+    margin: 0 0 1.5em 1.3em;
+}
+li {
+    margin: 0 0 0.25em 0;
+}
+input {
+    border: solid 1px $color_silver_chalice_approx;
+    padding: 4px;
+    color: $color_mine_shaft_approx;
+}
+textarea {
+    border: solid 1px $color_silver_chalice_approx;
+    padding: 4px;
+    color: $color_mine_shaft_approx;
+}
+input[type="image"] {
+    border: none;
+}
+button {
+    width: auto;
+    overflow: visible;
+}
+table {
+    width: 100%;
+    margin: 0 0 1.5em 0;
+    border-collapse: collapse;
+    th {
+        padding: 10px 8px;
+        font-weight: bold;
+        color: $color_fuscous_gray_approx;
+    }
+    tr {
+        padding: 4px 8px;
+    }
+}
+.bottom-summary {
+    border-bottom: none;
+}
+.ie7 img {
+}
+#customer_orders table td {
+    padding: 5px 8px;
+}
+#order_details td {
+    padding: 5px 8px;
+}
+tfoot th {
+    background: transparent;
+}

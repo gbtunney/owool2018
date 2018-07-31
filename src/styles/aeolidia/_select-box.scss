@@ -1,0 +1,304 @@
+/* SelectBox Styles */
+.sbHolder{
+    border: solid 1px #aed2c2;
+    height: 30px;
+    position: relative;
+    width: 200px;
+}
+.kit-options .sbHolder {
+    width: 240px;
+}
+#qty-box .sbHolder {
+    width:70px;
+}
+.sbHolder:focus .sbSelector{
+
+}
+.sbSelector{
+    display: block;
+    height: 30px;
+    left: 0;
+    line-height: 30px;
+    outline: none;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 10px;
+    top: 0;
+    width: 170px;
+    font-size:14px;
+    font-style:italic;
+    letter-spacing:1px;
+}
+.kit-options .sbSelector {
+    width: 210px;
+    font-size: 12px;
+}
+#qty-box .sbSelector {
+    width:40px;
+}
+.sbSelector:link, .sbSelector:visited, .sbSelector:hover{
+    color: #555555;
+    outline: none;
+    text-decoration: none;
+    font-size:14px;
+    font-style:italic;
+    letter-spacing:1px;
+}
+.kit-options .sbSelector:link, .kit-options .sbSelector:visited, .kit-options .sbSelector:hover {
+    font-size: 12px;
+}
+.sbToggle{
+    background: url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/select-icons1.png?13322936379033579690) 0 -116px no-repeat;
+    display: block;
+    height: 30px;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+}
+.sbToggle:hover{
+    background: url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/select-icons1.png?13322936379033579690) 0 -167px no-repeat;
+}
+.sbToggleOpen{
+    background: url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/select-icons1.png?13322936379033579690) 0 -16px no-repeat;
+}
+.sbToggleOpen:hover{
+    background: url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/select-icons1.png?13322936379033579690) 0 -66px no-repeat;
+}
+.sbHolderDisabled{
+    opacity:0.5;
+}
+.sbHolderDisabled .sbHolder{
+
+}
+.sbHolderDisabled .sbToggle{
+
+}
+.sbOptions{
+    background-color: #FFF;
+    border: solid 1px #aed2c2;
+    list-style: none;
+    left: -1px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    width: 200px;
+    z-index: 1;
+    overflow-y: auto;
+}
+.kit-options .sbOptions{
+    width: 240px;
+    font-size: 12px;
+}
+#qty-box .sbOptions {
+    width:50px;
+}
+.sbOptions li{
+    padding: 0 7px;
+}
+.sbOptions a{
+    display: block;
+    outline: none;
+    padding: 7px 0 7px 3px;
+}
+.sbOptions a:link, .sbOptions a:visited{
+    color: #555;
+    text-decoration: none;
+}
+.sbOptions a:hover,
+.sbOptions a:focus,
+.sbOptions a.sbFocus{
+    color: #adadad;
+}
+.sbOptions li.last a{
+    border-bottom: none;
+}
+.sbOptions .sbDisabled{
+    border-bottom: solid 1px #aed2c2;
+    color: #adadad;
+    display: block;
+    padding: 7px 0 7px 3px;
+}
+.sbOptions .sbGroup{
+    color: #555555;
+    display: block;
+    font-weight: bold;
+    padding: 7px 0 7px 3px;
+}
+.sbOptions .sbSub{
+    padding-left: 17px;
+}
+
+#sold-out-message {
+    display: block;
+    clear: both;
+}
+
+//colors
+
+//@extend-elements
+//original selectors
+//.sbSelector:link, .sbSelector:visited, .sbSelector:hover
+%font-headline {
+    color: $color_fuscous_gray_approx;
+    outline: none;
+    text-decoration: none;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+
+.sbHolder {
+    border: solid 1px $color_gum_leaf_approx;
+    height: 30px;
+    position: relative;
+    width: 200px;
+    &:focus .sbSelector {
+    }
+}
+.kit-options {
+    .sbHolder {
+        width: 240px;
+    }
+    .sbSelector {
+        width: 210px;
+        font-size: 12px;
+        &:link {
+            font-size: 12px;
+        }
+        &:visited {
+            font-size: 12px;
+        }
+        &:hover {
+            font-size: 12px;
+        }
+    }
+    .sbOptions {
+        width: 240px;
+        font-size: 12px;
+    }
+}
+#qty-box {
+    .sbHolder {
+        width: 70px;
+    }
+    .sbSelector {
+        width: 40px;
+    }
+    .sbOptions {
+        width: 50px;
+    }
+}
+.sbSelector {
+    display: block;
+    height: 30px;
+    left: 0;
+    line-height: 30px;
+    outline: none;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 10px;
+    top: 0;
+    width: 170px;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 1px;
+    &:link {
+        @extend %font-headline;
+    }
+    &:visited {
+        @extend %font-headline;
+    }
+    &:hover {
+        @extend %font-headline;
+    }
+}
+.sbToggle {
+    background: $select-icon 0 -116px no-repeat;
+    display: block;
+    height: 30px;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    &:hover {
+        background: $select-icon 0 -167px no-repeat;
+    }
+}
+.sbToggleOpen {
+    background: $select-icon 0 -16px no-repeat;
+    &:hover {
+        background: $select-icon 0 -66px no-repeat;
+    }
+}
+.sbHolderDisabled {
+    opacity: 0.5;
+    .sbHolder {
+    }
+    .sbToggle {
+    }
+}
+.sbOptions {
+    background-color: $white;
+    border: solid 1px $color_gum_leaf_approx;
+    list-style: none;
+    left: -1px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    width: 200px;
+    z-index: 1;
+    overflow-y: auto;
+    li {
+        padding: 0 7px;
+        &.last a {
+            border-bottom: none;
+        }
+    }
+    a {
+        display: block;
+        outline: none;
+        padding: 7px 0 7px 3px;
+        &:link {
+            color: $color_fuscous_gray_approx;
+            text-decoration: none;
+        }
+        &:visited {
+            color: $color_fuscous_gray_approx;
+            text-decoration: none;
+        }
+        &:hover {
+            color: $color_silver_chalice_approx;
+        }
+        &:focus {
+            color: $color_silver_chalice_approx;
+        }
+        &.sbFocus {
+            color: $color_silver_chalice_approx;
+        }
+    }
+    .sbDisabled {
+        border-bottom: solid 1px $color_gum_leaf_approx;
+        color: $color_silver_chalice_approx;
+        display: block;
+        padding: 7px 0 7px 3px;
+    }
+    .sbGroup {
+        color: $color_fuscous_gray_approx;
+        display: block;
+        font-weight: bold;
+        padding: 7px 0 7px 3px;
+    }
+    .sbSub {
+        padding-left: 17px;
+    }
+}
+#sold-out-message {
+    display: block;
+    clear: both;
+}

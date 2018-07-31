@@ -1,0 +1,169 @@
+/**
+ * No products
+ * Visible only to an empty store.
+ */
+
+#featured-grid .placeholder{
+    display: block;
+    width: 240px;
+    height: 200px;
+    background:  url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/placeholder-product.png?13322936379033579690) 50% 50% no-repeat;
+}
+
+.product-grid .placeholder{
+    width: 177px;
+    height: 130px;
+    display: block;
+    background:  url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/placeholder-product.png?13322936379033579690) 50% 50% no-repeat;
+}
+
+
+.no-products{
+    position: relative;
+}
+.no-products-overlay{
+    opacity: .75;
+    background: #FFFFFF;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#BF', endColorstr='#BF',GradientType=0 );
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+}
+.ie7 .no-products-overlay,
+.ie8 .no-products-overlay{ background: transparent; }
+
+.no-products-post-it{
+    position: absolute;
+    top: 125px;
+    left: 198px;
+    z-index: 5;
+    width: 345px;
+    height: 193px;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+}
+.no-products-post-it-content{
+    padding: 65px 20px 20px 20px;
+    line-height: 1.4em;
+}
+.no-products-post-it em{
+    display: block;
+    color: #3b3a34;
+    font-style: italic;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+}
+.no-products-post-it a{
+    color: #25669c;
+}
+
+/* Added by Caroline on January 14th for Customizr */
+
+#product-actions input.text,
+#product-actions input[type=text],
+#product-actions textarea {
+    width: 90%;
+}
+
+#product-actions input[type=text]:invalid,
+#product-actions textarea:invalid {
+    -moz-box-shadow:       inset 0 0 1px 1px #FF9494;
+    -webkit-box-shadow:    inset 0 0 1px 1px #FF9494;
+    box-shadow:            inset 0 0 1px 1px #FF9494;
+}
+
+.error span {
+    line-height: 2;
+    color: red;
+}
+
+
+//sass
+
+//colors
+
+.no-products {
+    position: relative;
+}
+.no-products-overlay {
+    opacity: .75;
+    background: $white;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#BF', endColorstr='#BF',GradientType=0 );
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+}
+.no-products-post-it {
+    position: absolute;
+    top: 125px;
+    left: 198px;
+    z-index: 5;
+    width: 345px;
+    height: 193px;
+    font-size: 16px;
+    text-align: center;
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: 0 1px 0 $white;
+    em {
+        display: block;
+        color: $color_dune_approx;
+        font-style: italic;
+        font-size: 20px;
+        margin: 0 0 10px 0;
+    }
+    a {
+        color: $color_matisse_approx;
+    }
+}
+.no-products-post-it-content {
+    padding: 65px 20px 20px;
+    line-height: 1.4em;
+}
+#product-actions {
+    input[type=text] {
+        width: 90%;
+        &:invalid {
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: inset 0 0 1px 1px $color_mona_lisa_approx;
+        }
+    }
+    textarea {
+        width: 90%;
+        &:invalid {
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: inset 0 0 1px 1px $color_mona_lisa_approx;
+        }
+    }
+    input.text {
+        width: 90%;
+    }
+}
+#featured-grid .placeholder {
+    display: block;
+    width: 240px;
+    height: 200px;
+    background: $placeholder-product 50% 50% no-repeat;
+}
+.product-grid .placeholder {
+    width: 177px;
+    height: 130px;
+    display: block;
+    background: $placeholder-product 50% 50% no-repeat;
+}
+.ie7 .no-products-overlay {
+    background: transparent;
+}
+.ie8 .no-products-overlay {
+    background: transparent;
+}
+.error span {
+    line-height: 2;
+    color: $red;
+}

@@ -1,0 +1,507 @@
+/**
+ * Single Product
+ */
+
+#product-information{
+    float: right;
+    width: 495px;
+}
+
+#product-actions{
+    padding: 4px 0 12px 0; height: 1%;
+}
+
+#purchase{
+    clear: both;
+}
+.sold-out #purchase{
+    float: none;
+    text-align: left;
+}
+#add-to-cart{
+    margin:0;
+    max-width:300px;
+    /* background:url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/add-to-cart.png?13322936379033579690) no-repeat; */
+    background:url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/yarn_addtocart.png?13322936379033579690) no-repeat;
+    width: 100%;
+    padding: 15px 0;
+    text-indent: 15px;
+}
+.yarn #add-to-cart {
+    background:url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/yarn_addtocart.png?13322936379033579690) no-repeat;
+}
+#product-header{
+    margin: 0 0 20px 0;
+}
+#product-title{
+    margin: 0 0 0 0;
+    font-size: 22px;
+    letter-spacing:1px;
+    font-weight:normal;
+    display:inline-block;
+    width:auto;
+}
+#product-header #product-header-title .price {
+    float:right;
+    font-size:14px;
+}
+#product-vendor{
+    color:#adadad;
+    font-size:12px;
+    font-style:italic;
+    letter-spacing:1px;
+    font-weight:normal;
+}
+#product-vendor a{
+    text-decoration: none;
+}
+.product-tag {
+    color:#adadad;
+    font-size:12px;
+    font-style:italic;
+    letter-spacing:1px;
+}
+#product-actions select{
+    padding: 3px;
+}
+#product-actions .price{
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+    text-align: right;
+}
+#product-actions .price strong{
+    //????color: ;
+    display: block;
+}
+#product-actions .compare_at_price{
+    font-size: 12px;
+    display: block;
+}
+
+.variants-wrapper{
+    text-align: left;
+    margin: 0 0 8px 0;
+    display:inline-block;
+    float:left;
+}
+.selector-wrapper{
+    margin: 0 0 8px 0 ;
+}
+.selector-wrapper label{
+    margin: 0 5px 0 0;
+    text-align: right;
+}
+#qty-box {
+    display: inline-block;
+    float: right;
+}
+#add-to-cart-msg {
+    padding: 10px 0;
+    display: none;
+    clear:both;
+    margin: 0;
+}
+#add-to-cart-msg a {
+    outline:none;
+    border:none;
+}
+#number-available {
+    padding:5px 0;
+    text-align:center;
+}
+#product-information #sharing{
+    margin: 16px 0 0 0;
+    padding: 16px 0 0 0;
+    list-style: none;
+    border-top: 1px solid #adadad;
+}
+#product-information #sharing li{
+    margin: 0;
+    float: left;
+}
+
+
+
+/**
+ * Zoomy product gallery, with thumbs
+ * @see https://github.com/benwatts/enhance-gallery
+ */
+
+#product-gallery {
+    width:900px;
+}
+
+#active-wrapper{
+    width: 370px;
+    float:left;
+    position: relative;
+    min-height: 50px;
+    overflow: hidden;
+    margin: 0 35px 10px 0;
+}
+#active-wrapper img{
+    display: block;
+    width: 370px;
+    height:auto;
+}
+#active-wrapper .zoomed{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#active-image-loading{
+    display:none;
+}
+
+/* THUMBS AND ORDER FORM */
+
+#product-order {
+    width:100%;
+    float:right;
+    margin-right:0;
+}
+#product-order.yarn
+{	width:100%; margin:12px 0;
+}
+#product-order.kit
+{	width:134px;
+}
+#thumbs{
+    margin: 0;
+    list-style: none;
+    text-align:center;
+}
+.kit #thumbs,
+.yarn #thumbs {
+    text-align:left;
+}
+#thumbs li{
+    margin: 0 8px 8px 0;
+    width: 76px;
+    height: 76px;
+    -moz-border-radius:38px;
+    -webkit-border-radius: 38px;
+    border-radius: 38px;
+    overflow:hidden;
+    text-align: center;
+}
+.yarn #thumbs li,
+.yarn #thumbs li:hover  {
+    display:inline-block;
+    margin: 0 3px 6px 0;
+    width:58px;
+    height:58px;
+    -webkit-border-radius: 29px;
+    -moz-border-radius:29px;
+    border-radius: 29px;
+    overflow:hidden;
+    float:left;
+}
+.kit #thumbs li,
+.kit #thumbs li:hover {
+    display:inline-block;
+    margin: 0 2px 6px 0;
+    width: 58px;
+    height: 87px;
+    -webkit-border-radius: 36px;
+    -moz-border-radius:36px;
+    border-radius: 36px;
+    overflow:hidden;
+}
+.kit #thumbs li img {
+    width:100%;
+    margin: 0;
+}
+#thumbs li.download-btn {
+    width:245px;
+    height:54px;
+    -moz-border-radius:0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    overflow:hidden;
+}
+.download-btn {
+    position:relative;
+    top:15px;
+    right:20px;
+}
+.no-js #thumbs li{ margin-right: 6px; }
+#thumbs li.last-in-row,
+#thumbs li.last-in-row:hover {
+
+}
+
+#thumbs img{
+    margin: 0 0 0 -30px;
+    display: block;
+}
+#thumbs li.download-btn img {
+    margin:0;
+}
+.yarn #thumbs img {
+    max-width:480px;
+    height:auto;
+    margin:-200px 0 0 -115px;
+}
+
+
+//colors
+
+//urls
+
+//@extend-elements
+//original selectors
+//.yarn #thumbs li, .yarn #thumbs li:hover
+//sass
+
+#product-information {
+    float: right;
+    width: 495px;
+    #sharing {
+        margin: 16px 0 0;
+        padding: 16px 0 0;
+        list-style: none;
+        border-top: 1px solid $color_silver_chalice_approx;
+        li {
+            margin: 0;
+            float: left;
+        }
+    }
+}
+
+#product-actions {
+    padding: 4px 0 12px;
+    height: 1%;
+    select {
+        padding: 3px;
+    }
+    .price {
+        font-size: 18px;
+        margin: 0;
+        font-weight: bold;
+        text-align: right;
+        strong {
+           //???? color:;
+            display: block;
+        }
+    }
+    .compare_at_price {
+        font-size: 12px;
+        display: block;
+    }
+}
+
+#purchase {
+    clear: both;
+}
+
+#add-to-cart {
+    margin: 0;
+    max-width: 300px;
+    background: $icon-yarn-add-to-cart no-repeat;
+    width: 100%;
+    padding: 15px 0;
+    text-indent: 15px;
+}
+
+.yarn {
+    #add-to-cart {
+        background: $icon-yarn-add-to-cart no-repeat;
+    }
+    #thumbs {
+        text-align: left;
+        li, li:hover {
+
+            display: inline-block;
+            margin: 0 3px 6px 0;
+            width: 58px;
+            height: 58px;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 29px;
+            overflow: hidden;
+            float: left;
+        }
+    }
+    img {
+        max-width: 480px;
+        height: auto;
+        margin: -200px 0 0 -115px;
+    }
+
+}
+#product-header {
+    margin: 0 0 20px 0;
+    #product-header-title .price {
+        float: right;
+        font-size: 14px;
+    }
+}
+
+#product-title {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-weight: normal;
+    display: inline-block;
+    width: auto;
+}
+
+#product-vendor {
+    color: $color_silver_chalice_approx;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 1px;
+    font-weight: normal;
+    a {
+        text-decoration: none;
+    }
+}
+
+.product-tag {
+    color: $color_silver_chalice_approx;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.variants-wrapper {
+    text-align: left;
+    margin: 0 0 8px 0;
+    display: inline-block;
+    float: left;
+}
+
+.selector-wrapper {
+    margin: 0 0 8px 0;
+    label {
+        margin: 0 5px 0 0;
+        text-align: right;
+    }
+}
+
+#qty-box {
+    display: inline-block;
+    float: right;
+}
+
+#add-to-cart-msg {
+    padding: 10px 0;
+    display: none;
+    clear: both;
+    margin: 0;
+    a {
+        outline: none;
+        border: none;
+    }
+}
+
+#number-available {
+    padding: 5px 0;
+    text-align: center;
+}
+
+#product-gallery {
+    width: 900px;
+}
+
+#active-wrapper {
+    width: 370px;
+    float: left;
+    position: relative;
+    min-height: 50px;
+    overflow: hidden;
+    margin: 0 35px 10px 0;
+    img {
+        display: block;
+        width: 370px;
+        height: auto;
+    }
+    .zoomed {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+#active-image-loading {
+    display: none;
+}
+
+#product-order {
+    width: 100%;
+    float: right;
+    margin-right: 0;
+    &.yarn {
+        width: 100%;
+        margin: 12px 0;
+    }
+    &.kit {
+        width: 134px;
+    }
+}
+
+#thumbs {
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    li {
+        margin: 0 8px 8px 0;
+        width: 76px;
+        height: 76px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 38px;
+        overflow: hidden;
+        text-align: center;
+        &.download-btn {
+            width: 245px;
+            height: 54px;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 0;
+            overflow: hidden;
+            img {
+                margin: 0;
+            }
+        }
+        &.last-in-row:hover {
+        }
+    }
+    img {
+        margin: 0 0 0 -30px;
+        display: block;
+    }
+}
+
+.download-btn {
+    position: relative;
+    top: 15px;
+    right: 20px;
+}
+
+.sold-out #purchase {
+    float: none;
+    text-align: left;
+}
+
+.kit #thumbs {
+    text-align: left;
+    li, li:hover {
+        display: inline-block;
+        margin: 0 2px 6px 0;
+        width: 58px;
+        height: 87px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 36px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            margin: 0;
+        }
+    }
+}
+
+.no-js #thumbs li {
+    margin-right: 6px;
+}

@@ -1,0 +1,71 @@
+/**
+ * Contact/Newsletter Forms
+ */
+
+.contact-form ul{
+    margin: 0;
+}
+.contact-form li{
+    list-style: none;
+    margin: 0 0 8px 0;
+}
+
+.contact-form label{
+    display: block;
+    min-width: 90px;
+    float: left;
+}
+.contact-form textarea{
+    width: 400px;
+    height: 100px;
+}
+.contact-form .type-submit{
+    margin: 0 0 0 90px;
+}
+
+.contact-form .error-msg{
+    float: none;
+    display: inline;
+    margin: 0 0 0 10px;
+    font-size: 11px;
+    padding: 6px;
+}
+.contact-form .has-error input{
+    border: solid 1px #ef3a22;
+}
+
+
+
+//colors
+
+.contact-form {
+    ul {
+        margin: 0;
+    }
+    li {
+        list-style: none;
+        margin: 0 0 8px 0;
+    }
+    label {
+        display: block;
+        min-width: 90px;
+        float: left;
+    }
+    textarea {
+        width: 400px;
+        height: 100px;
+    }
+    .type-submit {
+        margin: 0 0 0 90px;
+    }
+    .error-msg {
+        float: none;
+        display: inline;
+        margin: 0 0 0 10px;
+        font-size: 11px;
+        padding: 6px;
+    }
+    .has-error input {
+        border: solid 1px $color_pomegranate_approx;
+    }
+}
