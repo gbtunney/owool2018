@@ -1,0 +1,30 @@
+$social-icon-size: 24px;
+
+.social-icon {
+    width: $social-icon-size;
+    height: $social-icon-size;
+    display: block;
+    background-position: 0 0;
+    text-indent: -9999em;
+    position: relative;
+    bottom: 4px;
+
+    &:hover {
+        background-position: 0 -25px;
+    }
+    &.twitter {
+        background-image: $icon-twitter;
+    }
+    &.facebook {
+        background-image: $icon-facebook;
+    }
+    &.ravelry {
+        background-image: $icon-ravelry;
+    }
+    &.pinterest {
+        background-image: $icon-pintrest;
+    }
+    &.instagram {
+        background-image: $icon-instagram;
+    }
+}

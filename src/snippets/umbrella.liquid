@@ -1,10 +1,10 @@
 <div id="umbrella">
-    <ul>
-        {%if settings.sm_facebook %}<li id="sm-facebook"><a href="{{settings.sm_facebook_link}}" class="social-icons" target="_blank">Facebook</a></li>{% endif %}
-        {%if settings.sm_twitter %}<li id="sm-twitter"><a href="{{settings.sm_twitter_link}}" class="social-icons" target="_blank">Twitter</a></li>{% endif %}
-        {%if settings.sm_ravelry %}<li id="sm-ravelry"><a href="{{settings.sm_ravelry_link}}" class="social-icons" target="_blank">Ravelry</a></li>{% endif %}
-        {%if settings.sm_pinterest %}<li id="sm-pinterest"><a href="{{settings.sm_pinterest_link}}" class="social-icons" target="_blank">Pinterest</a></li>{% endif %}
-        {%if settings.sm_instagram %}<li id="sm-instagram"><a href="{{settings.sm_instagram_link}}" class="social-icons" target="_blank">Instagram</a></li>{% endif %}
+    <ul class="menu-umbrella">
+        {%if settings.sm_facebook %}<li><a href="{{settings.sm_facebook_link}}" class="social-icon facebook" target="_blank">Facebook</a></li>{% endif %}
+        {%if settings.sm_twitter %}<li><a href="{{settings.sm_twitter_link}}" class="social-icon twitter" target="_blank">Twitter</a></li>{% endif %}
+        {%if settings.sm_ravelry %}<li><a href="{{settings.sm_ravelry_link}}" class="social-icon ravelry" target="_blank">Ravelry</a></li>{% endif %}
+        {%if settings.sm_pinterest %}<li><a href="{{settings.sm_pinterest_link}}" class="social-icon pinterest" target="_blank">Pinterest</a></li>{% endif %}
+        {%if settings.sm_instagram %}<li><a href="{{settings.sm_instagram_link}}" class="social-icon instagram" target="_blank">Instagram</a></li>{% endif %}
         {% if shop.customer_accounts_enabled %}
             <li class="customer-account-links">
                 {% if customer %}
@@ -14,6 +14,7 @@
                 {% endif %}
             </li>
         {% endif %}
+
 
         {% if customer %}
             <li>
