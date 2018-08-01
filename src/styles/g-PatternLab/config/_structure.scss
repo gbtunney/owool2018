@@ -1,0 +1,34 @@
+//$slicer-breakpoints : setting(slicer-breakpoint);
+//$slicer-breakpoint-names: setting(slicer-breakpoint-names);
+
+//$slicer-breakpoints:        0        480px       768px      992px        1200px;
+/*
+//                          └────┬────┘ └────┬────┘ └────┬────┘ └────┬────>
+// Slice numbers:                xs          sm           md          lg     */
+
+//$slicer-breakpoint-names:xs sm md lg;
+
+//using a wrapper mixin for breakpoint sliders vague/wierd function names to(sm), from(md), between(sm,md) , at(sm)
+/* EXAMPLES:
+@include breakpoint-range(sm, "<=") {  } applied when browser window width is less than or inside the sm slice 'to(sm)'
+@include breakpoint-range(md, "<=") {  } applied when browser window width is greater than or inside the md slice 'from(md)'
+@include breakpoint-range(sm, md) {  } applied when browser window width is inside and between the sm and md slices 'between(sm,md)'
+@include breakpoint-range(sm) {  } or @include breakpoint(sm) {  } applied when width is inside the sm slice 'at(sm)'
+ */
+
+//image assets
+$paths : (
+	image-path: 'assets/images/',
+	icon-path:  'assets/images/icons/',
+	pattern-path:  'assets/images/patterns/',
+	font-path: '../fonts'
+);
+
+
+
+
+@include setting-set-multiple($paths);
+
+
+$fa-font-path :setting(font-path);
+@import "node_modules/@fortawesome/fontawesome-free/scss/fa-regular.scss";

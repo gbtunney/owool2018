@@ -1,0 +1,77 @@
+%a-base-object{
+
+    //implemented base object
+}
+
+%a-content-group{
+    //group of props: image, title, subtitle,content
+}
+
+%a-panel{
+    //like a block but with a header bar
+}
+
+%a-section{
+    //website section
+}
+%a-widget{
+    //dont know yet really
+}
+//layouts
+%a-block{
+    //implemented block, this is a colored frame
+}
+%a-list{
+    //list
+}
+%a-row{
+    //a horz row pf objects
+
+}
+%a-row-2x1{
+    //2  objects next to eaxh other
+
+
+}
+%a-grid{
+    //grid layout
+
+    /*display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);*/
+
+
+}
+
+.abs-grid-2 {
+    @debug 'gilliantttt';
+    @include dry(grid-2) {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+
+
+.gilliantest{
+    @include dry(cs-test-1-dark) {
+        outline: 5px;
+        @include color-scheme(dark);
+    }
+}
+
+.gilliantest2{
+
+
+    @include dry(cs-test-1-light) {
+outline: 5px;
+        @include color-scheme(light);
+    }
+        }
+%a-grid{
+    //flex grid layout
+}

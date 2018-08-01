@@ -1,0 +1,73 @@
+@mixin color-scheme($color-scheme: $chroma-active-scheme,$border: true, $accent:false, $background:true, $background-color-only:false ) {
+    $self: &;
+    //@debug $self;
+
+
+    @if ($color-scheme != false) {
+        color: color($color-scheme, foreground);
+
+        @if ($background) {
+            @if ($background-color-only) {
+                background-color: color($color-scheme, background);
+
+            } @else {
+                background: color($color-scheme, background);
+            }
+        }
+
+        @if ($border) {
+            border: 1px solid color($color-scheme, border);
+            border-radius: 0px;
+        }
+        @if ($accent) {
+
+
+            h1, h2, h3, h4, h5, h6 {
+                color: color($color-scheme, accent);
+            }
+            a {
+                color: color($color-scheme, link);
+                &:hover { //get rid of underlines
+                    color: lighten(color($color-scheme, link), 10%);
+                    text-decoration: none;
+                }
+            }
+        }@else {
+            h1, h2, h3, h4, h5, h6 {
+                color: color($color-scheme, foreground);
+            }
+            a {
+                color: color($color-scheme, foreground);
+                &:hover { //get rid of underlines
+                    color: lighten(color($color-scheme, foreground), 10%);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    @content;
+}
+
+@mixin invert-scheme( $base-scheme, $new-scheme-name:null,$accent:null ) {
+
+    @if ($new-scheme-name == null) {
+        $new-scheme-name: #{$base-scheme}-invert;
+    }
+    @if ($accent == null) {
+
+        $accent: color($base-scheme, accent);
+    }
+
+    $chroma: define-color-scheme($new-scheme-name);
+    $chroma: add-colors($new-scheme-name, (
+        foreground: color($base-scheme, background),
+        background: color($base-scheme, foreground),
+        accent: $accent,
+        border: color($base-scheme, foreground),
+    ));
+}
+
+@mixin u-background-contrast-text( $color: color(background)) {
+    background: $color;
+    color: get-contrast-color($color);
+}

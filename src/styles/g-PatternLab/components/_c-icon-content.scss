@@ -1,0 +1,50 @@
+$component-name: '.g_Icon_Content';
+@mixin c-icon-content($color-scheme: $chroma-active-scheme, $icon-width: 30px,$icon-height:30px ) {
+	@include color-scheme($color-scheme, true, false);
+	@include container-padding;
+	transition: all 0.2s;
+	cursor: hand;
+	width: auto;
+	//this is for type primarily.
+	@content;
+
+	&__icon{
+		//most likely an inline svg
+		width:$icon-width;
+		height: $icon-width;
+display: inline-block;
+		svg{
+			width: 100%;
+			height: 100%;
+		}
+
+	}
+	&__content{
+//most likely plain text
+	@debug 'hi';
+	}
+	&:hover {
+		background: lighten(color($color-scheme, background), 10%);
+	}
+	&__link {
+		color: inherit;
+		text-decoration: none;
+	}
+
+}
+///CSS to generate.
+
+///MAIN BLOCK CSS
+#{ block($component-name) } {
+	@include c-icon-content();
+}
+
+/*** THEME MODIFIERS	*/
+@each $key, $name in $THEME_RENDER_KEYS {
+	#{ modifier($component-name,$key) } {
+		@include c-icon-content($key);
+	}
+}
+
+/***  OTHER MODIFIERS	*/
+@include u-type-modifier($component-name, 0, font-small-caps);

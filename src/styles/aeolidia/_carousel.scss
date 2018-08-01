@@ -3,66 +3,6 @@
  */
 
 /* Adjust this to alter the width and height of the carousel. */
-#carousel,
-#carousel .items > li{
-    width: 900px;
-    height: 514px;
-}
-#carousel-wrapper{
-    width: 916px;
-    margin: 0 auto; }
-
-#carousel{
-    position: relative;
-    z-index: 50;
-    overflow: hidden;
-    margin:0 auto;
-}
-#carousel p,
-#carousel li{
-    margin: 0;
-}
-
-#carousel .items{
-    margin: 0;
-    padding: 0;
-    width: 20000em;
-    position: absolute;
-    z-index: 1;
-}
-#carousel .items > li{
-    float: left;
-    list-style: none;
-}
-
-#carousel .items img{ max-width: 100%; } /* I was on the fence about adding this line in, but hope it will do some good */
-
-#carousel-wrapper .browse{
-    position: absolute;
-    z-index: 100;
-    cursor: pointer;
-}
-#carousel-next{
-    top: 46%;
-    right: 0;
-}
-#carousel-prev{
-    top: 46%;
-    left: 0;
-}
-#carousel-next .arrow{
-    width: 31px;
-    height: 57px;
-    background:url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/arrow-right.png?13322936379033579690) no-repeat;
-}
-#carousel-prev .arrow{
-    width: 31px;
-    height: 57px;
-    background:url(//cdn.shopify.com/s/files/1/0155/0473/t/9/assets/arrow-left.png?13322936379033579690) no-repeat;
-}
-
-
-//urls
 
 #carousel {
     width: 900px;
@@ -71,6 +11,7 @@
     z-index: 50;
     overflow: hidden;
     margin: 0 auto;
+    display: none;
     .items {
         margin: 0;
         padding: 0;

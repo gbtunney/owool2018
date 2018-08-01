@@ -5,15 +5,25 @@
     top: 25px;
     right: 12px;
 
+    @include breakpoint-range(md, ">=") {
+        width: 30%;
+    }
     .menu-umbrella {
 
         margin: 0;
         padding: 0;
         list-style: none;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
 
-        * {
-            float: left;
-            padding: 3px 6px 0 0;
+        @include breakpoint-range(sm, "<=") {
+            width: 50%;
+            margin: 0 auto;
+        }
+        & > * {
+            float: none;
+            padding: 0;
             margin: 0;
             font-weight: normal;
             list-style: none;

@@ -5,9 +5,9 @@ $social-icon-size: 24px;
     height: $social-icon-size;
     display: block;
     background-position: 0 0;
+    background-repeat: no-repeat;
     text-indent: -9999em;
     position: relative;
-    bottom: 4px;
 
     &:hover {
         background-position: 0 -25px;

@@ -1,0 +1,109 @@
+$component-name: 'Button';
+
+@mixin c-button($color-scheme: $chroma-active-scheme ) {
+
+
+  // @include dry(grid-2);
+  //  @include dry(g-scheme-#{$color-scheme}){
+        @include color-scheme($color-scheme);
+  //  }
+
+@include dry($component-name){
+    @include container-padding;
+    transition: all 0.2s;
+    cursor: hand;
+    outline: 5px;
+    width: auto;
+}
+@content;
+    //this is for type primarily.
+    &:hover {
+        background: lighten(color($color-scheme, background), 8%);
+    }
+    svg * {
+        fill: color($color-scheme, foreground);
+    }
+    &__link, a {
+        text-decoration: none;
+    }
+
+    &__left {
+
+        .-includeIcon.-iconRight & {
+            margin-left: rhythm(1);
+        }
+        .-includeIcon.-iconLeft & {
+            margin-right: rhythm(1);
+        }
+    }
+
+    &__inner {
+
+        .-includeIcon & {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: auto;
+        }
+        .-includeIcon.-iconRight & {
+
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+    }
+    &__icon {
+        width: 20px;
+    }
+    &.__left {
+        margin-left: rhythm(1);
+        margin-right: rhythm(1);
+    }
+    &.__right {
+        width: 100%;
+        margin-left: rhythm(1);
+        margin-right: rhythm(1);
+        a {
+            color: inherit;
+        }
+    }
+    &.-includeIcon {
+
+        &__inner {
+
+        }
+    }
+}
+
+
+
+///CSS to generate.
+
+///MAIN BLOCK CSS
+@include block($component-name, component) {
+   @include c-button();
+
+    //@include modifier(light) {
+      //  @include c-button(light);
+   // }
+
+    @if ($generate-components) {
+        @each $key, $name in $THEME_RENDER_KEYS {
+
+            @include modifier($key) {
+                @include c-button($key){
+                    @if (-dry-placeholders-get(g-scheme-#{$key})){
+
+                    }@else {
+                       // @debug 'placeholdr not found' #{$color-scheme};
+                        //  @include color-scheme($color-scheme, true, true);
+
+                       // @include color-scheme($key, false, true);
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+

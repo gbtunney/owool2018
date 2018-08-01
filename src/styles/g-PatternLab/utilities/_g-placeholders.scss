@@ -1,0 +1,25 @@
+//positioning stuff:
+%u-reset-rhythm {
+	padding: 0;
+	margin: 0;
+}
+
+%u-reset-accent-color {
+	h1, h2, h3, h4, h5, h6 {
+		color: inherit;
+	}
+}
+
+%u-reset-link-color {
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+%u-reset-children-color {
+	* {
+		color: inherit;
+		text-decoration: none;
+	}
+}

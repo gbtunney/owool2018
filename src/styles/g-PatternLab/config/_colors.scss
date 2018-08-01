@@ -1,0 +1,51 @@
+$colors: (
+    white: #fff,
+    black: #000,
+    blue: #0e71b8,
+    red: #c00,
+    dark-gray: #585858,
+    tana: #bdba9c,
+    khaki: #f0e68c,
+    west-coast: #64551f,
+    highball: #90813b,
+    sandstone: #7b6d5c, //border
+    schooner: #8b8378,
+    spice: #66543e,
+    madras: #4c3b25, //background
+    onion: #33250d,
+    woodrush: #332915,
+    jacko-bean: #2e1c08,
+    acadia: #1e1205,
+    crowshead: #1a130a,
+    // Define a primary highlight color that has the value of our "blue" color.
+    // Note: if blue was specified without quotes, Chroma would interpret that as
+    // the color keyword blue and not a reference to the "blue" color name.
+    primary: 'blue',
+);
+
+///get variable from config flie
+@include setting-set-multiple($baseColors);
+
+// Define the default color scheme.
+$chroma: define-default-color-scheme('Branding color names for use by "functional" color names below.');
+// Add colors to the default color scheme.
+$chroma: add-colors($baseColors);
+
+///IMPORT COLORS FROM CONFIG FILE
+@for $i from 1 through length($schemes) {
+    $scheme: nth($schemes, $i);
+
+    @if (map-get($scheme,'parent') ==false) {
+        $chroma: define-color-scheme(map-get($scheme, key));
+
+    } @else {
+        $chroma: define-color-scheme(map-get($scheme, key), $parent: map-get($scheme, parent));
+    }
+
+    // Add colors to the functional color scheme.
+    $chroma: add-colors(map-get($scheme, key), map-get($scheme, colors));
+
+}
+// Set which color scheme should be used by default when calling the color()
+// function.
+$chroma-active-scheme: 'dark';
