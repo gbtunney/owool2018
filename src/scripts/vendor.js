@@ -18,3 +18,16 @@
 // 2. A regular expression matches the string of the comment.
 //    For example: `MIT`, `@license`, or `Copyright`.
 // 3. There is a comment at the *previous* line, and it matches 1, 2, or 3.
+
+
+// =require vendor/jquery.selectbox-0.2.min.js
+// =require vendor/jquery.tweet.js
+
+// =require vendor/jquery.tools.min.js
+// =require vendor/jquery.easing-1.3.pack.js
+// =require vendor/jquery.mousewheel-3.0.4.pack.js
+
+// =require vendor/jquery.fancybox-1.3.4.pack.js
+// =require vendor/enhance.jquery.js
+// =require vendor/hoverintent.jquery.js
+// =require vendor/radiance.js

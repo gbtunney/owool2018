@@ -11,7 +11,8 @@
     "npm-watch": "^0.3.0",
     "sass-bem-constructor": "^1.1.0",
     "sass-dry": "^1.0.0",
-    "sass-toolkit": "^2.10.2"
+    "sass-toolkit": "^2.10.2",
+    "slick-carousel": "^1.8.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.1.0",
