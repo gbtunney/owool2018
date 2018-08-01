@@ -170,40 +170,7 @@
     </div><!-- /.content -->
     
     <!-- Footer -->
-    <footer id="bottom">
-	<img src="{{ 'hr.png' | asset_url }}" alt="divider">
-		<div id="footer-1">
-			<!-- BEGIN: Constant Contact Basic Opt-in Email List Form -->
 
-            
-			<!-- END: Constant Contact Basic Opt-in Email List Form -->
-		
-		</div><!-- /#footer-1 -->
-
-		<div id="footer-2">
-			<ul class="footer-nav" class="clearfix">
-	        {% for link in linklists.footer.links %}
-	          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-	        {% endfor %}
-	        </ul>
-
-		</div><!-- /#footer-2 -->
-       
-		<div id="footer-3">
-			<ul class="footer-nav" class="clearfix">
-	        {% for link in linklists.footer-right.links %}
-	          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-	        {% endfor %}
-	        </ul>
-		</div><!-- /#footer-3 -->
-		
-		<div id="footer-4">
-	        <img src="{{ 'star.png' | asset_url }}" width="15" height="17" alt="*" style="vertical-align:middle" /> <a href="http://www.aeolidia.com/" onclick="window.open(this.href,'_blank');return false;">site by Aeolidia</a> <img src="{{ 'star2.png' | asset_url }}" width="9" height="9" alt="*" style="vertical-align:top" /><br/>
-			&copy; <a href="/">{{ shop.name }}</a> {{ 'now' | date: '%Y' }}
-
-		</div><!-- /#footer-4 -->
-  
-    </footer> 
 
   </div><!-- /.wrapper -->
 

@@ -1,60 +1,84 @@
-<footer>
+<footer id="bottom">
+    <img src="{{ 'hr.png' | asset_url }}" alt="divider">
+    <div id="footer-1">
+        <!-- BEGIN: Constant Contact Basic Opt-in Email List Form -->
+        {% assign footer_settings = section.settings %}
+        {% include 'email-list-form'   %}
 
-  {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
- GILLIAN <ul>
-    {% for social in social_accounts %}
-      {%- assign social_handle = social | handleize -%}
-      {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-      {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+        {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+        <ul>
 
-      {% if settings[social_link] != blank %}
-        <li>
-          <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-            {% include social_icon %}
-            <span class="icon-fallback-text">{{ social }}</span>
-          </a>
-        </li>
-      {% endif %}
+            {% for social in social_accounts %}
+                {%- assign social_handle = social | handleize -%}
+                {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+                {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
 
-    {% endfor %}
-  </ul>
+                {% if settings[social_link] != blank %}
+                    <li>
+                        <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                            {% include social_icon %}
+                            <span class="icon-fallback-text">{{ social }}</span>
+                        </a>
+                    </li>
+                {% endif %}
 
-  {% if section.settings.show_payment_icons %}
-    {% unless shop.enabled_payment_types == empty %}
-      {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
+            {% endfor %}
+        </ul>
 
-      <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-      <ul class="payment-icons">
-        {% for type in shop.enabled_payment_types %}
-          {% if payment_icons_available contains type %}
-            <li>
-              {%- assign icon_name = type | prepend: 'icon-' -%}
-              {% include icon_name %}
-              <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endunless %}
-  {% endif %}
 
-    {% include 'email-list-form' with "footer" : section.settings %}
-    <h2>
 
-    </h2>
-  {%- assign footer_linklist = section.settings.footer_linklist -%}
-  {% if linklists[footer_linklist].links.size > 0 %}
-    <ul>
-      {% for link in linklists[footer_linklist].links %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+        <!-- END: Constant Contact Basic Opt-in Email List Form -->
 
-  <div>
-    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
-  </div>
+    </div><!-- /#footer-1 -->
+
+    <div id="footer-2">
+        <ul class="footer-nav" class="clearfix">
+            {% for link in linklists.footer.links %}
+                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {% endfor %}
+        </ul>
+
+    </div><!-- /#footer-2 -->
+
+    <div id="footer-3">
+        <ul class="footer-nav" class="clearfix">
+            {% for link in linklists.footer-right.links %}
+                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {% endfor %}
+        </ul>
+    </div><!-- /#footer-3 -->
+
+    <div id="footer-4">
+        <img src="{{ 'star.png' | asset_url }}" width="15" height="17" alt="*" style="vertical-align:middle" /> <a href="http://www.aeolidia.com/" onclick="window.open(this.href,'_blank');return false;">site by Aeolidia</a> <img src="{{ 'star2.png' | asset_url }}" width="9" height="9" alt="*" style="vertical-align:top" /><br/>
+        &copy; <a href="/">{{ shop.name }}</a> {{ 'now' | date: '%Y' }}
+
+    </div><!-- /#footer-4 -->
+
+    {% if section.settings.show_payment_icons %}
+        {% unless shop.enabled_payment_types == empty %}
+        {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
+
+        <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
+        <ul class="payment-icons">
+            {% for type in shop.enabled_payment_types %}
+                {% if payment_icons_available contains type %}
+                    <li>
+                        {%- assign icon_name = type | prepend: 'icon-' -%}
+                        {% include icon_name %}
+                        <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% endunless %}
+    {% endif %}
+
+    <div>
+        <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+    </div>
 </footer>
+
+
 
 {% schema %}
   {
