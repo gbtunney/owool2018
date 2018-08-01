@@ -1,0 +1,44 @@
+<div id="section-cta">
+    <div class="container">
+        <h3> {{ section.settings.text-box }} </h3>
+        <a href="{{ section.settings.link }}" class="btn btn--cta">{{ section.settings.linktext }}</a>
+    </div>
+
+</div>
+
+{% schema %}
+{
+"name": "Call to action",
+"settings": [
+{
+"id": "text-box",
+"type": "text",
+"label": "Heading",
+"default": "Title"
+},
+{
+"id": "link",
+"type": "url",
+"label": "Button link"
+},
+{
+"id": "linktext",
+"type": "text",
+"label": "Button text",
+"default": "Click here"
+}
+],
+"presets": [
+{
+"name": "Call to Action",
+"category": "CTA button"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

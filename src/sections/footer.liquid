@@ -38,6 +38,10 @@
     {% endunless %}
   {% endif %}
 
+    {% include 'email-list-form' with "footer" : section.settings %}
+    <h2>
+
+    </h2>
   {%- assign footer_linklist = section.settings.footer_linklist -%}
   {% if linklists[footer_linklist].links.size > 0 %}
     <ul>
@@ -67,8 +71,15 @@
         "id": "show_payment_icons",
         "label": "Show payment icons",
         "default": false
-      }
+      },
+{
+"type": "text",
+"id": "footer_emailform_text",
+"default": "Subscribe",
+"label": "EMail form!"
+}
     ]
   }
+
 
 {% endschema %}
