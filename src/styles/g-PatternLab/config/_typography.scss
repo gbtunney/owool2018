@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url($typekit);
 
+@debug setting(modularscale);
 //init type maps
 $font-map: map-get($typography, "fonts");
 $default-font-map: map-get($font-map, default);
@@ -16,7 +17,7 @@ $modularscale: setting(modularscale);
 //$base-line-height: 16px; // Sets the base line height
 //$base-font-size: map-get(setting(modularscale), base);
 
-
+@debug ms(2);
 $BASE_LINE_HEIGHT: map-get($typography, line-height) ;
 $BASE_FONT_SIZE: map-get(setting(modularscale), base);
 
@@ -35,7 +36,7 @@ $base-line-height:$BASE_LINE_HEIGHT;
 $relative-font-sizing: false;
 
 
-@import "node_modules/compass-mixins/lib/compass/typography/vertical_rhythm";
+//@import "../../../node_modules/compass-mixins/lib/compass/typography/vertical_rhythm";
 
 
 ///BASELINE

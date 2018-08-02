@@ -1,0 +1,48 @@
+{
+	"typekit":"'https://use.typekit.net/kxg6qeb.css'",
+	"render_component_themes": {
+		"light":"Light",
+		"dark": "Dark",
+		"grid-helper":"Grid Helper"
+	},
+	"typography": {
+		"required-props": "'font-family, letter-spacing, word-spacing, text-transform, text-decoration, font-style, font-weight'",
+		"line-height": 1.3,
+		"modularscale": {
+			"base": "20px",
+			"ratio": 1.2,
+			"sm": {
+				"base": "25px",
+				"ratio": 1.2
+			}
+		},
+		"fonts": {
+			"default": {
+				"font-family": "monospace",
+				"text-transform": ".2px",
+				"text-decoration": "none",
+				"letter-spacing": 0,
+				"word-spacing": "-1px",
+				"font-weight": "normal",
+				"font-style": "normal"
+			},
+			"font-san-serif": {
+				"font-family": "cronos-pro-display",
+				"title": "'Primary: Mr Eaves Sans'"
+			},
+			"font-serif": {
+				"font-family": "maiola",
+				"title": "'Secondary, Headers : Mrs Eaves'"
+			},
+			"font-small-caps": {
+				"font-family": "adobe-garamond-pro",
+				"text-transform": "uppercase",
+				"title": "'Accent, Small Caps : Mrs Eaves Roman Small Caps'"
+			}
+		}
+	},
+	"slicer": {
+		"breakpoints": "0 480px 768px 992px 1200px",
+		"breakpoint-names": "xs sm md lg"
+	}
+}

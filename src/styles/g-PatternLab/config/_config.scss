@@ -10,12 +10,12 @@ $THEME_RENDER_KEYS: $render_component_themes;
 
 $DRY_ENABLED:true!default;
 
-@import "colors";
-@import "structure";
-@import "typography";
+//@import "colors";
+//@import "structure";
+@import "_typography.scss";
 
 //TODO:move
-$debug: false;
+$debug: true;
 $generate-grid-placeholders: true!default;
 $generate-swatch-placeholders: true!default;
 $generate-type-placeholders: true!default;

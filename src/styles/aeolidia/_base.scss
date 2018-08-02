@@ -1,9 +1,15 @@
 /**
  * Base Content Styles
  */
+
+@include establish-baseline;
+
 body {
     color: #555555;
-    font-family: Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+   // font-family: Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+@include setType(0,font-san-serif);
+  ///  @include setType(2, font-serif);
+
 }
 
 h1, h2, h3, h4, h5, h6 {
