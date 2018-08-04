@@ -5,6 +5,98 @@
 		"dark": "Dark",
 		"grid-helper":"Grid Helper"
 	},
+	"baseColors": {
+		"white": "#fff",
+		"black": "#000",
+		"dark-gray": "#585858",
+		"tana": "#bdba9c",
+		"khaki": "#f0e68c",
+		"west-coast": "#64551f",
+		"highball": "#90813b",
+		"sandstone": "#7b6d5c",
+		"schooner": "#8b8378",
+		"spice": "#66543e",
+		"madras": "#4c3b25",
+		"onion": "#33250d",
+		"woodrush": "#332915",
+		"jacko-bean": "#2e1c08",
+		"acadia": "#1e1205",
+		"crowshead": "#1a130a",
+		"silverleaf": "#71b799",
+		"fuscous_gray":"#555",
+		"lightning_yellow": "#eec517"
+	},
+	"schemes": [
+		{
+			"key": "light",
+			"description": "'The main light on dark theme.'",
+			"parent": false,
+			"colors": {
+				"foreground": "fuscous_gray",
+				"background": "white",
+				"accent": "silverleaf",
+				"border": "silverleaf",
+				"link": "silverleaf"
+			}
+		},
+		{
+			"key": "dark",
+			"description": "'DARK THEME!!'",
+			"parent": false,
+			"colors": {
+				"foreground": "white",
+				"background": "silverleaf",
+				"accent": "lightning_yellow",
+				"border": "lightning_yellow",
+				"link":"lightning_yellow"
+			}
+		},
+		{
+			"key": "top-menu",
+			"description": "'top menu!!'",
+			"parent": "dark",
+			"colors": {
+				"background": "jacko-bean"
+			}
+		},
+		{
+			"key": "form",
+			"description": "'top menu!!'",
+			"parent": "dark",
+			"colors": {
+				"border": "sandstone",
+				"background": "madras"
+			}
+		},
+		{
+			"key": "tabs",
+			"description": "'tabs menu!!'",
+			"parent": "dark",
+			"colors": {
+				"inactive": "onion"
+			}
+		},
+		{
+			"key": "grid-helper",
+			"description": "'grid helper menu!!'",
+			"parent": "dark",
+			"colors": {
+				"foreground": "white",
+				"background": "madras",
+				"accent": "blue",
+				"border": "red"
+			}
+		},
+		{
+			"key": "modal",
+			"description": "'grid helper menu!!'",
+			"parent": "dark",
+			"colors": {
+				"overlay": "madras",
+				"background": "dark-gray"
+			}
+		}
+	],
 	"typography": {
 		"required-props": "'font-family, letter-spacing, word-spacing, text-transform, text-decoration, font-style, font-weight'",
 		"line-height": 1.3,
@@ -19,7 +111,7 @@
 		"fonts": {
 			"default": {
 				"font-family": "monospace",
-				"text-transform": ".2px",
+				"text-transform": "none",
 				"text-decoration": "none",
 				"letter-spacing": 0,
 				"word-spacing": "-1px",
@@ -28,10 +120,11 @@
 			},
 			"font-san-serif": {
 				"font-family": "cronos-pro-display",
+				"letter-spacing":"-1px",
 				"title": "'Primary: Mr Eaves Sans'"
 			},
 			"font-serif": {
-				"font-family": "maiola",
+				"font-family": "adobe-garamond-pro",
 				"title": "'Secondary, Headers : Mrs Eaves'"
 			},
 			"font-small-caps": {

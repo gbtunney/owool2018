@@ -7,8 +7,11 @@
 
 @import "styles/g-PatternLab/utilities/_g-breakpoint-wrapper.scss";
 @import "styles/g-PatternLab/utilities/_g-functions.scss";
-@import "styles/g-PatternLab/utilities/_g-mixins.scss";
+@import "styles/g-PatternLab/utilities/g-mixins.scss";
 @import "styles/g-PatternLab/config/_config.scss";
 
 //actual css
+
 @import "styles/aeolidia/_o-wool-styles.scss";
+@import "styles/g-PatternLab/base";
+

@@ -75,7 +75,7 @@
     display: block;
 }
 #product-actions .compare_at_price{
-    font-size: 12px;
+   // font-size: 12px;
     display: block;
 }
 
@@ -278,7 +278,7 @@
         padding: 3px;
     }
     .price {
-        font-size: 18px;
+     //   font-size: 18px;
         margin: 0;
         font-weight: bold;
         text-align: right;
@@ -288,7 +288,7 @@
         }
     }
     .compare_at_price {
-        font-size: 12px;
+      //  font-size: 12px;
         display: block;
     }
 }
@@ -335,14 +335,14 @@
     margin: 0 0 20px 0;
     #product-header-title .price {
         float: right;
-        font-size: 14px;
+       // font-size: 14px;
     }
 }
 
 #product-title {
-    margin: 0;
-    font-size: 22px;
-    letter-spacing: 1px;
+   // margin: 0;
+   // font-size: 22px;
+   // letter-spacing: 1px;
     font-weight: normal;
     display: inline-block;
     width: auto;
@@ -350,9 +350,9 @@
 
 #product-vendor {
     color: $color_silver_chalice_approx;
-    font-size: 12px;
+   // font-size: 12px;
     font-style: italic;
-    letter-spacing: 1px;
+   // letter-spacing: 1px;
     font-weight: normal;
     a {
         text-decoration: none;
@@ -361,9 +361,9 @@
 
 .product-tag {
     color: $color_silver_chalice_approx;
-    font-size: 12px;
+   // font-size: 12px;
     font-style: italic;
-    letter-spacing: 1px;
+    //letter-spacing: 1px;
 }
 
 .variants-wrapper {

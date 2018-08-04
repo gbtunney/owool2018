@@ -43,7 +43,7 @@ $bem-block-namespaces: (
     $generate-components:false;
 
     $include-helper-classes: false;
-    $include-base-classes: false;
+    $include-base-classes: true;
     $include-styleguide-classes: false;
     $include-font-icons:false;
 }
