@@ -5,16 +5,16 @@
 <div id="col-main" class="full {{ collection.handle }}">
 
   <section class="diagonal-divider clearfix">
-    <header class="section-details clearfix">
+    <header class="section-details ">
      {% include 'breadcrumbs' %}
     </header>
 
     {% paginate collection.products by 21 %}
       {% if collection.products.size > 0 %}
     
-        <ul class="product-grid clearfix">
+        <ul class="product-grid a-product-grid ">
         {% for product in collection.products %}
-          <li{% cycle '', '', ' class="last-in-row"' %}>
+          <li>
             {% include 'product-grid-item' %}
           </li>
         {% endfor %}

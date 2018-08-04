@@ -1,1 +1,9 @@
 @import "abstraction-object-placeholders";
+
+
+.a-product-grid{
+    @extend %a-grid;
+    border: 2px solid yellow;
+        @extend %a-grid-mobile;
+
+}

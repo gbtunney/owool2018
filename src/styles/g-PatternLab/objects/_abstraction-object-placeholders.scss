@@ -36,23 +36,35 @@
 %a-grid{
     //grid layout
 
-    /*display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(2, 1fr);*/
-
-
-}
-
-.abs-grid-2 {
-    @debug 'gilliantttt';
     @include dry(grid-2) {
+
         display: grid;
         grid-gap: 10px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 100%;width:100%;
 
     }
 
 }
+%a-grid-mobile{
+    @include breakpoint-range(sm) {
+
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        height: 100%;
+        width: 100%;
+    }
+    @include breakpoint-range(xs) {
+background: yellow;
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: 1fr;
+        height: 100%;
+        width: 100%;
+    }
+}
+
 
 
 

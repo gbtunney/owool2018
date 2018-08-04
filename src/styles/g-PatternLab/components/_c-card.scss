@@ -1,67 +1,71 @@
-$component-name: 'Card';
+$component-name: 'Product_Card';
 
 @mixin c-card($id:$component-name, $color-scheme: $chroma-active-scheme ) {
 
 	$self: &;
 
 	///******** INCLUDE THEME (COLOR!) PROPERTIES HERE.
-	//@include u-component-theme($id, $color-scheme) {
+	@include u-component-theme($id, $color-scheme) {
 		@include color-scheme($color-scheme, true, false);
-	//}
+	}
+	display: none;
 @include container-padding;
 	//******** STATIC props here....
-	@include u-component-properties($id) {
+	//@include dry($id) {
 		display: inline-block;
 		cursor: pointer;
 		transition: all 0.3s ease;
 		text-align: left;
 		box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.2);
 
-		#{$self}:hover {
+		&:hover {
 			transform: translateY(-5px);
 			box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
 		}
-		#{$self}__header {
+		&__header {
 			background: purple;
 		}
 
-		#{$self}__image {
+
+		&__image {
 			max-width: 100%;
 			height: auto;
 		}
-		#{$self}__content {
+		&__content {
 
 		}
 		//*******NON STATIC props here....
-		#{$self}__title {
+		&__title {
 			@extend %u-reset-rhythm;
-			@include setType(2, font-san-serif);
+			@include setType(2, font-serif);
 			@include trailing-border();
 			@include leader(1);
 			@include trailer(1);
+
+			background: red;
 		}
-		#{$self}__subtitle {
+		&__subtitle {
 			@extend %u-reset-rhythm;
 			@include setType(0, font-serif);
 			@include leader(1);
 			@include trailer(1);
 		}
-		#{$self}__body {
+		&__body {
 			margin-bottom: 0;
 			background: orange;
 		}
-		#{$self}__footer {
+		&__footer {
 			@include leading-border();
 			@include u-stick-to(top right) {
 				@include leader();
 			}
 		}
 
-		#{u-header-selector()}, a {
+	/*	#{u-header-selector()}, a {
 			color: inherit;
 			background: inherit;
-		}
-	}
+		}*/
+	//}
 	@content;
 }
 
@@ -81,16 +85,16 @@ $component-name: 'Card';
 ///MAIN BLOCK CSS
 
 @include block($component-name, component) {
-//	@if ($generate-components) {
+	@if ($generate-components) {
 
 	@include c-card($component-name);
-
+@debug 'generating';
 		@each $key, $name in $THEME_RENDER_KEYS {
 			@include modifier($key) {
-				@include c-card($component-name,$key);
+			//	@include c-card($component-name,$key);
 			}
 		}
-	//}
+	}
 }
 
 /*** THEME MODIFIERS	*/

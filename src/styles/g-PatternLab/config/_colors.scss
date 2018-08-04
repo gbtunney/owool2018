@@ -23,6 +23,7 @@ $colors: (
     primary: 'blue',
 );
 
+
 ///get variable from config flie
 @include setting-set-multiple($baseColors);
 
@@ -48,4 +49,4 @@ $chroma: add-colors($baseColors);
 }
 // Set which color scheme should be used by default when calling the color()
 // function.
-$chroma-active-scheme: 'dark';
+

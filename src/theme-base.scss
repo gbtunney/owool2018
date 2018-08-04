@@ -5,13 +5,30 @@
 @import "styles/g-PatternLab/vendor/_vendor.scss";
 
 
-@import "styles/g-PatternLab/utilities/_g-breakpoint-wrapper.scss";
-@import "styles/g-PatternLab/utilities/_g-functions.scss";
-@import "styles/g-PatternLab/utilities/g-mixins.scss";
+@import "styles/g-PatternLab/utilities/utilities";
 @import "styles/g-PatternLab/config/_config.scss";
 
-//actual css
+
+
+//actual cs
+// s
+@import "styles/g-PatternLab/components/components";
+@import "styles/g-PatternLab/objects/objects";
 
 @import "styles/aeolidia/_o-wool-styles.scss";
-@import "styles/g-PatternLab/base";
+//@import "styles/g-PatternLab/base";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

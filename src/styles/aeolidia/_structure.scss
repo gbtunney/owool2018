@@ -2,51 +2,6 @@
  * Structure
  */
 
-html, body {
-    height: 100%;
-}
-
-body {
-    text-align: center;
-}
-
-.wrapper {
-    width: 904px;
-    margin: 0 auto;
-    text-align: left;
-    min-height: 100%;
-}
-
-.templateIndex .wrapper {
-    width: 916px;
-}
-
-.ie6 .wrapper {
-    height: 100%;
-}
-
-#col-main.content {
-    width: 900px;
-    font-size: 16px;
-    letter-spacing: 0.05em;
-}
-
-#col-main.index {
-    width: 916px !important;
-    margin: 0 auto;
-}
-
-#col-main.full {
-    width: 900px;
-    float: none;
-    margin: 0 auto;
-}
-
-#col-widgets {
-    float: right;
-    width: 275px;
-}
-
 html {
     height: 100%;
 }
@@ -57,36 +12,21 @@ body {
 }
 
 .wrapper {
-    width: 904px;
-    margin: 0 auto;
+    width: 100%;
     text-align: left;
-    min-height: 100%;
 }
 
 #col-main {
-    &.content {
-        width: 900px;
-        font-size: 16px;
-        letter-spacing: 0.05em;
-    }
-    &.index {
-        width: 916px !important;
-        margin: 0 auto;
-    }
-    &.full {
-        width: 900px;
-        float: none;
-        margin: 0 auto;
-    }
+    width: 100%;
 }
 
 #col-widgets {
     float: right;
-    width: 275px;
+   // width: 275px;
 }
 
 .templateIndex .wrapper {
-    width: 916px;
+    width: 100%;
 }
 
 .ie6 .wrapper {

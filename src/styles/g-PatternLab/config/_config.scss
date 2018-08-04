@@ -10,9 +10,12 @@ $THEME_RENDER_KEYS: $render_component_themes;
 
 $DRY_ENABLED:true!default;
 
-//@import "colors";
+@import "colors";
 //@import "structure";
 @import "_typography.scss";
+
+//set active colorscheme here
+$chroma-active-scheme: 'light';
 
 //TODO:move
 $debug: true;
@@ -30,7 +33,7 @@ $generate-components:true!default;
 
 $bem-block-namespaces: (
     'object': 'o',     // defaults to 'o'
-    'component': 'g', // defaults to 'c'
+    'component': 'c', // defaults to 'c'
     'utility': 'u', // defaults to 'u'
 );
 
@@ -40,7 +43,7 @@ $bem-block-namespaces: (
     $generate-swatch-placeholders: false ;
     $generate-type-placeholders: false ;
     $generate-scheme-placeholders: false ;
-    $generate-components:false;
+    $generate-components:true;
 
     $include-helper-classes: false;
     $include-base-classes: true;

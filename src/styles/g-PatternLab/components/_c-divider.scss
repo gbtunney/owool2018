@@ -1,0 +1,58 @@
+
+$component-name: 'Divider';
+
+
+@mixin c-divider($id:$component-name, $color-scheme: $chroma-active-scheme ) {
+
+    $self: &;
+//    background: purple;
+    ///******** INCLUDE THEME (COLOR!) PROPERTIES HERE.
+    @include u-component-theme($id, $color-scheme) {
+     //   @include color-scheme($color-scheme, true, false);
+    }
+   // display: none;
+    @include container-padding;
+
+    width: 100%;
+
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
+    }
+
+    @content;
+}
+
+
+
+// ----------------------------------------
+// !!CARD
+// ----------------------------------------
+/* ** !!CARD ** */
+
+// Sometimes you need a container or wrapper for your components in which case you could use a class like this
+// Important thing to understand here is that .c-card doesn't depend on .card-container
+//.card-container is a helper in this situation, it helps us to keep the cards together
+
+///styles to generate.
+
+///MAIN BLOCK CSS
+
+@include block($component-name, component) {
+    @if ($generate-components) {
+
+       // @include c-divider($component-name);
+        @debug 'generating';
+        @each $key, $name in $THEME_RENDER_KEYS {
+            @include modifier($key) {
+                //	@include c-card($component-name,$key);
+            }
+        }
+    }
+}

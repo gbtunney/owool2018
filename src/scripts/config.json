@@ -9,6 +9,19 @@
 		"white": "#fff",
 		"black": "#000",
 		"dark-gray": "#585858",
+		"gum-leaf": "#afd2c2",
+		"silver-chalice": "#adadad",
+		"saffron": "#edc433",
+		"light-gray": "#d2d3d2",
+		"oslo-gray": "#8d8f92",
+		"brown-bramble": "#562d19",
+		"kournikova": "#f5cd51",
+		"copper": "#b97131",
+		"kilamanjaro": "#3e3030",
+		"slugger": "#432e2e",
+		"silverleaf": "#71b799",
+		"fuscous_gray": "#555",
+		"lightning_yellow": "#eec517",
 		"tana": "#bdba9c",
 		"khaki": "#f0e68c",
 		"west-coast": "#64551f",
@@ -21,10 +34,7 @@
 		"woodrush": "#332915",
 		"jacko-bean": "#2e1c08",
 		"acadia": "#1e1205",
-		"crowshead": "#1a130a",
-		"silverleaf": "#71b799",
-		"fuscous_gray":"#555",
-		"lightning_yellow": "#eec517"
+		"crowshead": "#1a130a"
 	},
 	"schemes": [
 		{
@@ -34,9 +44,9 @@
 			"colors": {
 				"foreground": "fuscous_gray",
 				"background": "white",
-				"accent": "silverleaf",
-				"border": "silverleaf",
-				"link": "silverleaf"
+				"accent": "gum-leaf",
+				"border": "gum-leaf",
+				"link": "gum-leaf"
 			}
 		},
 		{
@@ -45,7 +55,19 @@
 			"parent": false,
 			"colors": {
 				"foreground": "white",
-				"background": "silverleaf",
+				"background": "gum-leaf",
+				"accent": "lightning_yellow",
+				"border": "lightning_yellow",
+				"link":"lightning_yellow"
+			}
+		},
+		{
+			"key": "alt-light",
+			"description": "'DARK THEME!!'",
+			"parent": "light",
+			"colors": {
+				"foreground": "fuscous_gray",
+				"background": "white",
 				"accent": "lightning_yellow",
 				"border": "lightning_yellow",
 				"link":"lightning_yellow"
