@@ -47,7 +47,7 @@ $component-name: 'Divider';
 @include block($component-name, component) {
     @if ($generate-components) {
 
-       // @include c-divider($component-name);
+        @include c-divider($component-name);
         @debug 'generating';
         @each $key, $name in $THEME_RENDER_KEYS {
             @include modifier($key) {

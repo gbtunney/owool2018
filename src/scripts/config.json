@@ -1,4 +1,7 @@
 {
+	"content-boxed-width": "55%",
+	"content-boxed-width-mobile": "95%",
+	"content-max-width": "1200px",
 	"typekit":"'https://use.typekit.net/kxg6qeb.css'",
 	"render_component_themes": {
 		"light":"Light",

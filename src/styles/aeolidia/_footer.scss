@@ -203,3 +203,12 @@
 #purchase {
     text-align: center;
 }
+
+//TODO::REMOVDE
+@include breakpoint-range(sm,"<="){
+    #bottom{
+        display: none;
+
+    }
+}
+

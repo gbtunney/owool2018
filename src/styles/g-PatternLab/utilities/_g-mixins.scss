@@ -114,3 +114,17 @@
 		}
 	}
 }
+
+@mixin u-make-container($percent: $content-boxed-indent) {
+	max-width: $content-max-width;
+	margin: 0 auto;
+	width: $percent;
+}
+
+@mixin u-default-container() {
+	@include u-make-container($content-boxed-width);
+
+	@include breakpoint-range(sm, "<=") {
+		@include u-make-container($content-boxed-width-mobile);
+	}
+}

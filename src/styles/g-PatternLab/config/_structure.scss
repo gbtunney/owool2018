@@ -27,8 +27,12 @@ $paths : (
 
 
 
-@include setting-set-multiple($paths);
+//@include setting-set-multiple($paths);
+
+//todo: put in prefs
 
 
-$fa-font-path :setting(font-path);
-@import "node_modules/@fortawesome/fontawesome-free/scss/fa-regular.scss";
+
+
+//$fa-font-path :setting(font-path);
+//@import "node_modules/@fortawesome/fontawesome-free/scss/fa-regular.scss";
