@@ -2,74 +2,93 @@ $component-name: 'Product_Card';
 
 @mixin c-card($id:$component-name, $color-scheme: $chroma-active-scheme ) {
 
-	$self: &;
+    $self: &;
 
-	///******** INCLUDE THEME (COLOR!) PROPERTIES HERE.
-	@include u-component-theme($id, $color-scheme) {
-		@include color-scheme($color-scheme, true, false);
-	}
-	display: none;
-@include container-padding;
-	//******** STATIC props here....
-	//@include dry($id) {
-		display: inline-block;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		text-align: left;
-		box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.2);
+    ///******** INCLUDE THEME (COLOR!) PROPERTIES HERE.
+    @include u-component-theme($id, $color-scheme) {
+        @include color-scheme($color-scheme, true, false);
+    }
+    display: none;
+    @include container-padding;
+    //******** STATIC props here....
+    //@include dry($id) {
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.2);
 
-		&:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
-		}
-		&__header {
-			background: purple;
-		}
+    ///TODO: workon this is an overlay
 
+    &__inner {
+        position: relative;
+        display: block;
+        &:hover {
+            &:before {
 
-		&__image {
-			max-width: 100%;
-			height: auto;
-		}
-		&__content {
+                display: block;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                content: "gillian";
+                background: rgba(color($color-scheme, background), .3);
+            }
+        }
+    }
 
-		}
-		//*******NON STATIC props here....
-		&__title {
-			@extend %u-reset-rhythm;
-			@include setType(2, font-serif);
-			@include trailing-border();
-			@include leader(1);
-			@include trailer(1);
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
+    }
+    &__header {
+        background: purple;
+    }
 
-			background: red;
-		}
-		&__subtitle {
-			@extend %u-reset-rhythm;
-			@include setType(0, font-serif);
-			@include leader(1);
-			@include trailer(1);
-		}
-		&__body {
-			margin-bottom: 0;
-			background: orange;
-		}
-		&__footer {
-			@include leading-border();
-			@include u-stick-to(top right) {
-				@include leader();
-			}
-		}
+    &__image {
+        max-width: 100%;
+        height: auto;
 
-	/*	#{u-header-selector()}, a {
-			color: inherit;
-			background: inherit;
-		}*/
-	//}
-	@content;
+        &:before {
+            background: blue;
+            width: 100px;
+            height: 100px;
+        }
+    }
+    &__content {
+
+    }
+    //*******NON STATIC props here....
+    &__title {
+        @extend %u-reset-rhythm;
+        @include setType(2, font-serif);
+        @include trailing-border();
+        @include leader(1);
+        @include trailer(1);
+    }
+    &__subtitle {
+        @extend %u-reset-rhythm;
+        @include setType(0, font-serif);
+        @include leader(1);
+        @include trailer(1);
+    }
+    &__body {
+        margin-bottom: 0;
+
+    }
+    &__footer {
+        @include leading-border();
+        @include u-stick-to(top right) {
+            @include leader();
+        }
+    }
+
+    /*	#{u-header-selector()}, a {
+            color: inherit;
+            background: inherit;
+        }*/
+    //}
+    @content;
 }
-
-
 
 // ----------------------------------------
 // !!CARD
@@ -85,20 +104,17 @@ $component-name: 'Product_Card';
 ///MAIN BLOCK CSS
 
 @include block($component-name, component) {
-	@if ($generate-components) {
-
-	@include c-card($component-name);
-@debug 'generating';
-		@each $key, $name in $THEME_RENDER_KEYS {
-			@include modifier($key) {
-			//	@include c-card($component-name,$key);
-			}
-		}
-	}
+    @if ($generate-components) {
+        @include c-card($component-name);
+        @each $key, $name in $THEME_RENDER_KEYS {
+            @include modifier($key) {
+                @include c-card($component-name, $key);
+            }
+        }
+    }
 }
 
 /*** THEME MODIFIERS	*/
-
 
 /*
 

@@ -12,7 +12,7 @@ $DRY_ENABLED:true!default;
 
 @import "colors";
 @import "structure";
-@import "_typography.scss";
+@import "typography";
 
 //set active colorscheme here
 $chroma-active-scheme: 'light';

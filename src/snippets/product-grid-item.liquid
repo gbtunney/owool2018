@@ -22,6 +22,8 @@
         </a>
         <div class="c-Product_Card__meta">
             <a class="c-Product_Card__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+           <div> {{ product.vendor }}</div>
+            <div>{{ product.type }}</div>
             <span class="c-Product_Card__price product-price 123">
     {% if product.price_varies %}
         <small>from</small> {{ product.price_min | money }}

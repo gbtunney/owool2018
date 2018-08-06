@@ -76,6 +76,8 @@
 @mixin setType($size-unit: 0,$font: font-san-serif ) {
 //TODO : fix
 	$required-font-props: (font-family, letter-spacing, word-spacing, text-transform, text-decoration, font-style, font-weight);
+
+@debug $font;
 	$font-map: setting($font);
 
 	@include dry(#{$font}-#{$size-unit},$DRY_ENABLED) {
@@ -127,4 +129,10 @@
 	@include breakpoint-range(sm, "<=") {
 		@include u-make-container($content-boxed-width-mobile);
 	}
+}
+@mixin u-full-width-container(){
+
+	width: 100vw;
+height: 100%;
+	min-height: 300px;
 }
