@@ -9,3 +9,13 @@
 
     list-style: none;
 }
+
+.a-footer-grid {
+
+    @extend %a-grid-4;
+
+
+    .footer-col{
+        width: 100%;
+    }
+}

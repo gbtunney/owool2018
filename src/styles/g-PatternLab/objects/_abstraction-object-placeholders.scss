@@ -46,6 +46,24 @@
     }
 
 }
+
+%a-grid-4{
+    //grid layout
+
+    @include dry(grid-4) {
+
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 100%;width:100%;
+background: purple;
+    }
+ *{
+      background: yellow;border: 2px solid red;
+
+ }
+}
+
 %a-grid-mobile{
     @include breakpoint-range(sm) {
 

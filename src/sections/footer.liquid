@@ -1,58 +1,62 @@
-<footer id="bottom">
-    <img src="{{ 'hr.png' | asset_url }}" alt="divider">
-    <div id="footer-1">
-        <!-- BEGIN: Constant Contact Basic Opt-in Email List Form -->
-        {% assign footer_settings = section.settings %}
-        {% include 'email-list-form'   %}
+<footer class="bottom">
+    <img class="c-Divider" src="{{ 'hr.png' | asset_url }}" alt="divider">
 
-        {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-        <ul>
+    <section class="a-footer-grid footer-content-area">
+        <div class="footer-col" id="footer-1">
+            <!-- BEGIN: Constant Contact Basic Opt-in Email List Form -->
+            {% assign footer_settings = section.settings %}
+            {% include 'email-list-form'   %}
 
-            {% for social in social_accounts %}
-                {%- assign social_handle = social | handleize -%}
-                {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-                {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+            {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+            <ul>
 
-                {% if settings[social_link] != blank %}
-                    <li>
-                        <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-                            {% include social_icon %}
-                            <span class="icon-fallback-text">{{ social }}</span>
-                        </a>
-                    </li>
-                {% endif %}
+                {% for social in social_accounts %}
+                    {%- assign social_handle = social | handleize -%}
+                    {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+                    {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
 
-            {% endfor %}
-        </ul>
+                    {% if settings[social_link] != blank %}
+                        <li>
+                            <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                                {% include social_icon %}
+                                <span class="icon-fallback-text">{{ social }}</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+            </ul>
 
 
 
-        <!-- END: Constant Contact Basic Opt-in Email List Form -->
+            <!-- END: Constant Contact Basic Opt-in Email List Form -->
 
-    </div><!-- /#footer-1 -->
+        </div><!-- /#footer-1 -->
 
-    <div id="footer-2">
-        <ul class="footer-nav" class="clearfix">
-            {% for link in linklists.footer.links %}
-                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-            {% endfor %}
-        </ul>
+        <div class="footer-col" id="footer-2">
+            <ul class="footer-nav" class="clearfix">
+                {% for link in linklists.footer.links %}
+                    <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                {% endfor %}
+            </ul>
 
-    </div><!-- /#footer-2 -->
+        </div><!-- /#footer-2 -->
 
-    <div id="footer-3">
-        <ul class="footer-nav" class="clearfix">
-            {% for link in linklists.footer-right.links %}
-                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-            {% endfor %}
-        </ul>
-    </div><!-- /#footer-3 -->
+        <div class="footer-col" id="footer-3">
+            <ul class="footer-nav" class="clearfix">
+                {% for link in linklists.footer-right.links %}
+                    <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                {% endfor %}
+            </ul>
+        </div><!-- /#footer-3 -->
 
-    <div id="footer-4">
-        <img src="{{ 'star.png' | asset_url }}" width="15" height="17" alt="*" style="vertical-align:middle" /> <a href="http://www.aeolidia.com/" onclick="window.open(this.href,'_blank');return false;">site by Aeolidia</a> <img src="{{ 'star2.png' | asset_url }}" width="9" height="9" alt="*" style="vertical-align:top" /><br/>
-        &copy; <a href="/">{{ shop.name }}</a> {{ 'now' | date: '%Y' }}
+        <div class="footer-col" id="footer-4">
+            <img src="{{ 'star.png' | asset_url }}" width="15" height="17" alt="*" style="vertical-align:middle" /> <a href="http://www.aeolidia.com/" onclick="window.open(this.href,'_blank');return false;">site by Aeolidia</a> <img src="{{ 'star2.png' | asset_url }}" width="9" height="9" alt="*" style="vertical-align:top" /><br/>
+            &copy; <a href="/">{{ shop.name }}</a> {{ 'now' | date: '%Y' }}
 
-    </div><!-- /#footer-4 -->
+        </div><!-- /#footer-4 -->
+
+    </section>
 
     {% if section.settings.show_payment_icons %}
         {% unless shop.enabled_payment_types == empty %}

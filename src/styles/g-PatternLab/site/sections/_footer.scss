@@ -1,0 +1,126 @@
+/**
+ * Footer
+ */
+footer{
+background: orange;
+display: none;
+    width: 90%;
+
+    overflow: hidden;
+}
+
+
+
+
+
+//SASS
+
+#bottom {
+
+
+
+    // padding: 0 0 15px;
+    //margin: 15px auto 50px auto;
+
+
+    overflow: hidden;
+    //height: 1%;
+    //height: unset !important;
+    a {
+        text-decoration: none;
+        border-bottom: 1px solid $color_gum_leaf_approx;
+        &:hover {
+            border-bottom: 1px solid $color_gum_leaf_approx;
+        }
+    }
+    p {
+        //line-height: 1.5em;
+    }
+    ul {
+        list-style: none;
+        margin: 0 0 10px 0;
+    }
+    li {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.email-list-form{
+
+    #mce-EMAIL {
+        width: 160px;
+        padding: 4px 24px 4px 10px;
+        font-family: $font-family;
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::-webkit-input-placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::-moz-placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::-ms-input-placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    input[type="submit"] {
+        background: $color_lightning_yellow_approx $form-leaf no-repeat center center;
+        text-indent: -9999em;
+        border: none;
+        height: 21px;
+        width: 24px;
+        position: relative;
+        right: 30px;
+    }
+
+}
+
+#footer-4 {
+    //width: 135px;
+    //margin-top: 14px;
+    //float: right;
+    text-align: left;
+    background: $footer-leaf no-repeat right bottom;
+ //   font-size: 12px;
+    color: $color_silver_chalice_approx;
+    line-height: 2;
+    a {
+        border-bottom: none;
+        color: $color_silver_chalice_approx;
+    }
+}
+.footer-nav {
+    margin: 14px 0 0;
+    li {
+        margin: 0 0 10px;
+    }
+}
+#purchase {
+    text-align: center;
+}
+
+//TODO::REMOVDE
+@include breakpoint-range(sm,"<="){
+    #bottom{
+        display: none;
+
+    }
+}
+
