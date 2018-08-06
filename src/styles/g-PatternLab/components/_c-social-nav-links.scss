@@ -1,0 +1,71 @@
+$component-name: 'Social-Nav';
+
+@mixin c-social-nav($id:$component-name, $color-scheme: $chroma-active-scheme, $width:100%,$padding-unit: 1  ) {
+
+    ///******** INCLUDE THEME (COLOR!) PROPERTIES HERE.
+
+    width: $width;
+    display: flex;
+    justify-content: space-between;
+    //this spaces them out based on their parent
+
+    & > * {
+        // padding: rhythm(1);
+
+    }
+
+    &__icon {
+        //most likely an inline svg
+        width: $icon-width;
+        height: $icon-width;
+        display: inline-block;
+
+        svg {
+            & > path, g {
+                fill: color($color-scheme, foreground);
+            }
+            width: 100%;
+            height: 100%;
+
+        }
+
+        &:hover {
+            fill: lighten(color($color-scheme, foreground), 15%);
+
+            & > path, g {
+                fill: lighten(color($color-scheme, foreground), 15%);
+            }
+        }
+    }
+
+    &__link {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a {
+        color: inherit;
+        color: red;
+    }
+
+    @content;
+}
+
+// ----------------------------------------
+// !!SOCIAL NAV ICONS
+// ----------------------------------------
+/* ** !!CARD ** */
+
+///MAIN BLOCK CSS
+
+@include block($component-name, component) {
+    @if ($generate-components) {
+        @include c-social-nav($component-name);
+
+        @each $key, $name in $THEME_RENDER_KEYS {
+            @include modifier($key) {
+                @include c-social-nav($component-name, $key);
+            }
+        }
+    }
+}

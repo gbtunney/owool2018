@@ -8,6 +8,7 @@
 		"dark": "Dark",
 		"grid-helper":"Grid Helper"
 	},
+	"social-icon-size":"30px",
 	"baseColors": {
 		"white": "#fff",
 		"black": "#000",

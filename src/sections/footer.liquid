@@ -3,33 +3,16 @@
     <div class="inner">
     <img class="c-Divider" src="{{ 'hr.png' | asset_url }}" alt="divider">
 
+
+
     <section class="a-footer-grid footer-content-area">
         <div class="footer-col" id="footer-1">
             <!-- BEGIN: Constant Contact Basic Opt-in Email List Form -->
             {% assign footer_settings = section.settings %}
             {% include 'email-list-form'   %}
 
-            {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-            <ul>
-
-                {% for social in social_accounts %}
-                    {%- assign social_handle = social | handleize -%}
-                    {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-                    {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
-
-                    {% if settings[social_link] != blank %}
-                        <li>
-                            <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-                                {% include social_icon %}
-                                <span class="icon-fallback-text">{{ social }}</span>
-                            </a>
-                        </li>
-                    {% endif %}
-
-                {% endfor %}
-            </ul>
-
-
+            {% assign social_nav_theme = "dark" %}
+            {% include 'social-nav-links'   %}
 
             <!-- END: Constant Contact Basic Opt-in Email List Form -->
 

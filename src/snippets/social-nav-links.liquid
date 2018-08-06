@@ -1,0 +1,43 @@
+<div class="c-Social-Nav--{{ social_nav_theme }}">
+
+    {%if settings.sm_pinterest %}
+
+        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
+            <a href="{{settings.sm_pinterest_link}}" class="" target="_blank">
+            {% include 'icon-pinterest' %}
+            </a>
+        </div>
+    {% endif %}
+
+    {%if settings.sm_facebook %}
+        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
+            <a href="{{settings.sm_facebook_link}}" class="" target="_blank">
+                {% include 'icon-facebook' %}
+            </a>
+        </div>
+    {% endif %}
+
+    {%if settings.sm_twitter %}
+        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
+            <a href="{{settings.sm_twitter_link}}" class="" target="_blank">
+                {% include 'icon-twitter' %}
+            </a>
+        </div>
+    {% endif %}
+
+    {%if settings.sm_instagram %}
+        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
+            <a href="{{settings.sm_instagram_link}}" class="" target="_blank">
+                {% include 'icon-instagram' %}
+            </a>
+        </div>
+    {% endif %}
+
+    {%if settings.sm_instagram %}
+        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
+            <a href="{{settings.sm_instagram_link}}" class="" target="_blank">
+                {% include 'icon-instagram' %}
+            </a>
+        </div>
+    {% endif %}
+</div>
