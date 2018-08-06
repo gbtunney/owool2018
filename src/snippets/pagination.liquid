@@ -1,11 +1,11 @@
 {% if paginate.pages > 1 %}
-<div class="pagination">
+<div class="Owool_Pagination">
 
-  <ul>
+  <ul class="Owool_Pagination__links">
     {% if paginate.previous %}
-      <li class="prev">{{ paginate.previous.title | link_to: paginate.previous.url }}</li>
+      <li class="Owool_Pagination__prev prev">{{ paginate.previous.title | link_to: paginate.previous.url }}</li>
     {% else %}
-      <li class="prev disabled"><a href="#" onclick="return false;">&laquo; Previous</a></li>
+      <li class="Owool_Pagination__prev --is-disabled disabled"><a href="#" onclick="return false;">&laquo; Previous</a></li>
     {% endif %}
     
     {% for part in paginate.parts %}
@@ -13,22 +13,22 @@
         <li>{{ part.title | link_to: part.url }}</li>
       {% else %}
         {% if part.title == '&hellip;' %}
-        <li class="ellipsis disabled"><a href="#" onclick="return false;">{{ part.title }}</a></li>
+        <li class="--is-disabled Owool_Pagination__page ellipsis disabled"><a href="#" onclick="return false;">{{ part.title }}</a></li>
         {% else %}
-        <li class="active">{{ part.title | link_to: part.url }}</li>
+        <li class="Owool_Pagination__page --is-active active">{{ part.title | link_to: part.url }}</li>
         {% endif %}
       {% endif %}
     {% endfor %}     
 
     {% if paginate.next %}
-      <li class="next">{{ paginate.next.title | link_to: paginate.next.url }}</li>
+      <li class="Owool_Pagination__next next">{{ paginate.next.title | link_to: paginate.next.url }}</li>
     {% else %}
-      <li class="next disabled"><a href="#" onclick="return false;">Next &raquo;</a></li>
+      <li class="Owool_Pagination__next --is-disabled next disabled"><a href="#" onclick="return false;">Next &raquo;</a></li>
     {% endif %}    
   </ul>
 
 
-  <p class="pagination-num-showing">
+  <p class="Owool_Pagination__showing">
   Showing: {{ paginate.current_offset | plus: 1 }}-{% if paginate.next %}{{ paginate.current_offset | plus: paginate.page_size }}{% else %}{{ paginate.items }}{% endif %} of {{ paginate.items }}
   </p>
 </div>

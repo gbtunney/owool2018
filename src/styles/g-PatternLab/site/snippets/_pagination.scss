@@ -1,0 +1,107 @@
+//SASS
+
+.Owool_Pagination{
+
+    @include u-make-container(50%);
+
+
+    @include color-scheme($chroma-active-scheme, false,false);
+    @include setType(1, font-serif);
+
+
+    a{
+        color: inherit;
+
+    }
+
+    &__links{
+
+        display: flex;
+        justify-content: space-between;
+@include trailer();
+    }
+    &__page{
+
+        padding: 0 rhythm(0);
+        &.--is-active{
+@include trailing-border(2px,-1);
+            border-color: color($chroma-active-scheme,border);
+        }
+
+        &:hover{
+           // @include color-scheme(dark, false,false);
+            @include trailing-border(2px,-1);
+
+            border-color: color($chroma-active-scheme,border);
+
+        }
+    }
+
+    &__next{
+
+    }
+    &__prev{
+
+
+    }
+
+
+    &__showing{
+
+        @include setType(0, font-serif);
+//TODO: formalize this
+font-style: italic;
+    }
+}
+
+/*
+
+.pagination {
+    height: auto;
+
+   // margin: 18px 0;
+    ul {
+      //  float: left;
+       // margin: 0;
+        //background: $white;
+
+        display: flex;
+        justify-content: space-between;
+    }
+    li {
+       // display: inline;
+    }
+    a {
+      //  float: left;
+       // padding: 0 14px;
+       // line-height: 28px;
+        text-decoration: none;
+        color: $color_fuscous_gray_approx;
+        &:hover {
+        }
+    }
+    .active a {
+        border-right-color: $white;
+    }
+    .disabled a {
+        background: transparent;
+        color: $color_silver_chalice_approx;
+        cursor: default;
+        &:hover {
+            background: transparent;
+            color: $color_silver_chalice_approx;
+            cursor: default;
+        }
+    }
+    .next a {
+        border: 0;
+    }
+}
+
+.pagination-num-showing {
+    float: right;
+    line-height: 28px;
+    font-size: 11px;
+    color: $color_fuscous_gray_approx;
+}
+*/

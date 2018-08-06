@@ -2,18 +2,12 @@
  * Footer
  */
 footer {
-    //background: orange;
-    //display: none;
-    // width: 90%;
-
-    //  overflow: hidden;
 }
 
 .Owool_Footer {
     @include u-full-width-container;
     > .inner {
         @include u-default-container;
-
     }
 
     @include color-scheme(dark);
