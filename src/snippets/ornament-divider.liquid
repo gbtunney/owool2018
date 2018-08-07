@@ -1,0 +1,12 @@
+
+{% assign default_style_modifier = 'light' %}
+<div class="c-Divider--{{ style_modifier | default: default_style_modifier }}">
+    <div class="c-Divider--{{ style_modifier | default: default_style_modifier }}__left">
+        {% include 'ui-divider-left.svg' %}
+    </div>
+    <div class="c-Divider--{{ style_modifier | default: default_style_modifier }}__center">
+    </div>
+    <div class="c-Divider--{{ style_modifier | default: default_style_modifier }}__right">
+        {% include 'ui-divider-right.svg' %}
+    </div>
+</div>

@@ -136,3 +136,22 @@
 height: 100%;
 	min-height: 300px;
 }
+
+@mixin u-icon-svg($color:red,$width: 100%,$height:$width){
+	width: $width;
+	height: $height;
+	display: inline-block;
+
+	svg {
+		display: block;
+		& > path, & > g, & > * {
+			fill: $color;
+		}
+		width: 100%;
+		height: 100%;
+	}
+}
+@mixin u-horizontal-list(){
+	display: flex;
+	justify-content: space-between;
+}

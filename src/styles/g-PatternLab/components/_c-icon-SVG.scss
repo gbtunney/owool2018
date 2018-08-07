@@ -1,0 +1,58 @@
+$component-name: 'Icon-SVG';
+
+$icon-size-sm: 12px;
+$icon-size-md: 20px;
+$icon-size-lg: 60px;
+
+///make quick icon using this
+
+
+//scheme based icon
+@mixin c-icon-svg($id:$component-name, $color-scheme: $chroma-active-scheme, $width:100%, $height: $width ) {
+
+@include u-icon-svg(color($color-scheme, foreground),$width,$height);
+
+    &__link {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a {
+        color: inherit;
+        color: red;
+    }
+
+    &.--sm {
+        width: $icon-size-sm;
+        height: $icon-size-sm;
+    }
+
+    &.--md {
+        width: $icon-size-md;
+        height: $icon-size-md;
+
+    }
+
+    &.--lg {
+        width: $icon-size-lg;
+        height: $icon-size-lg;
+
+    }
+@content;
+}
+
+// ----------------------------------------
+// ICON ELEMENT HELPER FUNCTION
+
+@include block($component-name, component) {
+    @if ($generate-components) {
+
+        @include c-icon-svg($component-name);
+
+        @each $key, $name in $THEME_RENDER_KEYS {
+            @include modifier($key) {
+                @include c-icon-svg($component-name, $key);
+            }
+        }
+    }
+}
