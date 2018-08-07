@@ -6,22 +6,18 @@
   {% endif %}
 </style>
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
-  <header role="banner">
+  <header class="Owool_Header" role="banner">
     {% if template.name == 'index' %}
       <h1 itemscope itemtype="http://schema.org/Organization">
     {% else %}
       <div class="h1" itemscope itemtype="http://schema.org/Organization">
     {% endif %}
         <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
-          {% if section.settings.logo != blank %}
-            {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-            <img src="{{ section.settings.logo | img_url: image_size }}"
-                 srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                 alt="{{ section.settings.logo.alt | default: shop.name }}"
-                 itemprop="logo">
-          {% else %}
-            {{ shop.name }}
-          {% endif %}
+            <div alt="{{ shop.name }}" class="Owool_Logo_SVG">
+                {%  include 'logo-owool.svg' %}
+            </div>
+
+
         </a>
     {% if template.name == 'index' %}
       </h1>
@@ -30,7 +26,7 @@
     {% endif %}
 
     <a href="/cart">
-      {% include 'icon-cart' %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: 'light-accent-primary --lg ' %}
       {{ 'layout.cart.title' | t }}
       ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
     </a>

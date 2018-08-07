@@ -8,7 +8,7 @@ $icon-size-lg: 60px;
 
 
 //scheme based icon
-@mixin c-icon-svg($id:$component-name, $color-scheme: $chroma-active-scheme, $width:100%, $height: $width ) {
+@mixin c-icon-svg($id:$component-name, $color-scheme: $chroma-active-scheme, $width: $icon-size-md, $height: $width ) {
 
 @include u-icon-svg(color($color-scheme, foreground),$width,$height);
 
@@ -38,6 +38,18 @@ $icon-size-lg: 60px;
         height: $icon-size-lg;
 
     }
+    &.--btn{
+        background: color($color-scheme,background);
+        padding: rhythm(1);
+border: 1px solid color($color-scheme,border);
+    }
+
+    &.--btn-round{
+        background: color($color-scheme,background);
+        padding: #{rhythm(1) / 2};
+        border: 1px solid color($color-scheme,border);
+        border-radius: 100%;
+    }
 @content;
 }
 
@@ -47,7 +59,8 @@ $icon-size-lg: 60px;
 @include block($component-name, component) {
     @if ($generate-components) {
 
-        @include c-icon-svg($component-name);
+        @include c-icon-svg($component-name){
+        }
 
         @each $key, $name in $THEME_RENDER_KEYS {
             @include modifier($key) {

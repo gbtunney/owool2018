@@ -1,11 +1,15 @@
 {% assign default_component_id = 'Icon-SVG' %}
-{% assign default_style_modifier = 'light' %}
-{% assign link_button = { label : "Test Label" , href : "http://google.com" , target : "_new", icon: 'icon-pinterest'  } %}
-
+{% assign default_style_modifier = 'dark' %}
+{% assign default_icon = 'icon-tumblr' %}
 
 <div class="c-{{ component_id |  default: default_component_id }}--{{ style_modifier | default: default_style_modifier }}">
     <a href="{{link_button.href}}"  target="{{ link_button.target }}">
-        {% include link_button.icon %}
+        {% if icon_name != empty %}
+            {% include icon_name %}
+        {% else %}
+            {% include default_icon %}
+        {% endif %}
     </a>
 </div>
+
 

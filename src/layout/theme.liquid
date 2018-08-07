@@ -68,7 +68,9 @@
   <div class="wrapper">
     
     <!-- Header -->
-    <header id="top" class="clearfix">
+
+      {% section 'header' %}
+    <header id="top" class="Owool_Header clearfix">
 	<button type="button" class="mobile-nav-trigger navbar-toggle" id="MobileNavTrigger" data-menu-state="close" style="display:none;">
         <span class="icon icon-hamburger sr-only" aria-hidden="true"></span>
       	<span class="icon-bar"></span>
@@ -78,7 +80,9 @@
       </button>
       <h1 id="site-title">
         <a href="/" title="Home">
-            <img src="{{ 'o-wool-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" /> 
+            <div class="Owool_Logo_SVG">
+                {%  include 'logo-owool.svg' %}
+            </div>
         </a>
       </h1>
       {% include 'mobile-nav' with linklists[section.settings.nav_menu] %}
@@ -114,10 +118,10 @@
         {% endif %}
         
       </nav>
-            
-     {% include 'umbrella' %}
+        {% include 'umbrella' %}
         {% include 'ornament-divider' %}
 
+        {% include 'ui-icon-variations' %}
     </header>
     
     <!-- Content -->
@@ -315,7 +319,6 @@ $(window).scroll(function () {
 });
 </script>
 
-  {% section 'header' %}
 
   <main role="main" id="MainContent">
       {{ content_for_layout }}
