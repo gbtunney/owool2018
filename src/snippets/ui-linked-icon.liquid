@@ -2,7 +2,7 @@
 {% assign default_style_modifier = 'dark' %}
 {% assign default_icon = 'icon-tumblr' %}
 
-<div class="c-{{ component_id |  default: default_component_id }}--{{ style_modifier | default: default_style_modifier }}">
+<div class="c-{{ component_id |  default: default_component_id }} c-{{ component_id |  default: default_component_id }}--{{ style_modifier | default: default_style_modifier }}">
     <a href="{{link_button.href}}"  target="{{ link_button.target }}">
         {% if icon_name != empty %}
             {% include icon_name %}
