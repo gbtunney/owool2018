@@ -30,7 +30,7 @@ $component-name: 'Button-Group';
 }
 
 @include block($component-name, component) {
-    @include c-button-group(tabs);
+ //   @include c-button-group(tabs);
 
     @if ($generate-components) {
         ///@debug 'gillian';

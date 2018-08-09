@@ -1,6 +1,6 @@
 $component-name: 'Icon-SVG';
 
-$icon-size-sm: rhythm(0);
+$icon-size-sm: rhythm(1) / 2;
 $icon-size-md: rhythm(1);
 $icon-size-lg: rhythm(2);
 
@@ -21,6 +21,8 @@ $icon-size-lg: rhythm(2);
         width: $icon-size-sm;
         height: $icon-size-sm;
     }
+
+
 
     &.--md {
         width: $icon-size-md;
@@ -52,7 +54,7 @@ $icon-size-lg: rhythm(2);
 @include block($component-name, component) {
     @if ($generate-components) {
 
-        @include c-icon-svg($component-name, light-invert) {
+        @include c-icon-svg($component-name) {
         }
 
         @each $key, $name in $THEME_RENDER_KEYS {

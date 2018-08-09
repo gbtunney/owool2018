@@ -41,15 +41,38 @@ $chroma: add-colors($baseColors);
 
 
 
+
+
+
     } @else {
         $chroma: define-color-scheme(map-get($scheme, key), $parent: map-get($scheme, parent));
+
+        @if (map-has-key($scheme, colors) ==false ) {
+
+            @if (map-has-key($scheme, invert)){
+               // @debug ;
+                // @debug
+          //  map-set($scheme,colors,;
+                 //map-merge($scheme, (colors: ()));
+
+                $scheme: map-merge($scheme,  (colors: u-inverted-colormap( map-get($scheme,key)  )));
+                @debug "------no color , is inverted" #{$scheme} ;
+
+            }
+
+        }
+
     }
 
     // Add colors to the functional color scheme.
-    $chroma: add-colors(map-get($scheme, key), map-get($scheme, colors));
+    @if (map-has_key($scheme, colors) ){
+        $chroma: add-colors(map-get($scheme, key), map-get($scheme, colors));
+
+    }
+
 
     @if($generate-inverted-schemes){
-        @include invert-scheme(map-get($scheme, key));
+        //@include invert-scheme(map-get($scheme, key));
     }
 
 }

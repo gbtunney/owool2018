@@ -2,17 +2,25 @@ $logo-width: 10%;
 
 $show-guides: false;
 
+[data-section-type="header-section"]{
+    border-top: rhythm(1)/2 solid color($chroma-active-scheme,accent);
+
+}
+
 .Owool_Header {
 
     $self:&;
 
     //border at the tp[
-    border-top: rhythm(1)/2 solid color($chroma-active-scheme,border);
+
+
 
     position: relative;
     display: block;
 
-    padding: rhythm(1);
+    @include u-default-container;
+
+    padding-top: rhythm(2);
 
     &__wrapper {
 
@@ -25,7 +33,7 @@ $show-guides: false;
         align-items: stretch;
         width: 100%;
 
-        @include margin-trailer(2);
+        @include margin-trailer(1);
         > * {
             &:nth-child(1) {
                 @if ($show-guides){
@@ -88,6 +96,7 @@ $show-guides: false;
 
     &__social {
         width: auto;
+        @include u-horizontal-list();
     }
 
     &__customer {
@@ -110,6 +119,11 @@ $show-guides: false;
     &__search {
         background: red;
         display: none;
+    }
+
+    &__divider{
+       // background: red;
+        //padding: 0 rhythm(1);
     }
 }
 

@@ -169,9 +169,19 @@ height: 100%;
 		height: 100%;
 	}
 }
-@mixin u-horizontal-list(){
+
+
+@mixin u-horizontal-list( $margin:rhythm(.5) ,$justify-content: space-between){
 	display: flex;
-	justify-content: space-between;
+	justify-content: $justify-content;
+
+	> * {
+		margin-right: $margin;
+
+		&:last-child{
+			margin-right: 0;
+		}
+	}
 }
 
  /* @include transition(all,2s,ease-out); */

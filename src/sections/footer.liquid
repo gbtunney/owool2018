@@ -1,6 +1,11 @@
+{% assign footer_style_modifier = 'dark' %}
+{% assign footer_style_modifier__social = 'dark' %}
+{% assign footer_style_modifier__form = 'dark' %}
+{% assign footer_style_modifier__form_button = 'dark' %}
+
 <footer class="Owool_Footer">
     <div class="inner">
-        {% include 'ornament-divider'   with  style_modifier: 'dark' %}
+
 
         <section class="a-footer-grid footer-content-area">
             <div class="footer-col" id="footer-1">
@@ -61,8 +66,11 @@
             </ul>
             {% endunless %}
         {% endif %}
+        <div class="Owool_Header__divider">
 
-        <div>
+        {% include 'ornament-divider'   with  style_modifier: footer_style_modifier %}
+        </div>
+        <div class="Owool_Footer__meta">
             <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}
                 . {{ powered_by_link }}</small>
         </div>

@@ -10,11 +10,12 @@ footer {
         @include u-default-container;
     }
 
-    @include color-scheme(dark);
+    @include color-scheme(dark-accent-primary);
     @include setType(2, font-serif);
 
     text-align: left;
 
+    padding-top: rhythm(2);
     //todo: figure out better way of dealing with this
     a {
         //background: purple;
@@ -22,6 +23,18 @@ footer {
         font-size: inherit;
         text-transform: uppercase;
     }
+    &__divider {
+
+        @include margin-leader(1);
+
+    }
+    &__meta {
+        @include margin-leader(1);
+
+        text-align: center;
+        @include trailer(1);
+    }
+
 }
 
 //SASS

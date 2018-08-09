@@ -1,22 +1,26 @@
+{% assign header_style_modifier = 'light' %}
+{% assign header_style_modifier__social = 'dark-accent-default --btn-round' %}
+{% assign header_style_modifier__cart = 'accent-primary --lg' %}
+{% assign header_style_modifier__divider = 'accent-default' %}
+{% assign header_style_modifier__main_menu_icon = 'accent-secondary --sm Owool_Main-Menu__icon' %}
 
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
 
     {% if template.name == 'index' %}
-    <h1 itemscope itemtype="http://schema.org/Organization">
-        {% else %}
-        <div class="h1" itemscope itemtype="http://schema.org/Organization">
-            {% endif %}
-
-
-            {% if template.name == 'index' %}
-    </h1>
+        <h1 itemscope itemtype="http://schema.org/Organization">
     {% else %}
-</div>
-{% endif %}
+        <div class="h1" itemscope itemtype="http://schema.org/Organization">
+    {% endif %}
+
+    {% if template.name == 'index' %}
+        </h1>
+    {% else %}
+        </div>
+    {% endif %}
 
   <header class="Owool_Header" role="banner">
-      <div class="Owool_Header__wrapper">
 
+      <div class="Owool_Header__wrapper">
           <div class="Owool_Header__logo">
               <a href="/" itemprop="url"
                  class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
@@ -25,11 +29,10 @@
                   </div>
               </a>
           </div>
-
           <div class="Owool_Header__meta">
                   <div class="Owool_Header__cart">
                       <div class="Owool_Header__cart-icon">
-                          {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: 'light-accent-primary --md ' %}
+                          {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: header_style_modifier__cart  %}
                       </div>
                       <div class="Owool_Header__cart-item-count">
                           <a href="/cart">
@@ -41,7 +44,7 @@
 
                   <div class="Owool_Header__social">
 
-                      {% include 'social-nav-links' with social_nav_theme : "dark --btn-round" %}
+                      {% include 'social-nav-links' with social_nav_theme : header_style_modifier__social %}
                   </div>
 
                   {% if shop.customer_accounts_enabled %}
@@ -79,7 +82,7 @@
                       {% for link in linklists[section.settings.main_linklist].links %}
                           {% if link.links != blank %}
                               <li class="Owool_Main-Menu__item --has-submenu">
-                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: 'light-accent-secondary --md Owool_Main-Menu__icon' %}
+                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: header_style_modifier__main_menu_icon %}
                                   <a href="{{ link.url }}">{{ link.title | escape }}</a>
                                   <ul>
                                       {% for childlink in link.links %}
@@ -104,8 +107,10 @@
                               </li>
                           {% else %}
                               <li class="Owool_Main-Menu__item">
-                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: 'light-accent-secondary --md Owool_Main-Menu__icon' %}
+                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-b.svg',style_modifier: header_style_modifier__main_menu_icon %}
                                   <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: header_style_modifier__main_menu_icon %}
+
                               </li>
                           {% endif %}
                       {% endfor %}
@@ -133,13 +138,12 @@
 
           </div>
       </div>
-      {% include 'ornament-divider'   with  style_modifier: 'light' %}
 
+      <div class="Owool_Header__divider">
+          {% include 'ornament-divider'   with  style_modifier: header_style_modifier__divider %}
+      </div>
 
   </header>
-
-
-
 </div>
 
 {% schema %}

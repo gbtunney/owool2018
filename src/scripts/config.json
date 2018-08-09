@@ -6,8 +6,10 @@
 	"render_component_themes": {
 		"light":"Light",
 		"dark": "Dark",
-		"light-accent-secondary":"light-accent-secondary",
-		"light-accent-primary":"light-accent-primary",
+		"accent-default":"accent-default",
+		"accent-secondary":"accent-secondary",
+		"accent-primary":"accent-primary",
+		"dark-accent-default":"dark-accent-default",
 		"dark-accent-secondary":"dark-accent-secondary",
 		"dark-accent-primary":"dark-accent-primary"
 	},
@@ -52,22 +54,22 @@
 				"foreground": "fuscous_gray",
 				"background": "white",
 				"accent": "gum-leaf",
-				"border": "gum-leaf",
+				"border": "fuscous_gray",
 				"link": "gum-leaf"
 			}
 		},
 		{
-			"key": "light-accent-secondary",
-			"description": "'light yellow theme'",
+			"key": "accent-default",
+			"description": "'light grey foreground'",
 			"parent": "light",
 			"colors": {
-				"foreground": "lightning_yellow",
-				"border": "lightning_yellow"
+				"foreground": "oslo-gray",
+				"border": "oslo-gray"
 			}
 		},
 		{
-			"key": "light-accent-primary",
-			"description": "'light mint theme'",
+			"key": "accent-primary",
+			"description": "'light mint foreground'",
 			"parent": "light",
 			"colors": {
 				"foreground": "gum-leaf",
@@ -75,32 +77,37 @@
 			}
 		},
 		{
-			"key": "dark",
-			"description": "'DARK THEME!!'",
-			"parent": false,
+			"key": "accent-secondary",
+			"description": "'light yellow foreground'",
+			"parent": "light",
 			"colors": {
-				"foreground": "white",
-				"background": "gum-leaf",
-				"accent": "lightning_yellow",
-				"border": "lightning_yellow",
-				"link":"lightning_yellow"
+				"foreground": "lightning_yellow",
+				"border": "lightning_yellow"
 			}
+		},
+		{
+			"key": "dark",
+			"description": "'inverted'",
+			"parent": "light",
+			"invert" : "true"
+		},
+		{
+			"key": "dark-accent-default",
+			"description": "'light grey background'",
+			"parent": "accent-default",
+			"invert" : "true"
 		},
 		{
 			"key": "dark-accent-secondary",
-			"description": "'DARK THEME!!'",
-			"parent": "dark",
-			"colors": {
-				"background": "lightning_yellow"
-			}
+			"description": "'inverted'",
+			"parent": "accent-secondary",
+			"invert" : "true"
 		},
 		{
 			"key": "dark-accent-primary",
-			"description": "'DARK THEME!!'",
-			"parent": "dark",
-			"colors": {
-				"background": "gum-leaf"
-			}
+			"description": "'inverted'",
+			"parent": "accent-primary",
+			"invert" : "true"
 		},
 		{
 			"key": "alt-light",
@@ -112,51 +119,6 @@
 				"accent": "lightning_yellow",
 				"border": "lightning_yellow",
 				"link":"lightning_yellow"
-			}
-		},
-		{
-			"key": "top-menu",
-			"description": "'top menu!!'",
-			"parent": "dark",
-			"colors": {
-				"background": "jacko-bean"
-			}
-		},
-		{
-			"key": "form",
-			"description": "'top menu!!'",
-			"parent": "dark",
-			"colors": {
-				"border": "sandstone",
-				"background": "madras"
-			}
-		},
-		{
-			"key": "tabs",
-			"description": "'tabs menu!!'",
-			"parent": "dark",
-			"colors": {
-				"inactive": "onion"
-			}
-		},
-		{
-			"key": "grid-helper",
-			"description": "'grid helper menu!!'",
-			"parent": "dark",
-			"colors": {
-				"foreground": "white",
-				"background": "madras",
-				"accent": "blue",
-				"border": "red"
-			}
-		},
-		{
-			"key": "modal",
-			"description": "'grid helper menu!!'",
-			"parent": "dark",
-			"colors": {
-				"overlay": "madras",
-				"background": "dark-gray"
 			}
 		}
 	],

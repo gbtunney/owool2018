@@ -47,7 +47,16 @@
     }
     @content;
 }
+@function u-inverted-colormap( $base-scheme: $chroma-active-scheme ){
 
+    $new-colors: (
+        foreground: color($base-scheme, background),
+        background: color($base-scheme, foreground),
+        accent:  color($base-scheme, accent),
+        border: color($base-scheme, foreground),
+    );
+    @return $new-colors;
+}
 @mixin invert-scheme( $base-scheme, $new-scheme-name:null,$accent:null ) {
 
     @if ($new-scheme-name == null) {
