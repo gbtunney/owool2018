@@ -1,27 +1,22 @@
 $component-name: 'Icon-SVG';
 
-$icon-size-sm: 12px;
-$icon-size-md: 20px;
-$icon-size-lg: 60px;
-
-///make quick icon using this
-
+$icon-size-sm: rhythm(0);
+$icon-size-md: rhythm(1);
+$icon-size-lg: rhythm(2);
 
 //scheme based icon
 @mixin c-icon-svg($id:$component-name, $color-scheme: $chroma-active-scheme, $width: $icon-size-md, $height: $width ) {
 
-@include u-icon-svg(color($color-scheme, foreground),$width,$height);
+    @include u-icon-svg(color($color-scheme, foreground), $width, $height);
 
     &__link {
         color: inherit;
         text-decoration: none;
     }
-
     a {
         color: inherit;
         color: red;
     }
-
     &.--sm {
         width: $icon-size-sm;
         height: $icon-size-sm;
@@ -30,27 +25,25 @@ $icon-size-lg: 60px;
     &.--md {
         width: $icon-size-md;
         height: $icon-size-md;
-
     }
-
     &.--lg {
         width: $icon-size-lg;
         height: $icon-size-lg;
 
     }
-    &.--btn{
-        background: color($color-scheme,background);
+    &.--btn {
+        background: color($color-scheme, background);
         padding: rhythm(1);
-border: 1px solid color($color-scheme,border);
+        border: 1px solid color($color-scheme, border);
     }
 
-    &.--btn-round{
-        background: color($color-scheme,background);
+    &.--btn-round {
+        background: color($color-scheme, background);
         padding: #{rhythm(1) / 2};
-        border: 1px solid color($color-scheme,border);
+        border: 1px solid color($color-scheme, border);
         border-radius: 100%;
     }
-@content;
+    @content;
 }
 
 // ----------------------------------------
@@ -59,7 +52,7 @@ border: 1px solid color($color-scheme,border);
 @include block($component-name, component) {
     @if ($generate-components) {
 
-        @include c-icon-svg($component-name){
+        @include c-icon-svg($component-name, light-invert) {
         }
 
         @each $key, $name in $THEME_RENDER_KEYS {

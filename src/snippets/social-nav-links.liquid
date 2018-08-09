@@ -1,42 +1,31 @@
-<div class="c-Social-Nav--{{ social_nav_theme }}">
+{%if settings.sm_pinterest %}
 
-    {%if settings.sm_pinterest %}
-        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
-            <a href="{{settings.sm_pinterest_link}}" class="" target="_blank">
-            {% include 'icon-pinterest' %}
-            </a>
-        </div>
+        {% assign href = "http://gilliantunney" %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-pinterest',style_modifier: social_nav_theme %}
+
     {% endif %}
 
     {%if settings.sm_facebook %}
-        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
-            <a href="{{settings.sm_facebook_link}}" class="" target="_blank">
-                {% include 'icon-facebook' %}
-            </a>
-        </div>
+        {% assign href = settings.sm_facebook_link %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-facebook',style_modifier: social_nav_theme %}
+
     {% endif %}
 
     {%if settings.sm_twitter %}
-        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
-            <a href="{{settings.sm_twitter_link}}" class="" target="_blank">
-                {% include 'icon-twitter' %}
-            </a>
-        </div>
+        {% assign href = settings.sm_twitter_link %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-twitter',style_modifier: social_nav_theme %}
     {% endif %}
 
     {%if settings.sm_instagram %}
-        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
-            <a href="{{settings.sm_instagram_link}}" class="" target="_blank">
-                {% include 'icon-instagram' %}
-            </a>
-        </div>
+        {% assign href = settings.sm_instagram_link %}
+
+
+        {% include 'ui-linked-icon' with icon_name: 'icon-instagram',style_modifier: social_nav_theme %}
+
     {% endif %}
 
     {%if settings.sm_instagram %}
-        <div class="c-Social-Nav--{{ social_nav_theme }}__icon">
-            <a href="{{settings.sm_instagram_link}}" class="" target="_blank">
-                {% include 'icon-instagram' %}
-            </a>
-        </div>
+        {% assign href = settings.sm_instagram_link %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-instagram',style_modifier: social_nav_theme %}
+
     {% endif %}
-</div>

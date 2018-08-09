@@ -39,12 +39,18 @@ $chroma: add-colors($baseColors);
     @if (map-get($scheme,'parent') ==false) {
         $chroma: define-color-scheme(map-get($scheme, key));
 
+
+
     } @else {
         $chroma: define-color-scheme(map-get($scheme, key), $parent: map-get($scheme, parent));
     }
 
     // Add colors to the functional color scheme.
     $chroma: add-colors(map-get($scheme, key), map-get($scheme, colors));
+
+    @if($generate-inverted-schemes){
+        @include invert-scheme(map-get($scheme, key));
+    }
 
 }
 // Set which color scheme should be used by default when calling the color()

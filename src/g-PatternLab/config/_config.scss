@@ -9,6 +9,8 @@ $THEME_RENDER_KEYS: $render_component_themes;
 
 
 $DRY_ENABLED:true!default;
+$generate-inverted-schemes:true!default;
+
 
 @import "colors";
 @import "structure";
@@ -30,6 +32,8 @@ $include-styleguide-classes:true!default;
 $include-font-icons:true!default;
 
 $generate-components:true!default;
+
+
 
 $bem-block-namespaces: (
     'object': 'o',     // defaults to 'o'
@@ -66,7 +70,7 @@ $bem-block-namespaces: (
     }
 }
 @if ($generate-scheme-placeholders){
-    @include generate-all-scheme-utility-classes;
+    @include generate-all-scheme-utility-classes();
 }
 @if ($generate-grid-placeholders){
     @include  generate-grid-classes();

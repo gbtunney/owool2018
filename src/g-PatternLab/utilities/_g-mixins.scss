@@ -77,7 +77,6 @@
 //TODO : fix
 	$required-font-props: (font-family, letter-spacing, word-spacing, text-transform, text-decoration, font-style, font-weight);
 
-@debug $font;
 	$font-map: setting($font);
 
 	@include dry(#{$font}-#{$size-unit},$DRY_ENABLED) {
@@ -87,6 +86,25 @@
 		@for $i from 1 through length($required-font-props) {
 			#{nth($required-font-props, $i)}: map-get($font-map, nth($required-font-props, $i));
 		}
+	}
+}
+
+@mixin u-reset-type(){
+
+}
+@mixin u-reset-link(){
+
+	@include u-reset-color(){
+		text-decoration: none;
+	}
+}
+@mixin u-reset-color($selector: "a, a:hover"){
+	#{$selector}{
+		color:inherit;
+		background-color: none;
+		border:inherit;
+
+		@content;
 	}
 }
 
@@ -155,3 +173,13 @@ height: 100%;
 	display: flex;
 	justify-content: space-between;
 }
+
+ /* @include transition(all,2s,ease-out); */
+@mixin u-transition($what: all, $time: 0.2s, $how: ease-in-out) {
+	-webkit-transition: $what $time $how;
+	-moz-transition:    $what $time $how;
+	-ms-transition:     $what $time $how;
+	-o-transition:      $what $time $how;
+	transition:         $what $time $how;
+}
+

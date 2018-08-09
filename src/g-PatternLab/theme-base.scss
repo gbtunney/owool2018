@@ -1,0 +1,49 @@
+//json config
+@import "../scripts/config.json";
+
+//IMPORTED TOOLS.
+@import "vendor/_vendor.scss";
+
+@import "utilities/utilities";
+@import "config/_config.scss";
+
+//actual cs
+
+// s
+@import "components/components";
+@import "objects/objects";
+@import "../styles/aeolidia/_o-wool-styles.scss";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "site/base";
+
+@import "site/site";
+

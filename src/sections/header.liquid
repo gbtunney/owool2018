@@ -1,113 +1,145 @@
-<style>
-  {% if section.settings.logo != blank %}
-    .site-header__logo-image {
-      max-width: {{ section.settings.logo_max_width }}px;
-    }
-  {% endif %}
-</style>
+
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
-  <header class="Owool_Header" role="banner">
+
     {% if template.name == 'index' %}
-      <h1 itemscope itemtype="http://schema.org/Organization">
-    {% else %}
-      <div class="h1" itemscope itemtype="http://schema.org/Organization">
-    {% endif %}
-        <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
-            <div alt="{{ shop.name }}" class="Owool_Logo_SVG">
-                {%  include 'logo-owool.svg' %}
-            </div>
-
-
-        </a>
-    {% if template.name == 'index' %}
-      </h1>
-    {% else %}
-      </div>
-    {% endif %}
-
-    <a href="/cart">
-        {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: 'light-accent-primary --lg ' %}
-      {{ 'layout.cart.title' | t }}
-      ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
-    </a>
-
-    {% if shop.customer_accounts_enabled %}
-      <ul>
-        {% if customer %}
-          <li>
-            {% if customer.first_name != blank %}
-              {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-              {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
-            {% else %}
-              <a href="/account">{{ 'layout.customer.account' | t }}</a>
-            {% endif %}
-          </li>
-          <li>
-            {{ 'layout.customer.log_out' | t | customer_logout_link }}
-          </li>
+    <h1 itemscope itemtype="http://schema.org/Organization">
         {% else %}
-          <li>
-            {{ 'layout.customer.log_in' | t | customer_login_link }}
-          </li>
-          <li>
-            {{ 'layout.customer.create_account' | t | customer_register_link }}
-          </li>
-        {% endif %}
-      </ul>
-    {% endif %}
+        <div class="h1" itemscope itemtype="http://schema.org/Organization">
+            {% endif %}
 
-    <form action="/search" method="get" role="search">
-      <label for="Search" class="label-hidden">
-        {{ 'general.search.placeholder' | t }}
-      </label>
-      <input type="search"
-             name="q"
-             id="Search"
-             value="{{ search.terms | escape }}"
-             placeholder="{{ 'general.search.placeholder' | t }}">
-      <button type="submit" class="btn">
-        {% include 'icon-search' %}
-        <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-      </button>
-    </form>
+
+            {% if template.name == 'index' %}
+    </h1>
+    {% else %}
+</div>
+{% endif %}
+
+  <header class="Owool_Header" role="banner">
+      <div class="Owool_Header__wrapper">
+
+          <div class="Owool_Header__logo">
+              <a href="/" itemprop="url"
+                 class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+                  <div alt="{{ shop.name }}" class="Owool_Logo_SVG">
+                      {% include 'logo-owool.svg' %}
+                  </div>
+              </a>
+          </div>
+
+          <div class="Owool_Header__meta">
+                  <div class="Owool_Header__cart">
+                      <div class="Owool_Header__cart-icon">
+                          {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: 'light-accent-primary --md ' %}
+                      </div>
+                      <div class="Owool_Header__cart-item-count">
+                          <a href="/cart">
+                              {{ 'layout.cart.title' | t }}
+                              ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+                          </a>
+                      </div>
+                  </div>
+
+                  <div class="Owool_Header__social">
+
+                      {% include 'social-nav-links' with social_nav_theme : "dark --btn-round" %}
+                  </div>
+
+                  {% if shop.customer_accounts_enabled %}
+                      <div class="Owool_Header__customer">
+                          <ul>
+                              {% if customer %}
+                                  <li class="Owool_Header__customer-account">
+                                      {% if customer.first_name != blank %}
+                                          {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                                          {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                                      {% else %}
+                                          <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                                      {% endif %}
+                                  </li>
+                                  <li class="Owool_Header__customer-logout">
+                                      {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                                  </li>
+                              {% else %}
+                                  <li class="Owool_Header__customer-login">
+                                      {{ 'layout.customer.log_in' | t | customer_login_link }}
+                                  </li>
+                                  <li class="Owool_Header__customer-create">
+                                      {{ 'layout.customer.create_account' | t | customer_register_link }}
+                                  </li>
+                              {% endif %}
+                          </ul>
+                      </div>
+                  {% endif %}
+
+
+              </div>
+          <div>
+              <nav  role="navigation">
+                  <ul class="Owool_Main-Menu">
+                      {% for link in linklists[section.settings.main_linklist].links %}
+                          {% if link.links != blank %}
+                              <li class="Owool_Main-Menu__item --has-submenu">
+                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: 'light-accent-secondary --md Owool_Main-Menu__icon' %}
+                                  <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                                  <ul>
+                                      {% for childlink in link.links %}
+                                          {% if childlink.links != blank %}
+                                              <li>
+                                                  <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                  <ul>
+                                                      {% for grandchildlink in childlink.links %}
+                                                          <li>
+                                                              <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                                                          </li>
+                                                      {% endfor %}
+                                                  </ul>
+                                              </li>
+                                          {% else %}
+                                              <li>
+                                                  <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                              </li>
+                                          {% endif %}
+                                      {% endfor %}
+                                  </ul>
+                              </li>
+                          {% else %}
+                              <li class="Owool_Main-Menu__item">
+                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: 'light-accent-secondary --md Owool_Main-Menu__icon' %}
+                                  <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                              </li>
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+              </nav>
+          </div>
+          <div>
+              <div class="Owool_Header__search">
+
+                  <form action="/search" method="get" role="search">
+                      <label for="Search" class="label-hidden">
+                          {{ 'general.search.placeholder' | t }}
+                      </label>
+                      <input type="search"
+                             name="q"
+                             id="Search"
+                             value="{{ search.terms | escape }}"
+                             placeholder="{{ 'general.search.placeholder' | t }}">
+                      <button type="submit" class="btn">
+                          {% include 'icon-search' %}
+                          <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+                      </button>
+                  </form>
+              </div>
+
+          </div>
+      </div>
+      {% include 'ornament-divider'   with  style_modifier: 'light' %}
+
 
   </header>
 
-  <nav role="navigation">
-    <ul>
-      {% for link in linklists[section.settings.main_linklist].links %}
-        {% if link.links != blank %}
-          <li>
-            <a href="{{ link.url }}">{{ link.title | escape }}</a>
-            <ul>
-              {% for childlink in link.links %}
-                {% if childlink.links != blank %}
-                  <li>
-                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-                    <ul>
-                      {% for grandchildlink in childlink.links %}
-                        <li>
-                          <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </li>
-                {% else %}
-                  <li>
-                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </li>
-        {% else %}
-          <li>
-            <a href="{{ link.url }}">{{ link.title | escape }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
+
+
 </div>
 
 {% schema %}

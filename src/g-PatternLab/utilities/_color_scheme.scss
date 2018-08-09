@@ -65,6 +65,8 @@
         accent: $accent,
         border: color($base-scheme, foreground),
     ));
+
+    @debug $new-scheme-name;
 }
 
 @mixin u-background-contrast-text( $color: color(background)) {
