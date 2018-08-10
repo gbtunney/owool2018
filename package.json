@@ -22,7 +22,7 @@
   },
   "scripts": {
     "watch": "slate watch",
-    "styles": "node-sass  --importer node_modules/node-sass-json-importer/dist/node-sass-json-importer.js --watch -rw  src/g-PatternLab/theme-base.scss src/styles/theme.css",
+    "styles": "node-sass  --importer node_modules/node-sass-json-importer/dist/node-sass-json-importer.js  --watch -rw  src/g-PatternLab/theme-base.scss src/styles/theme.css",
     "start:dev": "slate start --env development",
     "start:prod": "slate start --env production",
     "deploy:dev": "slate deploy --env development",

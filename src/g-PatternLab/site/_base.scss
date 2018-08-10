@@ -20,11 +20,17 @@
 
      */
     a {
+font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        text-decoration: inherit;
 
+        font-weight: inherit;
         //color: color(accent);
 
 
-        @include setType(0, font-serif);
+
+ //    @include setType(0, font-serif);
 
     }
 

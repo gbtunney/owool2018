@@ -5,6 +5,7 @@
 	"typekit":"'https://use.typekit.net/kxg6qeb.css'",
 	"render_component_themes": {
 		"light":"Light",
+		"light-alt":"Light Alt",
 		"dark": "Dark",
 		"accent-default":"accent-default",
 		"accent-secondary":"accent-secondary",
@@ -56,6 +57,15 @@
 				"accent": "gum-leaf",
 				"border": "fuscous_gray",
 				"link": "gum-leaf"
+			}
+		},
+		{
+			"key": "light-alt",
+			"description": "'The main light on dark theme.'",
+			"parent": "light",
+			"colors": {
+				"accent": "lightning_yellow",
+				"link": "lightning_yellow"
 			}
 		},
 		{
@@ -151,6 +161,16 @@
 			"font-serif": {
 				"font-family": "adobe-garamond-pro",
 				"title": "'Secondary, Headers : Mrs Eaves'"
+			},
+			"font-serif-italic": {
+				"font-family": "adobe-garamond-pro",
+				"title": "'italic serif'",
+				"font-style": "italic"
+			},
+			"font-serif-bold": {
+				"font-family": "adobe-garamond-pro",
+				"title": "'bold serif'",
+				"font-weight": "700"
 			},
 			"font-small-caps": {
 				"font-family": "adobe-garamond-pro",

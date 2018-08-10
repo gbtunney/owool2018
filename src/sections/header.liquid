@@ -30,18 +30,6 @@
               </a>
           </div>
           <div class="Owool_Header__meta">
-                  <div class="Owool_Header__cart">
-                      <div class="Owool_Header__cart-icon">
-                          {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: header_style_modifier__cart  %}
-                      </div>
-                      <div class="Owool_Header__cart-item-count">
-                          <a href="/cart">
-                              {{ 'layout.cart.title' | t }}
-                              ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
-                          </a>
-                      </div>
-                  </div>
-
                   <div class="Owool_Header__social">
 
                       {% include 'social-nav-links' with social_nav_theme : header_style_modifier__social %}
@@ -49,31 +37,40 @@
 
                   {% if shop.customer_accounts_enabled %}
                       <div class="Owool_Header__customer">
-                          <ul>
                               {% if customer %}
-                                  <li class="Owool_Header__customer-account">
+                                  <div class="Owool_Header__customer-account">
                                       {% if customer.first_name != blank %}
                                           {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
                                           {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
                                       {% else %}
                                           <a href="/account">{{ 'layout.customer.account' | t }}</a>
                                       {% endif %}
-                                  </li>
-                                  <li class="Owool_Header__customer-logout">
+                                  </div>
+                                  <div class="Owool_Header__customer-logout">
                                       {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                                  </li>
+                                  </div>
                               {% else %}
-                                  <li class="Owool_Header__customer-login">
+                                  <div class="Owool_Header__customer-login">
                                       {{ 'layout.customer.log_in' | t | customer_login_link }}
-                                  </li>
-                                  <li class="Owool_Header__customer-create">
+                                  </div>
+                                  <div class="Owool_Header__customer-create">
                                       {{ 'layout.customer.create_account' | t | customer_register_link }}
-                                  </li>
+                                  </div>
                               {% endif %}
-                          </ul>
                       </div>
                   {% endif %}
 
+              <div class="Owool_Header__cart">
+                  <div class="Owool_Header__cart-icon">
+                      {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: header_style_modifier__cart  %}
+                  </div>
+                  <div class="Owool_Header__cart-item-count">
+                      <a href="/cart">
+                          {{ 'layout.cart.title' | t }}
+                          ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+                      </a>
+                  </div>
+              </div>
 
               </div>
           <div>
@@ -107,9 +104,9 @@
                               </li>
                           {% else %}
                               <li class="Owool_Main-Menu__item">
-                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-b.svg',style_modifier: header_style_modifier__main_menu_icon %}
-                                  <a href="{{ link.url }}">{{ link.title | escape }}</a>
-                                  {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: header_style_modifier__main_menu_icon %}
+                                  <a href="{{ link.url }}">
+                                  {% include 'c-kabob'  with   style_modifier: 'light-alt' , flags: "--sm --no-divider" , reflect:true, kabob_left_icon: "icon-leaves-b.svg", kabob_label: link.title %}
+                                  </a>
 
                               </li>
                           {% endif %}
@@ -140,7 +137,10 @@
       </div>
 
       <div class="Owool_Header__divider">
-          {% include 'ornament-divider'   with  style_modifier: header_style_modifier__divider %}
+          {% include 'c-kabob'  with   style_modifier: 'light' , flags: "--md --no-divider" , kabob_right_icon: "icon-snapchat", kabob_left_icon: "icon-leaves-b.svg", kabob_label: "gillian's text" %}
+
+          {% include 'c-divider'   with  style_modifier: header_style_modifier__divider %}
+
       </div>
 
   </header>

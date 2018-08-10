@@ -65,35 +65,16 @@
 <body class="{% if customer %}customer-logged-in {% endif %}template{{ template | split: '.' | first | camelize }} {{page.title}} {{ product.title }}">
   
     
-  <div class="wrapper">
-    
+
     <!-- Header -->
 
       {% section 'header' %}
 
-    <!-- Content -->
-    <div class="content-wrapper clearfix">    
 
-      {% if template == 'list-collections' %}
-        {% include 'collection-listing' %}
-      {% else %}
+    <main role="main" id="MainContent">
         {{ content_for_layout }}
-      {% endif %}
+    </main>
 
-      {% if template contains "blog" %}
-        {% include 'col-widgets' %}
-      {% elsif template contains "article" %}
-				{% include 'col-widgets' %}
-			{% endif %}
-
-    </div><!-- /.content -->
-    
-    <!-- Footer -->
-
-
-  </div><!-- /.wrapper -->
-
-  {% section 'header-old' %}
 
 
   <!--[if lt IE 8]>
@@ -270,9 +251,7 @@ $(window).scroll(function () {
 </script>
 
 
-  <main role="main" id="MainContent">
-      {{ content_for_layout }}
-  </main>
+
 
   {% section 'footer' %}
 </body>

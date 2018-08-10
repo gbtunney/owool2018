@@ -1,0 +1,126 @@
+$component-name: 'Kabob';
+
+$icon-size-xs: rhythm(.5);
+$icon-size-sm: rhythm(.75);
+$icon-size-md: rhythm(1.25);
+$icon-size-lg: rhythm(2);
+
+$icon-default-size: $icon-size-sm;
+
+@mixin c-kabob($id:$component-name, $color-scheme: $chroma-active-scheme,$end-size: $ui-divider-size-ends ) {
+
+    $self: &;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
+    }
+
+    &__left, &__right {
+        @include u-icon-svg(color($color-scheme, accent), $icon-default-size);
+    }
+
+    .--reflect &__right {
+        @include u-reflect-X();
+    }
+
+    .--monochrome &__left, .--monochrome &__right {
+        @include u-icon-svg(color($color-scheme, foreground), $icon-default-size);
+    }
+
+    .--xs &__left, .--xs &__right {
+        width: $icon-size-xs;
+        height: $icon-size-xs;
+    }
+
+    .--sm &__left, .--sm &__right {
+        width: $icon-size-sm;
+        height: $icon-size-sm;
+    }
+
+    .--md &__left, .--md &__right {
+        width: $icon-size-md;
+        height: $icon-size-md;
+    }
+    .--lg &__left, .--lg &__right {
+        width: $icon-size-lg;
+        height: $icon-size-lg;
+    }
+
+    &__inner {
+        //float center text
+        position: absolute;
+        width: 100%;
+        margin: 0 auto;
+
+        .--no-divider & {
+          position: relative;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            *{
+                padding: 0 rhythm(.25);
+            }
+        }
+
+        * {
+            background: color($color-scheme, background);
+            //padding: 10px;
+            outline: 1px solid color($color-scheme, background);
+        }
+    }
+    &__center {
+        position: relative;
+        display: grid;
+      //  align-items: center;
+        height: 100%;
+        width: 100%;
+        grid-template-columns: 100% 1fr 100%;
+
+
+        &:after {
+            display: block;
+            width: 100%;
+            height: $icon-default-size * .1;
+            background: color($color-scheme, foreground);
+            content: " ";
+
+            .--xs & {
+                height: $icon-size-xs  * .1;
+            }
+            .--md & {
+                height: $icon-size-md  * .1;
+            }
+            .--sm & {
+                height: $icon-size-sm  * .1;
+            }
+            .--lg & {
+                height: $icon-size-lg  * .1;
+            }
+            .--no-divider & {
+                content: " ";
+                height: 0;
+                display: none;
+            }
+        }
+
+    }
+    @content;
+}
+
+@include block($component-name, component) {
+    @if ($generate-components) {
+        @include c-kabob($component-name);
+        @each $key, $name in $THEME_RENDER_KEYS {
+            @include modifier($key) {
+                @include c-kabob($component-name, $key);
+            }
+        }
+    }
+}

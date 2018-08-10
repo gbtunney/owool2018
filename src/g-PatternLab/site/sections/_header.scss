@@ -2,25 +2,19 @@ $logo-width: 10%;
 
 $show-guides: false;
 
-[data-section-type="header-section"]{
-    border-top: rhythm(1)/2 solid color($chroma-active-scheme,accent);
-
+[data-section-type="header-section"] {
+    border-top: rhythm(.25) solid color($chroma-active-scheme, accent);
 }
 
 .Owool_Header {
 
-    $self:&;
+    $self: &;
 
-    //border at the tp[
-
-
+    @include u-default-container;
+    padding-top: rhythm(1);
 
     position: relative;
     display: block;
-
-    @include u-default-container;
-
-    padding-top: rhythm(2);
 
     &__wrapper {
 
@@ -36,26 +30,24 @@ $show-guides: false;
         @include margin-trailer(1);
         > * {
             &:nth-child(1) {
-                @if ($show-guides){
+                @if ($show-guides) {
                     background: pink;
                 }
-
-                // justify-self: end;
-
                 grid-row-start: 1;
                 grid-row-end: span 2;
+
             }
             &:nth-child(2) {
                 @if ($show-guides) {
                     background: orange;
                 }
+                align-self: flex-start;
             }
             &:nth-child(3) {
                 @if ($show-guides) {
                     background: yellow;
                 }
-                align-self: end;
-
+                align-self: flex-end;
             }
             &:nth-child(4) {
                 @if ($show-guides) {
@@ -66,7 +58,7 @@ $show-guides: false;
     }
 
     &__logo {
-        // width: $logo-width;
+
         height: 100%;
 
         .Owool_Logo_SVG {
@@ -81,11 +73,19 @@ $show-guides: false;
         width: 100%;
         height: auto;
         flex-wrap: nowrap;
+
+        @include color-scheme($chroma-active-scheme, false);
+        @include setType(-1, font-serif-italic);
+
+        font-style: italic;
+        @include u-inherit-selector();
     }
 
     //part of meta
     &__cart {
         width: auto;
+        @include u-horizontal-list();
+
         &-icon {
 
         }
@@ -101,7 +101,8 @@ $show-guides: false;
 
     &__customer {
         width: auto;
-        //acct menu
+        @include u-horizontal-list();
+
         &-account {
 
         }
@@ -120,19 +121,17 @@ $show-guides: false;
         background: red;
         display: none;
     }
-
-    &__divider{
-       // background: red;
-        //padding: 0 rhythm(1);
-    }
 }
 
 .Owool_Main-Menu {
 
+    a {
+        //    @include u-reset-link;
+    }
+
     @include u-horizontal-list();
 
     justify-content: flex-end;
-    @include leader();
 
     width: 100%;
     height: 100%;
@@ -142,32 +141,17 @@ $show-guides: false;
     @include setType(2, font-san-serif);
     @include color-scheme(light, false, false);
 
-    a {
-        @include u-reset-link;
-    }
-
     &__item {
-        // background: orange;
 
+        width: auto;
         #{$parent}__icon {
-            opacity: 0;
 
+            opacity: 0;
             @include u-transition(opacity);
         }
 
         &:hover #{$parent}__icon {
-
             opacity: 1;
-
         }
-
-    }
-
-    .c-Icon-SVG {
-
-        //  display:none;
-
     }
 }
-
-

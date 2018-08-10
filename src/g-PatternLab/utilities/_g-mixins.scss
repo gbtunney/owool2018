@@ -92,13 +92,17 @@
 @mixin u-reset-type(){
 
 }
-@mixin u-reset-link(){
+@mixin u-inherit-selector($selector: "a, a:hover"){
 
-	@include u-reset-color(){
-		text-decoration: none;
+	#{$selector}{
+		text-decoration: inherit;
+		font-family: inherit;
+		font-size: inherit;
 	}
+
+	//}
 }
-@mixin u-reset-color($selector: "a, a:hover"){
+@mixin u-resddet-color($selector: "a, a:hover"){
 	#{$selector}{
 		color:inherit;
 		background-color: none;
@@ -107,6 +111,7 @@
 		@content;
 	}
 }
+
 
 @mixin base-component($key,$color-scheme: $chroma-active-scheme){
 	@include dry(#{$key}-#{$color-scheme}) {
@@ -193,3 +198,17 @@ height: 100%;
 	transition:         $what $time $how;
 }
 
+@mixin u-reflect-X(){
+	-moz-transform: scale(-1, 1);
+	-webkit-transform: scale(-1, 1);
+	-o-transform: scale(-1, 1);
+	-ms-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+}
+@mixin u-reflect-Y(){
+	-moz-transform: scale(1, -1);
+	-webkit-transform: scale(1, -1);
+	-o-transform: scale(1, -1);
+	-ms-transform: scale(1, -1);
+	transform: scale(1, -1);
+}
