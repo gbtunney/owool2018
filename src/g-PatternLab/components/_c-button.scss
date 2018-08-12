@@ -1,109 +1,58 @@
 $component-name: 'Button';
 
-@mixin c-button($color-scheme: $chroma-active-scheme ) {
+@mixin c-button($id:$component-name, $color-scheme: $chroma-active-scheme,$units:1,$width:auto ) {
 
+    //this is basically a wrapper for a kabob.
 
-  // @include dry(grid-2);
-  //  @include dry(g-scheme-#{$color-scheme}){
-        @include color-scheme($color-scheme);
-  //  }
+    $self: &;
+    //width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
-@include dry($component-name){
-    @include container-padding;
-    transition: all 0.2s;
-    cursor: hand;
-    outline: 5px;
-    width: auto;
-}
-@content;
-    //this is for type primarily.
+    background-color: color($color-scheme, background);
+
+    &.--no-background, &.--no-background:hover {
+        background-color: transparent;
+    }
+
+    //todo: if scheme has special hover
     &:hover {
-        background: lighten(color($color-scheme, background), 8%);
-    }
-    svg * {
-        fill: color($color-scheme, foreground);
-    }
-    &__link, a {
-        text-decoration: none;
+        background-color: lighten(color($color-scheme, background), 10%);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
     }
 
-    &__left {
+    border: 1px solid color($color-scheme, border);
 
-        .-includeIcon.-iconRight & {
-            margin-left: rhythm(1);
-        }
-        .-includeIcon.-iconLeft & {
-            margin-right: rhythm(1);
-        }
+    &.--no-border {
+        border: none;
     }
 
-    &__inner {
+    //the default is square button
+    border-radius: 0;
 
-        .-includeIcon & {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: auto;
-        }
-        .-includeIcon.-iconRight & {
+    &.--rounded {
+        padding: rhythm(1);
+        border-radius: rhythm(1);
+    }
 
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-        }
+    &.--circle {
+        padding: #{rhythm(1) / 2};
+        border-radius: 100%;
     }
-    &__icon {
-        width: 20px;
-    }
-    &.__left {
-        margin-left: rhythm(1);
-        margin-right: rhythm(1);
-    }
-    &.__right {
-        width: 100%;
-        margin-left: rhythm(1);
-        margin-right: rhythm(1);
-        a {
-            color: inherit;
-        }
-    }
-    &.-includeIcon {
 
-        &__inner {
-
-        }
-    }
+  //  @include c-kabob($id, $color-scheme, true, $width, false,$units) {
+        //@content;
+  //  }
 }
 
-
-
-///CSS to generate.
-
-///MAIN BLOCK CSS
 @include block($component-name, component) {
-   @include c-button();
-
-    //@include modifier(light) {
-      //  @include c-button(light);
-   // }
-
     @if ($generate-components) {
+        @include c-button($component-name);
         @each $key, $name in $THEME_RENDER_KEYS {
-
             @include modifier($key) {
-                @include c-button($key){
-                    @if (-dry-placeholders-get(g-scheme-#{$key})){
-
-                    }@else {
-                       // @debug 'placeholdr not found' #{$color-scheme};
-                        //  @include color-scheme($color-scheme, true, true);
-
-                       // @include color-scheme($key, false, true);
-                    }
-                }
+                @include c-button($component-name, $key);
             }
         }
-
     }
-
 }
-

@@ -105,7 +105,7 @@
                           {% else %}
                               <li class="Owool_Main-Menu__item">
                                   <a href="{{ link.url }}">
-                                  {% include 'c-kabob'  with   style_modifier: 'light-alt' , flags: "--sm --no-divider" , reflect:true, kabob_left_icon: "icon-leaves-b.svg", kabob_label: link.title %}
+                                  {% include 'c-kabob'  with   style_modifier: 'light-alt' , flags: " --no-divider" , reflect:true, kabob_left_icon: "icon-leaves-b.svg", kabob_label: link.title %}
                                   </a>
 
                               </li>
@@ -137,6 +137,8 @@
       </div>
 
       <div class="Owool_Header__divider">
+
+
           {% include 'c-kabob'  with   style_modifier: 'light' , flags: "--md --no-divider" , kabob_right_icon: "icon-snapchat", kabob_left_icon: "icon-leaves-b.svg", kabob_label: "gillian's text" %}
 
           {% include 'c-divider'   with  style_modifier: header_style_modifier__divider %}

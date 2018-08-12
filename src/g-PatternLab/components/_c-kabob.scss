@@ -1,56 +1,53 @@
 $component-name: 'Kabob';
 
-$icon-size-xs: rhythm(.5);
-$icon-size-sm: rhythm(.75);
-$icon-size-md: rhythm(1.25);
-$icon-size-lg: rhythm(2);
+$scale-unit-xs: -2;
+$scale-unit-sm: -1;
+$scale-unit-md: 0;
+$scale-unit-lg: 1;
+$scale-unit-xl: 2;
 
-$icon-default-size: $icon-size-sm;
+$default-scale-unit: $scale-unit-md;
 
-@mixin c-kabob($id:$component-name, $color-scheme: $chroma-active-scheme,$end-size: $ui-divider-size-ends ) {
+@mixin c-kabob($id:$component-name, $color-scheme: $chroma-active-scheme,$reflect: false, $width: 100%,$divider:true, $unit: $default-scale-unit ) {
 
     $self: &;
-    width: 100%;
+    width: $width;
 
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
+    @if ($reflect) {
+        &__right {
+            @include u-reflect-X();
+        }
     }
-
-    &__left, &__right {
-        @include u-icon-svg(color($color-scheme, accent), $icon-default-size);
-    }
-
     .--reflect &__right {
         @include u-reflect-X();
     }
 
+    &__left, &__right {
+        @include u-icon-svg(color($color-scheme, accent), ms($unit));
+    }
     .--monochrome &__left, .--monochrome &__right {
-        @include u-icon-svg(color($color-scheme, foreground), $icon-default-size);
+        @include u-icon-svg(color($color-scheme, foreground), ms($unit));
     }
 
     .--xs &__left, .--xs &__right {
-        width: $icon-size-xs;
-        height: $icon-size-xs;
+        @include set-multiple($scale-unit-xs, width height);
     }
-
     .--sm &__left, .--sm &__right {
-        width: $icon-size-sm;
-        height: $icon-size-sm;
+        @include set-multiple($scale-unit-sm, width height);
     }
-
     .--md &__left, .--md &__right {
-        width: $icon-size-md;
-        height: $icon-size-md;
+        @include set-multiple($scale-unit-md, width height);
     }
     .--lg &__left, .--lg &__right {
-        width: $icon-size-lg;
-        height: $icon-size-lg;
+        @include set-multiple($scale-unit-lg, width height);
+    }
+    .--xl &__left, .--xl &__right {
+        @include set-multiple($scale-unit-xl, width height);
     }
 
     &__inner {
@@ -60,57 +57,64 @@ $icon-default-size: $icon-size-sm;
         margin: 0 auto;
 
         .--no-divider & {
-          position: relative;
+            position: relative;
             height: auto;
             margin: 0;
             padding: 0;
-            *{
-                padding: 0 rhythm(.25);
+            * {
+                padding: 0 rhythm($unit) * .25;
             }
         }
 
         * {
             background: color($color-scheme, background);
-            //padding: 10px;
             outline: 1px solid color($color-scheme, background);
         }
     }
-    &__center {
-        position: relative;
-        display: grid;
-      //  align-items: center;
-        height: 100%;
-        width: 100%;
-        grid-template-columns: 100% 1fr 100%;
 
+    @if ($divider){
 
-        &:after {
-            display: block;
+        &__center {
+            position: relative;
+            display: grid;
+            //  align-items: center;
+            height: 100%;
             width: 100%;
-            height: $icon-default-size * .1;
-            background: color($color-scheme, foreground);
-            content: " ";
+            grid-template-columns: 100% 1fr 100%;
 
-            .--xs & {
-                height: $icon-size-xs  * .1;
-            }
-            .--md & {
-                height: $icon-size-md  * .1;
-            }
-            .--sm & {
-                height: $icon-size-sm  * .1;
-            }
-            .--lg & {
-                height: $icon-size-lg  * .1;
-            }
-            .--no-divider & {
+            &:after {
+                display: block;
+                width: 100%;
+                height: rhythm($unit) * .1;
+                background: color($color-scheme, foreground);
                 content: " ";
-                height: 0;
-                display: none;
+
+                $multiplier: .1; ///size the line
+
+                .--xs & {
+                    height: rhythm($scale-unit-xs)  * $multiplier;
+                }
+                .--sm & {
+                    height: rhythm($scale-unit-sm)  * $multiplier;
+                }
+                .--md & {
+                    height: rhythm($scale-unit-md)  * $multiplier;
+                }
+                .--lg & {
+                    height: rhythm($scale-unit-lg)  * $multiplier;
+                }
+                .--xl & {
+                    height: rhythm($scale-unit-xl) * $multiplier;
+                }
+                .--no-divider & {
+                    content: " ";
+                    height: 0;
+                    display: none;
+                }
             }
         }
-
     }
+
     @content;
 }
 
