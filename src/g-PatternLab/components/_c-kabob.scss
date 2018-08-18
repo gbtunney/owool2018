@@ -117,14 +117,3 @@ $default-scale-unit: $scale-unit-md;
 
     @content;
 }
-
-@include block($component-name, component) {
-    @if ($generate-components) {
-        @include c-kabob($component-name);
-        @each $key, $name in $THEME_RENDER_KEYS {
-            @include modifier($key) {
-                @include c-kabob($component-name, $key);
-            }
-        }
-    }
-}

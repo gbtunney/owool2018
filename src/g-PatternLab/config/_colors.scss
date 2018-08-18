@@ -1,28 +1,4 @@
-$colors: (
-    white: #fff,
-    black: #000,
-    blue: #0e71b8,
-    red: #c00,
-    dark-gray: #585858,
-    tana: #bdba9c,
-    khaki: #f0e68c,
-    west-coast: #64551f,
-    highball: #90813b,
-    sandstone: #7b6d5c, //border
-    schooner: #8b8378,
-    spice: #66543e,
-    madras: #4c3b25, //background
-    onion: #33250d,
-    woodrush: #332915,
-    jacko-bean: #2e1c08,
-    acadia: #1e1205,
-    crowshead: #1a130a,
-    // Define a primary highlight color that has the value of our "blue" color.
-    // Note: if blue was specified without quotes, Chroma would interpret that as
-    // the color keyword blue and not a reference to the "blue" color name.
-    primary: 'blue',
-);
-
+///******SETUP CHROMA-SASS
 
 ///get variable from config flie
 @include setting-set-multiple($baseColors);
@@ -38,35 +14,18 @@ $chroma: add-colors($baseColors);
 
     @if (map-get($scheme,'parent') ==false) {
         $chroma: define-color-scheme(map-get($scheme, key));
-
-
-
-
-
-
     } @else {
         $chroma: define-color-scheme(map-get($scheme, key), $parent: map-get($scheme, parent));
 
-        @if (map-has-key($scheme, colors) ==false ) {
-            @if (map-has-key($scheme, invert)){
-                $scheme: map-merge($scheme,  (colors: u-inverted-colormap( map-get($scheme,key)  )));
+        @if (map-has-key($scheme, colors) ==false) {
+            @if (map-has-key($scheme, invert)) {
+                $scheme: map-merge($scheme, (colors: u-inverted-colormap(map-get($scheme, key))));
             }
         }
-
     }
 
     // Add colors to the functional color scheme.
-    @if (map-has_key($scheme, colors) ){
+    @if (map-has_key($scheme, colors)) {
         $chroma: add-colors(map-get($scheme, key), map-get($scheme, colors));
-
     }
-
-
-    @if($generate-inverted-schemes){
-        //@include invert-scheme(map-get($scheme, key));
-    }
-
 }
-// Set which color scheme should be used by default when calling the color()
-// function.
-
