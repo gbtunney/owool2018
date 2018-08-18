@@ -74,11 +74,20 @@ $show-guides: false;
         height: auto;
         flex-wrap: nowrap;
 
-        @include color-scheme($chroma-active-scheme, false);
+        $props: (
+            background: true,
+            foreground: true,
+            border: false,
+            accent:false
+        );
+        @include g-color-scheme($chroma-active-scheme,$props...);
+
+
+
         @include setType(-1, font-serif-italic);
 
         font-style: italic;
-        @include u-inherit-selector();
+        //@include u-inherit-selector();
     }
 
     //part of meta
@@ -139,7 +148,14 @@ $show-guides: false;
     $parent: &;
 
     @include setType(2, font-san-serif);
-    @include color-scheme(light, false, false);
+
+    $props: (
+        background: true,
+        foreground: true,
+        border: false,
+        accent:false
+    );
+    @include g-color-scheme(light,$props...);
 
     &__item {
 

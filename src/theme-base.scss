@@ -1,27 +1,32 @@
 //json config
 @import "scripts/config.json";
 
-//IMPORTED TOOLS.
 
-
-
-@import "styles/vendor/vendor";
+//****DEPENDENCIES
+@import "../node_modules/slick-carousel/slick/slick.scss";
+@import "../node_modules/slick-carousel/slick/slick-theme.scss";
+@import "../node_modules/sass-toolkit/stylesheets/_toolkit.scss";
+@import "../node_modules/breakpoint-sass/stylesheets/_breakpoint.scss";
+@import "../node_modules/breakpoint-slicer/stylesheets/breakpoint-slicer";
+@import "../node_modules/chroma-sass/sass/_chroma.scss";
+@import "../node_modules/modularscale-sass/stylesheets/modularscale";
+@import "../node_modules/compass-mixins/lib/compass/typography/vertical_rhythm";
+@import "../node_modules/sass-dry/_dry.scss";
+@import "../node_modules/sass-bem-constructor/dist/_bem-constructor.scss";
 
 @import "g-Patternlab/utilities/utilities";
-@import "g-Patternlab/config/_config.scss";
 
-//actual cs
 
-// s
+@import "g-Patternlab/config/config";
+
 @import "g-Patternlab/components/components";
 @import "g-Patternlab/objects/objects";
+
 @import "styles/aeolidia/_o-wool-styles.scss";
-
-
 @import "styles/site/base";
-
-
 @import "styles/site/site";
+
+
 
 
 

@@ -4,8 +4,13 @@
 
     @include u-make-container(50%);
 
+    $props: (
+        background: true,
+        foreground: true,
+        border: false
+    );
+    @include g-color-scheme($chroma-active-scheme,$props...);
 
-    @include color-scheme($chroma-active-scheme, false,false);
     @include setType(1, font-serif);
 
 

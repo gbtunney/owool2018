@@ -9,8 +9,14 @@ footer {
     > .inner {
         @include u-default-container;
     }
+    $props: (
+        background: true,
+        foreground: true,
+        border: false
+    );
+    @include g-color-scheme(dark-accent-primary,$props...);
 
-    @include color-scheme(dark-accent-primary);
+
     @include setType(2, font-serif);
 
     text-align: left;
