@@ -46,6 +46,7 @@
 		"acadia": "#1e1205",
 		"crowshead": "#1a130a"
 	},
+	"active-scheme": "light",
 	"schemes": [
 		{
 			"key": "light",
@@ -155,7 +156,7 @@
 			},
 			"font-san-serif": {
 				"font-family": "cronos-pro-display",
-				"letter-spacing":"-1px",
+				"letter-spacing":"0px",
 				"title": "'Primary: Mr Eaves Sans'"
 			},
 			"font-serif": {
@@ -182,5 +183,10 @@
 	"slicer": {
 		"breakpoints": "0 480px 768px 992px 1200px",
 		"breakpoint-names": "xs sm md lg"
+	},
+	"bem-block-namespaces": {
+		"object": "o",
+		"component": "g",
+		"utility": "u"
 	}
 }

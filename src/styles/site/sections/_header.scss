@@ -1,0 +1,157 @@
+$logo-width: 10%;
+
+$show-guides: false;
+
+[data-section-type="header-section"] {
+    border-top: rhythm(.25) solid color($chroma-active-scheme, accent);
+}
+
+.Owool_Header {
+
+    $self: &;
+
+    @include u-default-container;
+    padding-top: rhythm(1);
+
+    position: relative;
+    display: block;
+
+    &__wrapper {
+
+        display: grid;
+        grid-template-columns: $logo-width 1fr;
+        grid-template-rows: 100% 100%;
+        grid-gap: 0;
+
+        justify-items: stretch;
+        align-items: stretch;
+        width: 100%;
+
+        @include margin-trailer(1);
+        > * {
+            &:nth-child(1) {
+                @if ($show-guides) {
+                    background: pink;
+                }
+                grid-row-start: 1;
+                grid-row-end: span 2;
+
+            }
+            &:nth-child(2) {
+                @if ($show-guides) {
+                    background: orange;
+                }
+                align-self: flex-start;
+            }
+            &:nth-child(3) {
+                @if ($show-guides) {
+                    background: yellow;
+                }
+                align-self: flex-end;
+            }
+            &:nth-child(4) {
+                @if ($show-guides) {
+                    background: red;
+                }
+            }
+        }
+    }
+
+    &__logo {
+
+        height: 100%;
+
+        .Owool_Logo_SVG {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        height: auto;
+        flex-wrap: nowrap;
+
+        @include color-scheme($chroma-active-scheme, false);
+        @include setType(-1, font-serif-italic);
+
+        font-style: italic;
+        @include u-inherit-selector();
+    }
+
+    //part of meta
+    &__cart {
+        width: auto;
+        @include u-horizontal-list();
+
+        &-icon {
+
+        }
+        &-item-count {
+
+        }
+    }
+
+    &__social {
+        width: auto;
+        @include u-horizontal-list();
+    }
+
+    &__customer {
+        width: auto;
+        @include u-horizontal-list();
+
+        &-account {
+
+        }
+        &-login {
+
+        }
+        &-logout {
+
+        }
+        &-create {
+
+        }
+    }
+
+    &__search {
+        background: red;
+        display: none;
+    }
+}
+
+.Owool_Main-Menu {
+
+    a {
+        //    @include u-reset-link;
+    }
+
+    @include u-horizontal-list();
+
+    justify-content: flex-end;
+
+    width: 100%;
+    height: 100%;
+    background: pink;
+    $parent: &;
+
+    @include setType(2, font-san-serif);
+    @include color-scheme(light, false, false);
+
+    &__item {
+
+        width: auto;
+        #{$parent}__icon {
+
+            opacity: 0;
+            @include u-transition(opacity);
+        }
+
+        &:hover #{$parent}__icon {
+            opacity: 1;
+        }
+    }
+}

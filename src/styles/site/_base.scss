@@ -1,0 +1,154 @@
+@if ($include-base-classes) {
+
+    @include establish-baseline;
+
+
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        // @include color-scheme();
+        @include setType(0, font-serif);
+    }
+
+
+
+    p {
+        @include setType(0, font-serif);
+    }
+    /*
+     * Links
+
+     */
+    a {
+font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        text-decoration: inherit;
+
+        font-weight: inherit;
+        //color: color(accent);
+
+
+
+ //    @include setType(0, font-serif);
+
+    }
+
+
+    /* Headers */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+       // color: color(accent);
+    }
+
+    h1 a,
+    h2 a,
+    h3 a,
+    h4 a,
+    h5 a,
+    h6 a {
+        color: inherit;
+
+        font-size: inherit;
+        line-height: inherit;
+        //@include trailer(3);
+
+    }
+
+    h1 {
+        @include setType(5, font-san-serif);
+    }
+
+    h2 {
+        @include setType(4, font-san-serif);
+
+    }
+
+    h3 {
+        @include setType(3, font-san-serif);
+    }
+
+    h4 {
+        @include setType(2, font-san-serif);
+    }
+
+    h5 {
+        @include setType(1, font-san-serif);
+
+    }
+
+    h6 {
+        @include setType(-1, font-san-serif);
+    }
+
+    /* Text-Related Elements */
+    p {
+        @include trailer();
+    }
+
+    /* Blockquote */
+    blockquote {
+        font-style: italic;
+       // border-left: 1px solid $gray;
+        //color: $gray;
+        @include trailer();
+    }
+
+    abbr {
+        @include trailing-border();
+        cursor: help;
+    }
+
+    /*------------------------------------*\
+        $MEDIA ELEMENTS
+    \*------------------------------------*/
+
+    /* Flexible Media */
+    img, video, object, svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    iframe {
+        @include trailer();
+    }
+
+    figure {
+        @include trailer(2);
+        img {
+            @include trailer(1);
+        }
+    }
+    figcaption {
+        font-style: italic;
+    }
+
+    /*------------------------------------*\
+      LIST ELEMENTS
+  \*------------------------------------*/
+
+    ol, ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    /* Definition Lists */
+    dl {
+        overflow: hidden;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin-left: 0;
+    }
+
+
+}

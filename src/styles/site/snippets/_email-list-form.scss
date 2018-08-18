@@ -1,0 +1,45 @@
+.email-list-form{
+
+    #mce-EMAIL {
+        width: 160px;
+        padding: 4px 24px 4px 10px;
+        font-family: $font-family;
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::-webkit-input-placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::-moz-placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::-ms-input-placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    ::placeholder {
+        font-family: '$font-family';
+        font-style: italic;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    input[type="submit"] {
+        background: $color_lightning_yellow_approx $form-leaf no-repeat center center;
+        text-indent: -9999em;
+        border: none;
+        height: 21px;
+        width: 24px;
+        position: relative;
+        right: 30px;
+    }
+
+}
