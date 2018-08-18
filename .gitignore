@@ -62,3 +62,4 @@ secrets.json
 blog*
 
 # G PATTERNLABS #
+src/g-PatternLab/*
