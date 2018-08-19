@@ -1,0 +1,85 @@
+.Owool_Product {
+    $color-scheme: $chroma-active-scheme;
+
+    &__breadcrumbs {
+
+        @include setType(2, font-serif-italic);
+
+        a {
+            text-decoration: none;
+            $props: (
+                background: true,
+                foreground: true,
+                border: false,
+                accent: true,
+                hover-background: color($color-scheme, accent),
+                hover-foreground: color($color-scheme, background)
+            );
+            @include g-color-scheme($color-scheme, $props...);
+        }
+
+        @include g-color-scheme($color-scheme, true, true, true);
+    }
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        @include breakpoint-range(sm, "<=") {
+            display: block;
+        }
+    }
+    &__alt_images {
+        @include u-horizontal-list();
+    }
+
+    &__details {
+
+        $props: (
+            background: false,
+            foreground: true,
+            border: false,
+            accent: true,
+            accent-selector:'a'
+        );
+        @include g-color-scheme($color-scheme, $props...);
+
+        a {
+            &:hover {
+                $props: (
+                    background: color($color-scheme, accent),
+                    foreground: color($color-scheme, background),
+                    border: false,
+                    accent: false
+                );
+                @include g-color-scheme($color-scheme, $props...);
+            }
+        }
+    }
+    $parent: &;
+    &__title {
+        @include setType(4, font-serif, 1);
+
+        #{$parent}__icon {
+            @include o-icon-svg(color(light-alt, accent), 2);
+            padding-right: rhythm(.25);
+        }
+    }
+    &__description {
+        @include setType(1, font-serif-italic);
+
+        h4 {
+            @include setType(1, font-san-serif, 0);
+
+        }
+        strong {
+            font-weight: normal;
+        }
+    }
+    &__vendors {
+        @include setType(2, font-san-serif)
+
+    }
+    &__add-to-cart {
+        @include setType(2, font-serif-italic);
+    }
+}

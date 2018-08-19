@@ -1,0 +1,32 @@
+.Owool__Cart {
+    $color-scheme: $chroma-active-scheme;
+
+    #{$default-accent-selector} {
+        @include resetType();
+    }
+    table {
+
+    }
+
+    $props: (
+        background: false,
+        foreground: true,
+        border: false,
+        accent: true,
+        accent-selector:'a'
+    );
+    @include g-color-scheme($color-scheme, $props...);
+
+    @include setType(1, font-serif);
+
+    a, th {
+        @include setType(1, font-serif);
+
+    }
+
+    &__title {
+        @include setType(3, font-san-serif);
+        text-align: left;
+    }
+    @include margin-trailer(2);
+}

@@ -1,5 +1,4 @@
-<div id="breadcrumb">
-  {% if template contains "product" %}
+ {% if template contains "product" %}
 	{% if template contains "product" and collection.handle contains "patterns-" %}
 		<a href="/collections/patterns">All Patterns</a> >
     {% elsif template contains "product" and collection.handle contains "byyarn" %}
@@ -23,4 +22,3 @@
 			<a href="/collections/patterns-by-yarn">Patterns by Yarn</a> >
 	 {% endif %}{% endunless %}
   <span class="page-title">{{ page_title | remove: '*' }}</span>
-</div>

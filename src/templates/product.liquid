@@ -1,3 +1,6 @@
+{% section 'product' %}
+
+{#
 <!-- spurit_po-added -->
 {% include 'spurit_po-product-snippet' %}
 <!-- /spurit_po-added -->
@@ -6,11 +9,11 @@
 	<div id="product-gallery"{% if settings.main_image_display == 'Zoom-in' %} class="zoom-in"{% endif %}>
 
      {% include 'product-image' %}
-	
+
     <div id="product-information">
 
-      {% include 'prod-title-desc' %}  
-      
+      {% include 'prod-title-desc' %}
+
       <div id="product-order" class="default">
 			<ul id="thumbs" {% if product.images.size == 1 %}class="visuallyhidden"{% endif %}>
 	        	{% for image in product.images %}
@@ -22,25 +25,25 @@
 	        	</li>
 	        	{% endunless %}
 	        	{% endfor %}
-			</ul>	  	
+			</ul>
 		</div>
-        
+
        <p id="add-to-cart-msg"></p>
             {% if product.available %}
 	          <form action="/cart/add" method="post" class="variants" id="product-actions" enctype="multipart/form-data">
-	            <div class="options clearfix">  
+	            <div class="options clearfix">
 
-	              <div class="variants-wrapper clearfix {% if product.variants.size == 1 %}visuallyhidden{% endif %}"> 
+	              <div class="variants-wrapper clearfix {% if product.variants.size == 1 %}visuallyhidden{% endif %}">
 	                <select id="product-select" name="id">
 	                  {% for variant in product.variants %}
 	                  <option value="{{ variant.id }}">{{ variant.title | escape }} - {{ variant.price | money }}</option>
 	                  {% endfor %}
 	                </select>
-	              </div>            
+	              </div>
                   <div id="product-header-title">
                     <p class="price"></p>
                   </div>
-	              <div id="purchase">                         
+	              <div id="purchase">
 	                <input class="btn" type="submit" name="add" id="add-to-cart" value="Add to Cart" />
 	              </div>
 
@@ -49,14 +52,15 @@
         {% else %}
 	          <div id="product-actions" class="sold-out">
 	            <div id="purchase">
-	              <p class="price">Sold out.</p>      
+	              <p class="price">Sold out.</p>
 	            </div>
-	          </div>      
+	          </div>
 	        {% endif %}
     </div><!-- /#product-information -->
-    
+
 
   </div><!-- /#product -->
 
-</div><!-- /#product-gallery -->	 
+</div><!-- /#product-gallery -->
+#}
 

@@ -1,3 +1,14 @@
 .Owool_Content{
     @include u-default-container;
+$color-scheme: $chroma-active-scheme;
+    $props: (
+        background: false,
+        foreground: true,
+        border: false,
+        accent: true,
+        accent-selector:'a'
+    );
+  //  @include g-color-scheme($color-scheme, $props...);
+
+   // @include setType(0,font-serif);
 }

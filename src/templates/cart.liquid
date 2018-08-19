@@ -2,11 +2,11 @@
 <!-- spurit_po-added -->
 {% include 'spurit_po-cart-snippet' %}
 <!-- /spurit_po-added -->
-<div id="col-main" class="full content">
 
-  <div id="page-header">
-    <h2 id="page-title">Shopping Cart</h2>
-  </div>
+<div class="Owool__Cart">
+
+
+  <div class="Owool__Cart__title">Shopping Cart</div>
 <div class="cart_progress_bar">
   <div id="purchase"></div>
   </div>
@@ -59,7 +59,10 @@
             <td>{{ item.price | money }}</td>
             <td> <input class="text quantity" type="text" size="4" id="updates_{{ item.id }}" name="updates[{{ item.id }}]" value="{{ item.quantity }}" class="replace" /> </td>
             <td>{{ item.line_price | money }}</td>
-            <td><a class="btn remove-from-cart" href="/cart/change?id={{ item.id }}&quantity=0">Remove</a></td>
+            <td>
+              {% include 'ui-linked-icon' with icon_name: 'icon-close' ,style_modifier: 'accent-primary' , flags: '--md --no-border --no-padding Owool__Cart__remove-from-cart' , href : "/cart/change?id={{ item.id }}&quantity=0" %}
+
+            </td>
           </tr>
           {% endfor %}
         </tbody>
@@ -94,7 +97,7 @@
     </form>
   {% endif %}
 
-</div><!--/#col-main -->
+</div>
 <style>
 .add_more_text, .freeshipping_text, .add_more_text_cart, .freeshipping_text_cart
 {	margin-bottom: 20px; margin-top:10px;
