@@ -1,31 +1,34 @@
 <!-- "kabob" component  -->
 
-{% assign component_name = 'Kabob' %}
 {% assign default_style_modifier = 'light' %}
 {% assign default_flags = '' %}
 
 <!-- assign default for include here  -->
+{% if component_name == nil %}
+    {% assign component_name = 'Kabob' %}
+{% endif %}
+
 {% if kabob_left_icon == nil %}
     {% assign kabob_left_icon = 'ui-divider-left.svg' %}
 {% endif %}
 
-<div class="c-{{ component_name }}--{{ style_modifier | default: default_style_modifier }} {{ flags | default: default_flags }}{% if reflect %} --reflect{% endif %}">
-    <div class="c-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__left">
+<div class="g-{{ component_name }}--{{ style_modifier | default: default_style_modifier }} {{ flags | default: default_flags }}{% if reflect %} --reflect{% endif %}">
+    <div class="g-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__left">
         {% include   kabob_left_icon %}
     </div>
-    <div class="c-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__center">
-        <div class="c-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__inner">
+    <div class="g-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__center">
+        <div class="g-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__inner">
             {% if kabob_label %}
                 <span>{{ kabob_label | escape }}</span>
             {% endif %}
         </div>
     </div>
     {% if reflect %}
-        <div class="c-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__right">
+        <div class="g-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__right">
             {% include kabob_left_icon %}
         </div>
     {% elsif kabob_right_icon %}
-        <div class="c-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__right">
+        <div class="g-{{ component_name }}--{{ style_modifier | default: default_style_modifier }}__right">
             {% include kabob_right_icon %}
         </div>
     {% endif %}
@@ -37,3 +40,4 @@
 {% assign reflect = nil %}
 {% assign kabob_right_icon = nil %}
 {% assign kabob_left_icon = nil %}
+{% assign component_name = nil %}

@@ -12,10 +12,10 @@ footer {
     $props: (
         background: true,
         foreground: true,
-        border: false
+        border: false,
+        accent:color(dark-accent-primary, foreground)
     );
-    @include g-color-scheme(dark-accent-primary,$props...);
-
+    @include g-color-scheme(dark-accent-primary, $props...);
 
     @include setType(2, font-serif);
 
@@ -28,6 +28,7 @@ footer {
         font-family: inherit;
         font-size: inherit;
         text-transform: uppercase;
+        //color: red;
     }
     &__divider {
 
@@ -41,6 +42,19 @@ footer {
         @include trailer(1);
     }
 
+    &__social {
+        @include leader();
+        @include u-horizontal-list;
+        width: 80%;
+    }
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: rhythm(1);
+    }
+    &__divider {
+        @include leader();
+    }
 }
 
 //SASS

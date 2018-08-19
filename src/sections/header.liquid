@@ -1,6 +1,7 @@
 {% assign header_style_modifier = 'light' %}
-{% assign header_style_modifier__social = 'dark-accent-default --btn-round' %}
-{% assign header_style_modifier__cart = 'accent-primary --lg' %}
+{% assign header_style_modifier__social = 'dark' %}
+{% assign header_style_modifier__cart = 'accent-primary' %}
+{% assign header_flags__cart = '--md --no-border --no-padding' %}
 {% assign header_style_modifier__divider = 'accent-default' %}
 {% assign header_style_modifier__main_menu_icon = 'accent-secondary --sm Owool_Main-Menu__icon' %}
 
@@ -62,7 +63,7 @@
 
               <div class="Owool_Header__cart">
                   <div class="Owool_Header__cart-icon">
-                      {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: header_style_modifier__cart  %}
+                      {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: header_style_modifier__cart , flags: header_flags__cart %}
                   </div>
                   <div class="Owool_Header__cart-item-count">
                       <a href="/cart">
@@ -103,9 +104,25 @@
                                   </ul>
                               </li>
                           {% else %}
-                              <li class="Owool_Main-Menu__item">
+                              <li class="">
                                   <a href="{{ link.url }}">
-                                  {% include 'c-kabob'  with   style_modifier: 'light-alt' , flags: " --no-divider" , reflect:true, kabob_left_icon: "icon-leaves-b.svg", kabob_label: link.title %}
+
+                                      <div class="Owool_Main-Menu__item --reflect">
+                                          <div class="Owool_Main-Menu__item__left">
+                                              {% include   'icon-leaves-b.svg' %}
+                                          </div>
+                                          <div class="Owool_Main-Menu__item__center">
+                                              <div class="Owool_Main-Menu__item__inner">
+                                                      <span>{{ link.title  | escape }}</span>
+                                              </div>
+                                          </div>
+                                              <div class="Owool_Main-Menu__item__right">
+                                                  {% include 'icon-leaves-b.svg' %}
+                                              </div>
+                                      </div>
+
+
+
                                   </a>
 
                               </li>
@@ -137,9 +154,6 @@
       </div>
 
       <div class="Owool_Header__divider">
-
-
-          {% include 'c-kabob'  with   style_modifier: 'light' , flags: "--md --no-divider" , kabob_right_icon: "icon-snapchat", kabob_left_icon: "icon-leaves-b.svg", kabob_label: "gillian's text" %}
 
           {% include 'c-divider'   with  style_modifier: header_style_modifier__divider %}
 

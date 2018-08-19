@@ -6,21 +6,22 @@
 <footer class="Owool_Footer">
     <div class="inner">
 
-
-        <section class="a-footer-grid footer-content-area">
-            <div class="footer-col" id="footer-1">
+        <section class="Owool_Footer__grid footer-content-area">
+            <div class="Owool_Footer__col footer-col" id="footer-1">
                 <!-- BEGIN: Constant Contact Basic Opt-in Email List Form -->
                 {% assign footer_settings = section.settings %}
+                <div> {{ footer_settings.footer_emailform_text  }}</div>
                 {% include 'email-list-form' %}
 
-                {% assign social_nav_theme = "dark" %}
+                <div class="Owool_Footer__social">
+                {% assign social_nav_theme = "accent-primary" %}
                 {% include 'social-nav-links' %}
-
+                </div>
                 <!-- END: Constant Contact Basic Opt-in Email List Form -->
 
             </div><!-- /#footer-1 -->
 
-            <div class="footer-col" id="footer-2">
+            <div class="Owool_Footer__col footer-col" id="footer-2">
                 <ul class="footer-nav" class="clearfix">
                     {% for link in linklists.footer.links %}
                         <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
@@ -29,7 +30,7 @@
 
             </div><!-- /#footer-2 -->
 
-            <div class="footer-col" id="footer-3">
+            <div class="Owool_Footer__col footer-col" id="footer-3">
                 <ul class="footer-nav" class="clearfix">
                     {% for link in linklists.footer-right.links %}
                         <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
@@ -37,7 +38,7 @@
                 </ul>
             </div><!-- /#footer-3 -->
 
-            <div class="footer-col" id="footer-4">
+            <div class="Owool_Footer__col footer-col" id="footer-4">
                 <img src="{{ 'star.png' | asset_url }}" width="15" height="17" alt="*" style="vertical-align:middle"/>
                 <a href="http://www.aeolidia.com/" onclick="window.open(this.href,'_blank');return false;">site by
                     Aeolidia</a> <img src="{{ 'star2.png' | asset_url }}" width="9" height="9" alt="*"
@@ -66,9 +67,8 @@
             </ul>
             {% endunless %}
         {% endif %}
-        <div class="Owool_Header__divider">
-
-        {% include 'c-divider'   with  style_modifier: footer_style_modifier %}
+        <div class="Owool_Footer__divider">
+            {% include 'c-divider'   with  style_modifier: footer_style_modifier %}
         </div>
         <div class="Owool_Footer__meta">
             <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}

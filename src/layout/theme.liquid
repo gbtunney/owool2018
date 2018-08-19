@@ -63,21 +63,13 @@
 </head>
 
 <body class="{% if customer %}customer-logged-in {% endif %}template{{ template | split: '.' | first | camelize }} {{page.title}} {{ product.title }}">
-  
-    
 
     <!-- Header -->
-
-      {% section 'header' %}
-
+    {% section 'header' %}
 
     <main role="main" id="MainContent">
-        {% include 'c-button'  with   style_modifier: 'dark-accent-secondary' ,  kabob_left_icon: "icon-leaves-b.svg", kabob_label: "gillian's button" %}
-
         {{ content_for_layout }}
     </main>
-
-
 
   <!--[if lt IE 8]>
   <script>

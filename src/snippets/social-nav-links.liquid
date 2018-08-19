@@ -1,31 +1,31 @@
+{% assign social_flags= '--circle'  %}
+
 {%if settings.sm_pinterest %}
 
         {% assign href = "http://gilliantunney" %}
-        {% include 'ui-linked-icon' with icon_name: 'icon-pinterest',style_modifier: social_nav_theme %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-pinterest',style_modifier: social_nav_theme ,flags:social_flags %}
 
     {% endif %}
 
     {%if settings.sm_facebook %}
         {% assign href = settings.sm_facebook_link %}
-        {% include 'ui-linked-icon' with icon_name: 'icon-facebook',style_modifier: social_nav_theme %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-facebook',style_modifier: social_nav_theme,flags:social_flags %}
 
     {% endif %}
 
     {%if settings.sm_twitter %}
         {% assign href = settings.sm_twitter_link %}
-        {% include 'ui-linked-icon' with icon_name: 'icon-twitter',style_modifier: social_nav_theme %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-twitter',style_modifier: social_nav_theme,flags:social_flags %}
     {% endif %}
 
     {%if settings.sm_instagram %}
         {% assign href = settings.sm_instagram_link %}
-
-
-        {% include 'ui-linked-icon' with icon_name: 'icon-instagram',style_modifier: social_nav_theme %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-instagram',style_modifier: social_nav_theme,flags:social_flags %}
 
     {% endif %}
 
     {%if settings.sm_instagram %}
         {% assign href = settings.sm_instagram_link %}
-        {% include 'ui-linked-icon' with icon_name: 'icon-instagram',style_modifier: social_nav_theme %}
+        {% include 'ui-linked-icon' with icon_name: 'icon-instagram',style_modifier: social_nav_theme,flags:social_flags %}
 
     {% endif %}

@@ -11,6 +11,8 @@ $show-guides: false;
     $self: &;
 
     @include u-default-container;
+    @extend %u-reset-link-color;
+
     padding-top: rhythm(1);
 
     position: relative;
@@ -74,19 +76,19 @@ $show-guides: false;
         height: auto;
         flex-wrap: nowrap;
 
+
         $props: (
             background: true,
             foreground: true,
             border: false,
-            accent:false
+            accent:foreground
         );
         @include g-color-scheme($chroma-active-scheme,$props...);
 
+        @include setType(0, font-serif-italic);
 
+       // font-style: italic;
 
-        @include setType(-1, font-serif-italic);
-
-        font-style: italic;
         //@include u-inherit-selector();
     }
 
@@ -94,6 +96,7 @@ $show-guides: false;
     &__cart {
         width: auto;
         @include u-horizontal-list();
+        align-items: center;
 
         &-icon {
 
@@ -105,12 +108,16 @@ $show-guides: false;
 
     &__social {
         width: auto;
+        height: 100%;
         @include u-horizontal-list();
     }
 
     &__customer {
         width: auto;
+
+        padding: 0 rhythm(.5) 0 rhythm(1);
         @include u-horizontal-list();
+        align-items: center;
 
         &-account {
 
@@ -135,7 +142,8 @@ $show-guides: false;
 .Owool_Main-Menu {
 
     a {
-        //    @include u-reset-link;
+        //   @include u-reset-link;
+   // @extend %u-reset-link-color;
     }
 
     @include u-horizontal-list();
@@ -147,27 +155,42 @@ $show-guides: false;
     background: pink;
     $parent: &;
 
-    @include setType(2, font-san-serif);
+   // @include setType(2, font-san-serif);
 
     $props: (
         background: true,
         foreground: true,
         border: false,
-        accent:false
+        accent:true
     );
     @include g-color-scheme(light,$props...);
 
+
     &__item {
+        $parent : &;
+        @include u-transition(opacity);
 
-        width: auto;
-        #{$parent}__icon {
+        $props: (
+            background: false,
+            foreground: true,
+            border: false,
+            fill:accent,
+            hover-foreground:false,
+            hover-fill: false
+        );
 
-            opacity: 0;
-            @include u-transition(opacity);
-        }
+        @include c-kabob(light-alt,$props,true,auto,xl, font-san-serif ){
+            &__left, &__right{
+                opacity: 0;
+                @include u-transition(opacity);
+            }
+            &:hover{
+                #{$parent}__left, #{$parent}__right{
+                    opacity: 1;
 
-        &:hover #{$parent}__icon {
-            opacity: 1;
-        }
+                }
+            }
+        };
     }
+
 }

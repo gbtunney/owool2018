@@ -5,9 +5,12 @@
         <input type="hidden" name="llr" value="a4m5dxdab">
         <input type="hidden" name="m" value="1103508747232">
         <input type="hidden" name="p" value="oi">
-        <label for="mce-EMAIL"> {{ footer_settings.footer_emailform_text  }}</label><br/>
         <input type="text" name="ea" size="20" value="" class="email" id="mce-EMAIL" placeholder="email address">
-        <input type="submit" name="go" value="Go" class="submit" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; font-size:10pt;">
+        <button type="submit" name="go" value="Go" class="submit g-Button--dark-accent-secondary --round-right --sm-padding --sm " >
+            <div class="g-Button--dark-accent-secondary__icon">
+                {% include 'icon-leaves-a.svg' %}
+            </div>
+        </button>
     </form>
 </div>
 

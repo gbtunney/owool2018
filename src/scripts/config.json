@@ -2,7 +2,6 @@
 	"content-boxed-width": "85%",
 	"content-boxed-width-mobile": "95%",
 	"content-max-width": "1200px",
-	"typekit":"'https://use.typekit.net/kxg6qeb.css'",
 	"render_component_themes": {
 		"light":"Light",
 		"light-alt":"Light Alt",
@@ -137,7 +136,7 @@
 		"required-props": "'font-family, letter-spacing, word-spacing, text-transform, text-decoration, font-style, font-weight'",
 		"line-height": 1.3,
 		"modularscale": {
-			"base": "20px",
+			"base": "14px",
 			"ratio": 1.2,
 			"sm": {
 				"base": "25px",

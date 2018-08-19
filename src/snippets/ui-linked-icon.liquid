@@ -1,16 +1,25 @@
-{% assign default_component_id = 'Icon-SVG' %}
+{% assign default_component_id = 'Button' %}
 {% assign default_style_modifier = 'dark' %}
+{% assign default_flags = '' %}
 {% assign default_icon = 'icon-tumblr' %}
 
-<div class="c-{{ component_id |  default: default_component_id }} c-{{ component_id |  default: default_component_id }}--{{ style_modifier | default: default_style_modifier }}">
-    <a href="{{href}}"  target="{{ target }}">
-        {{ label  }}
-        {% if icon_name != empty %}
-            {% include icon_name %}
-        {% else %}
-            {% include default_icon %}
-        {% endif %}
-    </a>
+<div class="g-{{ component_id |  default: default_component_id }} g-{{ component_id |  default: default_component_id }}--{{ style_modifier | default: default_style_modifier }}  {{ flags | default: default_flags }}">
+   <div class="g-{{ component_id |  default: default_component_id }}--{{ style_modifier | default: default_style_modifier }}__icon">
+       <a href="{{href}}"  target="{{ target }}">
+           {{ label  }}
+           {% if icon_name != empty %}
+               {% include icon_name %}
+           {% else %}
+               {% include default_icon %}
+           {% endif %}
+       </a>
+   </div>
 </div>
 
-
+<!-- reset all variables cuz liquids scoping is dum? -->
+{% assign style_modifier = nil %}
+{% assign flags = nil %}
+{% assign reflect = nil %}
+{% assign icon_name = nil %}
+{% assign kabob_left_icon = nil %}
+{% assign component_name = nil %}
