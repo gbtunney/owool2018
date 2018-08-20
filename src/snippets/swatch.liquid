@@ -41,7 +41,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
         <p><strong>This is case-sensitive!</strong> Do not put in <code>'color'</code> if your product option name is <code>'Color'</code>.</p>
     </div>
     {% else %}
-        <div class="swatch clearfix" data-option-index="{{ option_index }}">
+        <div class="swatch clearfix"  data-option-index="{{ option_index }}">
             <div class="header">{{ swatch }}</div>
             {% assign values = '' %}
             {% for variant in product.variants %}

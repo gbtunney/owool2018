@@ -40,7 +40,29 @@ $(document).ready(function() {
         slidesToScroll: 1,
   });
   
-  
+  $('[data-g-variant-id]').click(function() {
+      event.preventDefault(); // cancel default behavior
+    
+      var selection =  $(this).attr('data-g-variant-id');
+      var selector = '[data-single-option-selector] [value="' + selection + '"]';
+    console.log ($(selector));
+      $(selector).attr("selected",true);
+      $('[data-single-option-selector]').trigger('change');
+      
+  });
+    
+    $('[data-swatch-option]').click(function() {
+        event.preventDefault(); // cancel default behavior
+        
+        var selection =  $(this).attr('data-swatch-option');
+        var selector = '[data-single-option-selector] [value="' + selection + '"]';
+        console.log ($(selector));
+        $(selector).attr("selected",true);
+        $('[data-single-option-selector]').trigger('change');
+        
+    });
+    
+    
   // Target tables to make them scrollable
   var tableSelectors = '.rte table';
 

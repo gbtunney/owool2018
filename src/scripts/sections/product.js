@@ -46,7 +46,15 @@ theme.Product = (function() {
       originalSelectorId: selectors.originalSelectorId,
       product: this.productSingleObject
     };
-
+    
+      $("[data-add-to-cart]").click(function(event)
+      {
+        alert();
+          event.preventDefault(); // cancel default behavior
+        
+          //... rest of add logic
+      });
+      
     this.settings = {};
     this.namespace = '.product';
     this.variants = new slate.Variants(options);

@@ -13,6 +13,18 @@
  */
 // =require vendor/slick.js
 
+/*!
+ * cart.js
+ */
+// =require vendor/cart.js
+
+
+/*!
+ * rivets-cart.js
+ */
+// =require vendor/rivets-cart.js
+
+
 
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.

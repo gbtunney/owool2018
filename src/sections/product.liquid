@@ -27,7 +27,8 @@
 
               {% for image in product.images %}
                 <li>
-                  <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
+                  <a  data-g-variant-id="{% for variant in image.variants %}{{ variant.title }}{% break %}{% endfor %}" data-product-single-thumbnail>
+
                     <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
                   </a>
                 </li>
@@ -55,7 +56,7 @@
                     {{ option.name }}
                 </label>
 
-                <select
+                <select size="30"
                         id="SingleOptionSelector-{{ forloop.index0 }}"
                         data-single-option-selector
                         data-index="option{{ option.position }}">
@@ -83,6 +84,19 @@
               {% endfor %}
           </select>
 
+
+            {% for variant in product.variants %}
+
+                {% if variant == current_variant %}selected="selected"{% endif %}
+                {% unless variant.available %}disabled="disabled"{% endunless %}
+
+              <div class="g-Swatch" data-swatch-option="{{ variant.title }}">
+                  <img title="{{ variant.title }}" src="{{ variant.image.src | img_url: '40x40' , crop: 'center' , scale: 2 }}">
+              </div>
+
+            {% endfor %}
+
+            {{ variant.image.src }}
 
           <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
           <input type="number" id="Quantity" name="quantity" value="1" min="1">
