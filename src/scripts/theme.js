@@ -28,7 +28,19 @@ $(document).ready(function() {
   $('.in-page-link').on('click', function(evt) {
     slate.a11y.pageLinkFocus($(evt.currentTarget.hash));
   });
-
+  
+  $('.MainSlider .Slide').slick( {
+        autoplay: true,
+        autoplaySpeed: 5000,
+        dots: true,
+        infinite: true,
+        speed: 400,
+        arrows: true,
+        slidesToShow:1,
+        slidesToScroll: 1,
+  });
+  
+  
   // Target tables to make them scrollable
   var tableSelectors = '.rte table';
 
