@@ -8,6 +8,10 @@
         -moz-osx-font-smoothing: grayscale;
         // @include color-scheme();
         @include setType(0, font-serif);
+
+        width:100%;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
 
 

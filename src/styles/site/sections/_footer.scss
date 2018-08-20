@@ -5,7 +5,8 @@ footer {
 }
 
 .Owool_Footer {
-    @include u-full-width-container;
+   // @include u-full-width-container;
+    width: 100%;
     > .inner {
         @include u-default-container;
     }
@@ -51,6 +52,10 @@ footer {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: rhythm(1);
+
+        @include breakpoint-range(sm,"<="){
+            display: block;
+        }
     }
     &__divider {
         @include leader();

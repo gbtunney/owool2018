@@ -59,12 +59,52 @@
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
   <link rel="stylesheet" href="https://use.typekit.net/kxg6qeb.css">
+<script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
+    window.theme = {
+        strings: {
+            addToCart: {{ 'products.product.add_to_cart' | t | json }},
+            soldOut: {{ 'products.product.sold_out' | t | json }},
+            unavailable: {{ 'products.product.unavailable' | t | json }}
+        },
+        moneyFormat: {{ shop.money_format | json }}
+    };
+</script>
 </head>
 
 <body class="{% if customer %}customer-logged-in {% endif %}template{{ template | split: '.' | first | camelize }} {{page.title}} {{ product.title }}">
     <!-- Header -->
-    {% section 'header' %}
+    <div data-section-id="{{ section.id }}" data-section-type="header-section">
+
+        {% if template.name == 'index' %}
+        <h1 itemscope itemtype="http://schema.org/Organization">
+            {% else %}
+            <div class="h1" itemscope itemtype="http://schema.org/Organization">
+                {% endif %}
+
+                {% if template.name == 'index' %}
+        </h1>
+        {% else %}
+    </div>
+    {% endif %}
+
+    <div data-section-id="{{ section.id }}" data-section-type="header-section">
+
+        {% if template.name == 'index' %}
+        <h1 itemscope itemtype="http://schema.org/Organization">
+            {% else %}
+            <div class="h1" itemscope itemtype="http://schema.org/Organization">
+                {% endif %}
+
+                {% if template.name == 'index' %}
+        </h1>
+        {% else %}
+    </div>
+    {% endif %}
+        {% section 'mobile-header' %}
+     {% section 'header' %}
+
 
     <main role="main" class="Owool_Content" id="MainContent">
         {{ content_for_layout }}
@@ -219,6 +259,8 @@
 	jQuery(document).ready(function(){
     	jQuery('#MobileNavTrigger').on('click', function(event) {        
              jQuery('body').toggleClass('MobileNavActive');
+
+             alert();
         });
   	});
 	</script>

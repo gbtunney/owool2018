@@ -2,17 +2,18 @@
 <!-- spurit_po-added -->
 {% include 'spurit_po-collection-snippet' %}
 <!-- /spurit_po-added -->
-<div id="col-main" class="full {{ collection.handle }}">
+<div  class="Owool-Collection full {{ collection.handle }}">
 
-  <section class="content-collection">
-    <header class="content-header ">
-     {% include 'breadcrumbs' %}
+    <header class="Owool-Collection__title ">
+        {{ page_title | remove: '*' }}
     </header>
+
+
 
     {% paginate collection.products by 21 %}
       {% if collection.products.size > 0 %}
     
-        <ul class="product-grid a-product-grid ">
+        <ul class="Owool-Collection__product-grid">
         {% for product in collection.products %}
           <li>
             {% include 'product-grid-item' %}
@@ -26,6 +27,5 @@
         <strong>No products found in this collection.</strong>
       {% endif %}
     {% endpaginate %}
-  </section>
-  
+
 </div> <!-- /#col-main -->

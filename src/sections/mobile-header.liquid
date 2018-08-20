@@ -1,0 +1,105 @@
+{% assign header_style_modifier = 'light' %}
+{% assign header_style_modifier__social = 'dark-accent-default' %}
+{% assign header_style_modifier__cart = 'accent-primary' %}
+{% assign header_flags__cart = '--md --no-border --no-padding' %}
+{% assign header_style_modifier__divider = 'accent-default' %}
+{% assign header_style_modifier__main_menu_icon = 'accent-secondary --sm Owool_Main-Menu__icon' %}
+
+{% assign menu_name = 'Owool_Mobile-Header' %}
+
+<header class="{{ menu_name }}" role="banner">
+
+    <div class="{{ menu_name }}__wrapper">
+    <div class="{{ menu_name }}__col">
+
+        {% if shop.customer_accounts_enabled %}
+            <div class="{{ menu_name }}__customer">
+                {% if customer %}
+                    <div class="{{ menu_name }}__customer-account">
+                        {% if customer.first_name != blank %}
+                            {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                            {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                        {% else %}
+                            <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="{{ menu_name }}__customer-logout">
+                        {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                    </div>
+                {% else %}
+                    <div class="{{ menu_name }}__customer-login">
+                        {{ 'layout.customer.log_in' | t | customer_login_link }}
+                    </div>
+                    <div class="{{ menu_name }}__customer-create">
+                        {{ 'layout.customer.create_account' | t | customer_register_link }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% include 'ui-linked-icon' with icon_name: 'icon-hamburger' ,style_modifier: 'accent-primary' , flags: '--md --rounded Owool_Mobile-Header__nav-trigger' %}
+
+
+    </div>
+        <div class="{{ menu_name }}__col">
+            <div class="{{ menu_name }}__logo">
+                <a href="/" itemprop="url"
+                   class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+                    <div alt="{{ shop.name }}" class="Owool_Logo_SVG">
+                        {% include 'logo-owool.svg' %}
+                    </div>
+                </a>
+            </div>
+            <div class="{{ menu_name }}__social">
+                {% include 'social-nav-links' with social_nav_theme : header_style_modifier__social %}
+            </div>
+        </div>
+        <div class="{{ menu_name }}__col">
+            <div class="{{ menu_name }}__cart">
+                <div class="{{ menu_name }}__cart-icon">
+                    {% include 'ui-linked-icon' with icon_name: 'icon-cart' ,style_modifier: header_style_modifier__cart , flags: header_flags__cart %}
+                </div>
+                <div class="{{ menu_name }}__cart-item-count">
+                    <a href="/cart">
+                        {{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="{{ menu_name }}__divider">
+        {% include 'c-divider'   with  style_modifier: header_style_modifier__divider %}
+    </div>
+
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 450,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}

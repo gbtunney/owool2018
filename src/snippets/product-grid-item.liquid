@@ -1,8 +1,8 @@
-<div class="c-Product_Card" id="product-{{ product.variants.first.id }}">
-    <div class="c-Product_Card__inner">
+<div class="g-Card --no-border Owool-Collection__product-card" id="product-{{ product.variants.first.id }}">
+    <div class="g-Card__inner">
         <a href="{{ product.url | within: collection }}" class="product-link"
            title="{{ product.featured_image.alt | escape }}">
-            <img class="c-Product_Card__image "product-photo" src="{{ product.featured_image | product_img_url: 'large' }}"
+            <img class="g-Card__image" src="{{ product.featured_image | product_img_url: 'large' }}"
             alt="{{ product.featured_image.alt | escape }}"/>
             {% for tag in product.tags %}
                 {% if tag contains 'GLOBAL ORGANIC' %}
@@ -20,11 +20,12 @@
                 {% endif %}
             {% endfor %}
         </a>
-        <div class="c-Product_Card__meta">
-            <a class="c-Product_Card__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
-           <div> {{ product.vendor }}</div>
-            <div>{{ product.type }}</div>
-            <span class="c-Product_Card__price product-price 123">
+    </div>
+        <div class="g-Card__meta">
+            <a class="g-Card__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+           <div class="g-Card__vendor"> {{ product.vendor }}</div>
+            <div class="g-Card__type">{{ product.type }}</div>
+            <span class="g-Card__price product-price 123">
     {% if product.price_varies %}
         <small>from</small> {{ product.price_min | money }}
     {% else %}
@@ -32,5 +33,5 @@
     {% endif %}
     </span>
         </div>
-    </div>
+
 </div>

@@ -1,9 +1,9 @@
 //SASS
 
 .Owool_Pagination{
+    @include u-make-container(30%);
 
-    @include u-make-container(50%);
-
+@include trailer(3);
     $props: (
         background: true,
         foreground: true,
@@ -11,26 +11,29 @@
     );
     @include g-color-scheme($chroma-active-scheme,$props...);
 
+    @include setType(2, font-serif);
+
+@include breakpoint-range(sm,"<="){
     @include setType(1, font-serif);
+    @include u-make-container(90%);
 
-
+}
     a{
         color: inherit;
-
     }
 
     &__links{
 
         display: flex;
         justify-content: space-between;
-@include trailer();
+        @include trailer();
     }
     &__page{
 
-        padding: 0 rhythm(0);
+        padding: 0 rhythm(.25);
         &.--is-active{
 @include trailing-border(2px,-1);
-            border-color: color($chroma-active-scheme,border);
+            border-color: color($chroma-active-scheme,accent);
         }
 
         &:hover{
@@ -53,7 +56,7 @@
 
     &__showing{
 
-        @include setType(0, font-serif);
+        @include setType(-1, font-serif);
 //TODO: formalize this
 font-style: italic;
     }

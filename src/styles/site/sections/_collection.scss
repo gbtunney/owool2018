@@ -1,5 +1,32 @@
-section.content-collection{
+.Owool-Collection {
 
-    @include u-default-container;
+    //@include u-default-container;
+    &__title {
+        @include setType(3, font-san-serif);
+        text-align: left;
+    }
 
+    &__product-grid{
+      //  background: red;
+    display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+grid-gap: rhythm(2);
+        @include breakpoint-range(sm,"<="){
+            display: block;
+        }
+
+        @include margin-trailer(2);
+    }
+&__product-card{
+    width: 100%;
+
+    .g-Card__type{
+        display: none;
+
+    }
+    .g-Card__vendor{
+@include setType(1,font-serif);
+       // background-color: red;
+    }
+}
 }

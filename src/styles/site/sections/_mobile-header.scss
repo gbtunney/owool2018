@@ -1,17 +1,17 @@
-$logo-width: 15%;
+$logo-width: 10%;
 
 $show-guides: false;
 
-[data-section-type="header-section"] {
-    border-top: 2px solid color($chroma-active-scheme, accent);
-}
 
-.Owool_Header {
+
+.Owool_Mobile-Header {
 
     $self: &;
-    @include breakpoint-range(sm,"<="){
+
+    @include breakpoint-range(md,">="){
         display: none;
     }
+
     @include u-default-container;
     @extend %u-reset-link-color;
 
@@ -20,22 +20,25 @@ $show-guides: false;
     position: relative;
     display: block;
 
+    &__nav-trigger{
+        padding-left: rhythm(1);
+        background: red;
+        display: none;
+    }
+
     &__wrapper {
 
         display: grid;
-        grid-template-columns: $logo-width 1fr;
-
-        @include breakpoint-range(xl,">="){
-           // background: red;
-            grid-template-columns: 12% 1fr;
-
-        }
-        grid-template-rows: 100% 100%;
+        grid-template-columns: 20% 60% 20%;
         grid-gap: 0;
 
         justify-items: stretch;
         align-items: stretch;
         width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+
 
         @include margin-trailer(1);
         > * {
@@ -43,21 +46,21 @@ $show-guides: false;
                 @if ($show-guides) {
                     background: pink;
                 }
-                grid-row-start: 1;
-                grid-row-end: span 2;
-
+                align-self: flex-start;
             }
             &:nth-child(2) {
                 @if ($show-guides) {
                     background: orange;
                 }
-                align-self: flex-start;
+                @include breakpoint-range(sm){
+                    padding: 0 rhythm(2);
+                }
             }
             &:nth-child(3) {
                 @if ($show-guides) {
                     background: yellow;
                 }
-                align-self: flex-end;
+                //align-self: flex-end;
             }
             &:nth-child(4) {
                 @if ($show-guides) {
@@ -69,8 +72,19 @@ $show-guides: false;
 
     &__logo {
 
-        height: 100%;
+        height: auto;
+        width: 100%;
 
+
+        @include breakpoint-range(xs){
+            padding: 0 rhythm(3) rhythm(1) rhythm(3);
+        }
+        @include breakpoint-range(sm){
+            width: 80% ;
+            max-width: 40vw;
+            margin: 0 auto;
+            padding: 0 rhythm(1) rhythm(1) rhythm(1);
+        }
         .Owool_Logo_SVG {
             width: 100%;
             height: auto;
@@ -93,7 +107,7 @@ $show-guides: false;
         );
         @include g-color-scheme($chroma-active-scheme,$props...);
 
-        @include setType(0, font-serif-italic);
+
 
        // font-style: italic;
 
@@ -103,7 +117,8 @@ $show-guides: false;
     //part of meta
     &__cart {
         width: auto;
-        @include u-horizontal-list();
+        @include setType(0, font-serif-italic);
+        @include u-horizontal-list(rhythm(.5),flex-end);
         align-items: center;
 
         &-icon {
@@ -116,17 +131,29 @@ $show-guides: false;
 
     &__social {
         width: auto;
-        height: 100%;
-        @include u-horizontal-list();
+        height: auto;
+        @include u-horizontal-list(0);
+        @include u-make-container(80%);
+
+
+        @include breakpoint-range(sm){
+            @include u-make-container(100%,38vw);
+
+        }
+            ///  width: 100% ;
+      //  max-width: 40vw;
+
     }
 
     &__customer {
         width: auto;
 
-        padding: 0 rhythm(.5) 0 rhythm(1);
-        @include u-horizontal-list();
-        align-items: center;
+        @include trailer(1);
+        //padding: 0 rhythm(.5) 0 rhythm(1);
+        @include u-horizontal-list(0);
 
+        align-items: center;
+        @include setType(0, font-serif-italic);
         &-account {
 
         }
@@ -137,7 +164,7 @@ $show-guides: false;
 
         }
         &-create {
-
+            display: none;
         }
     }
 
@@ -145,6 +172,9 @@ $show-guides: false;
         background: red;
         display: none;
     }
+
+
+    //Owool_Mobile-Header__nav-trigger
 }
 
 .Owool_Main-Menu {

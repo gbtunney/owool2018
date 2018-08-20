@@ -1,6 +1,7 @@
 .Owool_Product {
     $color-scheme: $chroma-active-scheme;
 
+    @include trailer(2);
     &__breadcrumbs {
 
         @include setType(2, font-serif-italic);
@@ -31,7 +32,16 @@
     &__alt_images {
         @include u-horizontal-list();
     }
+&__featured-image{
+   img{
+       @include breakpoint-range(sm, "<=") {
 
+           width: 100%;
+           max-width: none;
+       }
+   }
+
+}
     &__details {
 
         $props: (
@@ -43,6 +53,7 @@
         );
         @include g-color-scheme($color-scheme, $props...);
 
+        text-align: left;
         a {
             &:hover {
                 $props: (
@@ -54,13 +65,20 @@
                 @include g-color-scheme($color-scheme, $props...);
             }
         }
+
+        @include breakpoint-range(sm,"<="){
+           // @include setType(1, font-serif);
+            //@include u-make-container(90%);
+padding: 0 rhythm(1);
+        }
     }
     $parent: &;
     &__title {
+
         @include setType(4, font-serif, 1);
 
         #{$parent}__icon {
-            @include o-icon-svg(color(light-alt, accent), 2);
+            @include o-icon-svg(color(light-alt, accent), 4);
             padding-right: rhythm(.25);
         }
     }
