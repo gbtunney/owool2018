@@ -96,7 +96,7 @@ slate.Variants = (function() {
      * Event handler for when a variant input changes.
      */
     _onSelectChange: function() {
-      var variant = this._getVariantFromOptions();
+      var variant = this._getVariantF   romOptions();
 
       this.$container.trigger({
         type: 'variantChange',
@@ -163,7 +163,9 @@ slate.Variants = (function() {
       if (!history.replaceState || !variant) {
         return;
       }
-
+    
+        myVariant = variant;
+      //console.log(variant);
       var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?variant=' + variant.id;
       window.history.replaceState({path: newurl}, '', newurl);
     },

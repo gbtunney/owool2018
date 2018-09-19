@@ -37,8 +37,9 @@
             </div>
         {% endif %}
 
+        <div class="{{ menu_name }}__mobile-nav-trigger">
         {% include 'ui-linked-icon' with icon_name: 'icon-hamburger' ,style_modifier: 'accent-primary' , flags: '--md --rounded Owool_Mobile-Header__nav-trigger' %}
-
+        </div>
 
     </div>
         <div class="{{ menu_name }}__col">
@@ -69,10 +70,67 @@
 
     </div>
 
+
+
+
+    <nav  role="navigation">
+        <ul class="Owool_Main-Menu-Mobile">
+            {% for link in linklists[section.settings.main_linklist].links %}
+                {% if link.links != blank %}
+                    <li class="Owool_Main-Menu-Mobile__item --has-submenu">
+                        {% include 'ui-linked-icon' with icon_name: 'icon-leaves-a.svg',style_modifier: header_style_modifier__main_menu_icon %}
+                        <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                        <ul>
+                            {% for childlink in link.links %}
+                                {% if childlink.links != blank %}
+                                    <li>
+                                        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                        <ul>
+                                            {% for grandchildlink in childlink.links %}
+                                                <li>
+                                                    <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="">
+                        <a href="{{ link.url }}">
+
+                            <div class="Owool_Main-Menu-Mobile__item --reflect">
+                                <div class="Owool_Main-Menu-Mobile__item__left">
+                                    {% include   'icon-leaves-b.svg' %}
+                                </div>
+                                <div class="Owool_Main-Menu__item__center">
+                                    <div class="Owool_Main-Menu__item__inner">
+                                        <span>{{ link.title  | escape }}</span>
+                                    </div>
+                                </div>
+                                <div class="Owool_Main-Menu__item__right">
+                                    {% include 'icon-leaves-b.svg' %}
+                                </div>
+                            </div>
+
+
+
+                        </a>
+
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
     <div class="{{ menu_name }}__divider">
         {% include 'c-divider'   with  style_modifier: header_style_modifier__divider %}
     </div>
-
 </header>
 
 {% schema %}

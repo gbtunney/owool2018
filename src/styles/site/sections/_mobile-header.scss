@@ -177,21 +177,29 @@ $show-guides: false;
     //Owool_Mobile-Header__nav-trigger
 }
 
-.Owool_Main-Menu {
-
+.Owool_Main-Menu-Mobile {
+//display: none;
     a {
         //   @include u-reset-link;
    // @extend %u-reset-link-color;
     }
 
-    @include u-horizontal-list();
+   // @include u-horizontal-list();
 
+    display: none;
+
+    &.--is-active{
+
+        display: block;
+    }
     justify-content: flex-end;
 
     width: 100%;
     height: 100%;
     background: pink;
     $parent: &;
+
+   // border-bottom: 1px solid color(border);
 
    // @include setType(2, font-san-serif);
 
@@ -207,7 +215,6 @@ $show-guides: false;
     &__item {
         $parent : &;
         @include u-transition(opacity);
-
         $props: (
             background: false,
             foreground: true,
@@ -217,11 +224,13 @@ $show-guides: false;
             hover-fill: false
         );
 
-        @include c-kabob(light-alt,$props,true,auto,xl, font-san-serif ){
+        @include c-kabob(light-alt,$props,true,auto,sm, font-san-serif ){
             &__left, &__right{
                 opacity: 0;
                 @include u-transition(opacity);
             }
+        &__center{
+        }
             &:hover{
                 #{$parent}__left, #{$parent}__right{
                     opacity: 1;

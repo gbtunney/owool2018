@@ -41,9 +41,24 @@
          <span class="{{ component_name }}__icon">{%  include 'icon-leaves-b.svg' %}</span><span>{{ product.title }}</span>
       </h2>
       <p class="{{ component_name }}__vendor">{{ product.vendor }}</p>
+        <div data-price-wrapper>
+        <span data-product-price>
+          {{ current_variant.price | money }}
+        </span>
+
+            {% if product.compare_at_price_max > product.price %}
+                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                <s data-compare-price>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                        {{ current_variant.compare_at_price | money }}
+                    {% endif %}
+                </s>
+            {% endif %}
+        </div>
 
 
-
+        {% include 'c-divider'   with  style_modifier: 'accent-default' %}
+        {% assign component_name = 'Owool_Product' %}
       <div class="{{ component_name }}__offers" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
@@ -51,12 +66,22 @@
         <form action="/cart/add" method="post" enctype="multipart/form-data">
             {% unless product.has_only_default_variant %}
             {% for option in product.options_with_values %}
-              <div class="selector-wrapper js">
+                {% if option.name == 'Color' %}
+                    <div class="{{ component_name }}__option-info"><span id="SingleOptionSelector-{{ forloop.index0 }}-title" class="{{ component_name }}__option-title">{{ option.name }} : </span><span class="{{ component_name }}__option-selected">{{  option.selected_value }}</span></div>
+                    <div class="{{ component_name }}__variant-swatches">
+                        {% for variant in product.variants %}
+                            <div class="{{ component_name }}__variant-swatch g-Swatch  {% if variant == current_variant %}--is-selected{% endif %}{% unless variant.available %}--is-disabled{% endunless %}" data-swatch-option="{{ variant.title }}">
+                                <img title="{{ variant.title }}" src="{{ variant.image.src | img_url: '40x40' , crop: 'center' , scale: 2 }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+              <div class="{{ component_name }}__option-selector {{ component_name }}__option-selector--{{ option.name }} selector-wrapper js">
                 <label for="SingleOptionSelector-{{ forloop.index0 }}">
                     {{ option.name }}
                 </label>
-
-                <select size="30"
+                <select
                         id="SingleOptionSelector-{{ forloop.index0 }}"
                         data-single-option-selector
                         data-index="option{{ option.position }}">
@@ -73,7 +98,7 @@
             {% endunless %}
 
 
-          <select name="id" class="no-js" data-product-select>
+          <select name="id" class="{{ component_name }}__master-variant-selector" class="no-js" data-product-select>
               {% for variant in product.variants %}
                 <option
                         {% if variant == current_variant %}selected="selected"{% endif %}
@@ -84,37 +109,9 @@
               {% endfor %}
           </select>
 
-
-            {% for variant in product.variants %}
-
-                {% if variant == current_variant %}selected="selected"{% endif %}
-                {% unless variant.available %}disabled="disabled"{% endunless %}
-
-              <div class="g-Swatch" data-swatch-option="{{ variant.title }}">
-                  <img title="{{ variant.title }}" src="{{ variant.image.src | img_url: '40x40' , crop: 'center' , scale: 2 }}">
-              </div>
-
-            {% endfor %}
-
-            {{ variant.image.src }}
-
           <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
           <input type="number" id="Quantity" name="quantity" value="1" min="1">
 
-          <div data-price-wrapper>
-        <span data-product-price>
-          {{ current_variant.price | money }}
-        </span>
-
-              {% if product.compare_at_price_max > product.price %}
-                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-                <s data-compare-price>
-                    {% if current_variant.compare_at_price > current_variant.price %}
-                        {{ current_variant.compare_at_price | money }}
-                    {% endif %}
-                </s>
-              {% endif %}
-          </div>
 
           <button
                   type="submit"
@@ -140,6 +137,17 @@
 
   </div>
 
+    <!-- Place <div> tag where you want the feed to appear -->
+    <div id="curator-feed"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+    <!-- The Javascript can be moved to the end of the html page before the </body> tag -->
+    <script type="text/javascript">
+        /* curator-feed */
+        (function(){
+            var i, e, d = document, s = "script";i = d.createElement("script");i.async = 1;
+            i.src = "https://cdn.curator.io/published/8f06d909-ac15-451b-a5b8-0a275b7a44f5.js";
+            e = d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+        })();
+    </script>
 
 
 

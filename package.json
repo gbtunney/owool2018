@@ -2,7 +2,7 @@
   "name": "owool",
   "version": "0.0.1",
   "devDependencies": {
-    "@shopify/slate-tools": ">=0.14.0",
+    "@shopify/slate-tools": "^0.14.0",
     "breakpoint-sass": "^2.7.1",
     "breakpoint-slicer": "^2.0.0",
     "chroma-sass": "^1.2.6",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.1.0",
     "jquery": "^3.3.1",
+    "list-selectors": "^2.0.0",
     "node-sass": "^4.9.2",
     "node-sass-json-importer": "^3.3.1",
     "shopify-cartjs": "^0.4.1"
@@ -28,6 +29,7 @@
     "start:prod": "slate start --env production",
     "deploy:dev": "slate deploy --env development",
     "deploy:prod": "slate deploy --env production",
-    "build": "slate build"
+    "build": "slate build",
+    "dump-selectors": "list-selectors /Users/gilliantunney/Sites/shopify/owool/src/styles/themecss --pretty"
   }
 }

@@ -49,9 +49,10 @@ theme.Product = (function() {
     
       $("[data-add-to-cart]").click(function(event)
       {
-        alert();
-          event.preventDefault(); // cancel default behavior
-        
+        //alert();
+         event.preventDefault(); // cancel default behavior
+          CartJS.addItem(myVariant.id, $('#Quantity').val());
+          
           //... rest of add logic
       });
       
@@ -69,6 +70,19 @@ theme.Product = (function() {
 
       this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
     }
+    
+      $('.Owool_Product__alt_images').slick( {
+          autoplay: false,
+          autoplaySpeed: 5000,
+          dots: true,
+          infinite: false,
+          speed: 400,
+          arrows: true,
+          slidesToShow:4,
+          slidesToScroll: 4,
+      });
+    
+    
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
